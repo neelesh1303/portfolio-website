@@ -1,0 +1,770 @@
+/* ==========================================================================
+   NEELESH KUMAR TRIPATHI — PORTFOLIO
+   Design Inspiration: Dennis Snellenberg / Aadarsh Rai Style
+   Palette: Minimalist Greyish-Black, Ultra-Clean Editorial Typography
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Greyish-Black Editorial Theme */
+  --bg-primary: #111113;
+  --bg-secondary: #17171a;
+  --bg-tertiary: #1f1f24;
+  --bg-card: rgba(26, 26, 31, 0.75);
+  --bg-card-hover: rgba(34, 34, 40, 0.9);
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.16);
+  --border-strong: rgba(255, 255, 255, 0.28);
+
+  --text-primary: #f4f4f6;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+
+  --accent-white: #ffffff;
+  --accent-blue: #3b82f6;
+  --accent-cyan: #06b6d4;
+  --accent-emerald: #10b981;
+
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 0.18s ease;
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.6;
+}
+
+/* Custom Minimal Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ==========================================================================
+   NAVIGATION BAR (Floating Aadarsh Rai / Dennis Snellenberg Header)
+   ========================================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 24px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  mix-blend-mode: difference;
+}
+
+.brand-code {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #fff;
+  cursor: pointer;
+}
+
+.nav-menu-list {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-link-item {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  transition: opacity var(--transition-fast);
+  position: relative;
+}
+.nav-link-item:hover {
+  opacity: 0.65;
+}
+
+.mobile-nav-toggle {
+  display: none;
+  color: #fff;
+  font-size: 20px;
+}
+
+/* ==========================================================================
+   HERO SECTION (Editorial with Background Photo at Lower Opacity)
+   ========================================================================== */
+/* ==========================================================================
+   AMBIENT WRAPPER: BIG BACKGROUND SPANNING HERO & STATEMENT SECTIONS
+   ========================================================================== */
+.hero-statement-ambient-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+}
+
+.hero-background-photo-big {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-bg-img-big {
+  position: absolute;
+  top: -630px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  min-width: 1250px;
+  max-width: 1650px;
+  height: auto;
+  opacity: 0.46;
+  filter: grayscale(100%) contrast(1.24) brightness(0.96);
+  mask-image: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 1) 0%, 
+    rgba(0, 0, 0, 1) 52%, 
+    rgba(0, 0, 0, 0.5) 75%, 
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-image: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 1) 0%, 
+    rgba(0, 0, 0, 1) 52%, 
+    rgba(0, 0, 0, 0.5) 75%, 
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.hero-statement-vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 45% 35%, rgba(17, 17, 19, 0.05) 0%, rgba(17, 17, 19, 0.45) 55%, rgba(17, 17, 19, 0.98) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   HERO SECTION (Editorial Layout with Ambient Laptop Background)
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  z-index: 3;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 108px 48px 0;
+  background: transparent;
+}
+
+/* Hero Content Grid */
+.hero-content-container {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.hero-left-spacer {
+  flex: 1;
+}
+
+.hero-location-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(26, 26, 30, 0.85);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-full);
+  padding: 8px 18px 8px 12px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.globe-icon-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.location-meta-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+.location-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.hero-tagline-col {
+  max-width: 380px;
+  text-align: right;
+  z-index: 5;
+}
+
+.hero-arrow-icon {
+  font-size: 36px;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  display: inline-block;
+  transform: rotate(45deg);
+}
+
+.hero-role-title {
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+/* Statement Section (Ambient over Big Background) */
+.statement-section-ambient {
+  position: relative;
+  z-index: 3;
+  background: transparent;
+  padding: 100px 48px 140px;
+}
+
+/* Running Marquee Text Strip (The Iconic Dennis Snellenberg element) */
+.hero-marquee-wrapper {
+  position: relative;
+  z-index: 3;
+  width: 100vw;
+  margin-left: -48px;
+  overflow: hidden;
+  white-space: nowrap;
+  user-select: none;
+  padding: 8px 0 16px;
+  margin-top: auto;
+}
+
+.hero-marquee-track {
+  display: inline-flex;
+  animation: marqueeLoop 24s linear infinite;
+}
+
+.hero-marquee-text {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 8.5vw, 120px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  color: rgba(255, 255, 255, 0.92);
+  display: inline-block;
+  padding-right: 40px;
+}
+
+@keyframes marqueeLoop {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ==========================================================================
+   STATEMENT & ABOUT SECTION
+   ========================================================================== */
+.section-wrapper {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 120px 48px;
+}
+
+.statement-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 60px;
+  align-items: flex-start;
+}
+
+.statement-headline {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+.statement-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.statement-body-text {
+  font-size: 17px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.statement-body-text strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Circular Floating Button (Dennis Snellenberg Style) */
+.circular-action-btn {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-medium);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all var(--transition-smooth);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+.circular-action-btn:hover {
+  background: #fff;
+  color: #111;
+  transform: scale(1.06);
+}
+
+/* ==========================================================================
+   TECH STACK MATRIX (Extensive, Detailed, Non-AI Look)
+   ========================================================================== */
+.section-subtitle-tag {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.tech-domain-rows {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 32px;
+}
+
+.tech-domain-row {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background-color var(--transition-fast);
+}
+
+.domain-left-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.domain-skills-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.skill-pill-dark {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+}
+.skill-pill-dark:hover {
+  border-color: #fff;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.domain-description-para {
+  font-size: 14.5px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.domain-description-para strong {
+  color: #fff;
+}
+
+/* ==========================================================================
+   PROJECTS SECTION (Horizontal Hairlines & Dennis Snellenberg Rows)
+   ========================================================================== */
+.projects-editorial-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 40px;
+}
+
+.project-row-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 42px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: padding var(--transition-smooth), border-color var(--transition-fast);
+  cursor: pointer;
+}
+.project-row-item:hover {
+  padding-left: 20px;
+  padding-right: 20px;
+  border-color: var(--border-medium);
+}
+
+.project-row-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4.5vw, 56px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: #fff;
+  transition: color var(--transition-fast);
+}
+.project-row-item:hover .project-row-title {
+  color: var(--text-secondary);
+}
+
+.project-row-meta {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.project-meta-category {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.project-meta-tech {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+/* Deep Project Detail Cards */
+.project-detailed-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.project-feature-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+.project-feature-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-4px);
+}
+
+.project-card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.project-card-num {
+  font-size: 12px;
+  font-family: var(--font-display);
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.project-metric-tag {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-full);
+  padding: 3px 12px;
+  letter-spacing: 0.02em;
+}
+
+.project-card-heading {
+  font-family: var(--font-display);
+  font-size: 23px;
+  font-weight: 600;
+  color: #fff;
+  margin: 14px 0 10px;
+  line-height: 1.25;
+}
+
+.project-card-desc {
+  font-size: 14.5px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.project-architecture-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 16px 0 20px;
+  padding: 16px;
+  background: rgba(17, 17, 19, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.project-architecture-list li strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   DSA & PROBLEM SOLVING METRICS
+   ========================================================================== */
+.dsa-metric-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 48px 0;
+  margin: 36px 0;
+}
+
+.dsa-metric-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.dsa-big-stat {
+  font-family: var(--font-display);
+  font-size: 54px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.dsa-stat-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   FOOTER (Big Aadarsh Rai / Dennis Snellenberg Call to Action)
+   ========================================================================== */
+.site-footer {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-subtle);
+  padding: 100px 48px 60px;
+}
+
+.footer-inner-container {
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.footer-cta-heading {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 7vw, 90px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: #fff;
+  margin-bottom: 48px;
+}
+
+.footer-contact-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 80px;
+}
+
+.footer-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-full);
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  transition: all var(--transition-fast);
+}
+.footer-pill-btn:hover {
+  background: #fff;
+  color: #111;
+  transform: translateY(-3px);
+}
+
+.footer-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 32px;
+  font-size: 13px;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 28px;
+}
+
+.footer-social-link {
+  color: var(--text-primary);
+  transition: color var(--transition-fast);
+}
+.footer-social-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   RESPONSIVE QUERIES
+   ========================================================================== */
+@media (max-width: 992px) {
+  .site-header {
+    padding: 20px 24px;
+  }
+  .hero-section {
+    padding: 100px 24px 40px;
+  }
+  .section-wrapper {
+    padding: 80px 24px;
+  }
+  .statement-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .tech-domain-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .project-detailed-grid {
+    grid-template-columns: 1fr;
+  }
+  .dsa-metric-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .site-footer {
+    padding: 80px 24px 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-menu-list {
+    display: none;
+  }
+  .hero-content-container {
+    flex-direction: column;
+    gap: 24px;
+  }
+  .hero-left-spacer {
+    display: none;
+  }
+  .hero-tagline-col {
+    text-align: left;
+  }
+  .hero-bg-img-big {
+    top: -160px;
+    min-width: 900px;
+  }
+  .dsa-metric-row {
+    grid-template-columns: 1fr;
+  }
+}
