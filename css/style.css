@@ -464,12 +464,23 @@ img {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
+.location-pin-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  color: #ef4444;
+  filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.7));
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform var(--transition-fast) ease;
+}
+
+.hero-location-badge:hover .location-pin-icon {
+  transform: translateY(-2px) scale(1.12);
+}
+
 .pulse-indicator {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--accent-emerald);
-  box-shadow: 0 0 8px rgba(16, 185, 129, 0.9);
+  display: none;
 }
 
 .location-text {
