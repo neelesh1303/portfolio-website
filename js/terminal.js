@@ -124,7 +124,7 @@ Available commands:
           this.print(`
 <b style="color:#fff">NEELESH KUMAR TRIPATHI</b>
 • BE in Information Science @ The National Institute of Engineering, Mysuru (CGPA: 8.60/10)
-• AI Systems & Full-Stack Developer | 500+ DSA Solved (LeetCode ~1533)
+• AI Systems & Full-Stack Developer | 500+ DSA Solved (LeetCode Global Rating ~1533)
 • Key Projects: Crackd (MERN + Gemini RAG), LLM Cost & Latency Optimizer, FinNIE, SignBridge (VIT 4th)
 • Phone: +91 6387974286 | Email: neeleshtripathi36@gmail.com
 <a href="#resume-modal" onclick="window.appController?.openResumeModal();" style="color:var(--accent-cyan); text-decoration:underline;">[Click to launch Full High-Res Resume Modal]</a>
@@ -172,7 +172,7 @@ Available commands:
         this.print(`
 <b style="color:var(--accent-green)">DSA & COMPETITIVE PROGRAMMING STATS:</b>
 • Solved 500+ Data Structures & Algorithms problems
-• LeetCode Global Rank ~1533
+• LeetCode Global Rating ~1533
 • Core Proficiencies: Graphs (BFS/DFS, Dijkstra), DP, Trees & BST, Two Pointers, Tries
 • Profile: <a href="https://codolio.com/profile/neelesh1303" target="_blank" style="color:var(--accent-cyan)">codolio.com/profile/neelesh1303</a>
         `);
