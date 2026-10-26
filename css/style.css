@@ -1377,3 +1377,297 @@ img {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* ==========================================================================
+   DYNAMIC ADDITIONS: READING PROGRESS, INTERACTIVE CANVAS & RESUME DOWNLOAD
+   ========================================================================== */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #3b82f6, #00f2fe, #10b981);
+  z-index: 300;
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+  pointer-events: none;
+  transition: width 0.08s linear;
+}
+
+.bg-interactive-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.header-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.terminal-trigger-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: 12px;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.terminal-trigger-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+  color: #fff;
+}
+
+.term-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
+}
+
+.term-kbd {
+  font-size: 10px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+}
+
+.header-resume-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  background: #fff;
+  color: #111 !important;
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.2);
+}
+
+.header-resume-download-btn:hover {
+  background: #e2e8f0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.35);
+}
+
+.statement-action-wrap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 36px;
+}
+
+.resume-download-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 28px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-full);
+  color: #fff !important;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all var(--transition-fast);
+}
+
+.resume-download-action-btn:hover {
+  background: #fff;
+  color: #111 !important;
+  border-color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.footer-pill-btn.resume-pill {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #fff;
+  font-weight: 600;
+}
+
+.footer-pill-btn.resume-pill:hover {
+  background: #fff;
+  color: #111;
+  border-color: #fff;
+}
+
+.footer-pill-btn.resume-highlight-pill {
+  background: #fff;
+  color: #111 !important;
+  font-weight: 600;
+  box-shadow: 0 4px 18px rgba(255, 255, 255, 0.25);
+}
+
+.footer-pill-btn.resume-highlight-pill:hover {
+  background: #e2e8f0;
+  transform: translateY(-3px);
+}
+
+.mobile-nav-link.mobile-resume-pill {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: #fff !important;
+  font-weight: 600;
+  border: 1px solid var(--border-medium);
+  margin-top: 8px;
+}
+
+/* ——— Cyber Terminal Modal (Ctrl+K) ——— */
+.terminal-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(10, 10, 13, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.terminal-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.terminal-window {
+  width: 100%;
+  max-width: 680px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  background: rgba(17, 17, 21, 0.96);
+  border: 1px solid var(--border-medium);
+  border-radius: 12px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  transform: scale(0.96);
+  transition: transform 0.25s var(--transition-smooth);
+}
+
+.terminal-modal.open .terminal-window {
+  transform: scale(1);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: rgba(24, 24, 29, 0.95);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.terminal-traffic-lights {
+  display: flex;
+  gap: 7px;
+}
+
+.terminal-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.terminal-dot.red { background: #ff5f56; }
+.terminal-dot.yellow { background: #ffbd2e; }
+.terminal-dot.green { background: #27c93f; }
+
+.terminal-title {
+  font-family: monospace;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.terminal-close-x {
+  color: var(--text-muted);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.terminal-close-x:hover {
+  color: #fff;
+}
+
+.terminal-body {
+  padding: 20px;
+  overflow-y: auto;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  max-height: 52vh;
+  min-height: 180px;
+}
+
+.term-line-output {
+  margin-bottom: 8px;
+  word-break: break-word;
+}
+
+.term-line-output.system-banner {
+  color: var(--text-muted);
+  border-bottom: 1px dashed var(--border-subtle);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.term-accent {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+.terminal-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 18px;
+  background: rgba(20, 20, 25, 0.95);
+  border-top: 1px solid var(--border-subtle);
+  font-family: monospace;
+  font-size: 13.5px;
+}
+
+.terminal-prompt {
+  color: #10b981;
+  white-space: nowrap;
+}
+
+.terminal-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: inherit;
+  font-size: inherit;
+}
+

@@ -14,7 +14,10 @@
 </head>
 <body>
 
-  <!-- FIXED ATMOSPHERIC BACKGROUND CANVAS (ALL PICTURES IN BACKGROUND ONLY, BLENDED FLAWLESSLY) -->
+  <!-- TOP DYNAMIC SCROLL READING BAR -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- FIXED ATMOSPHERIC BACKGROUND CANVAS (ALL 5 PICTURES WITH SEAMLESS CROSS-FADE ON SCROLL) -->
   <div class="fixed-bg-canvas" id="fixedBgCanvas" aria-hidden="true">
     <div class="bg-canvas-layer active" id="bgLayer0" style="background-image: url('assets/images/neelesh_laptop.jpg');"></div>
     <div class="bg-canvas-layer" id="bgLayer1" style="background-image: url('assets/images/neelesh_pov_laptop.jpg');"></div>
@@ -22,6 +25,8 @@
     <div class="bg-canvas-layer" id="bgLayer3" style="background-image: url('assets/images/neelesh_cafe.jpg');"></div>
     <div class="bg-canvas-layer" id="bgLayer4" style="background-image: url('assets/images/neelesh_bike.jpg');"></div>
     <div class="bg-canvas-vignette" id="bgCanvasVignette"></div>
+    <!-- Interactive Particle Overlay Canvas -->
+    <canvas id="interactiveCanvas" class="bg-interactive-canvas" aria-hidden="true"></canvas>
   </div>
 
   <!-- FLOATING SITE HEADER -->
@@ -40,11 +45,36 @@
       </ul>
     </nav>
 
-    <!-- Mobile Hamburger Button -->
-    <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
-      <span class="hamburger-bar"></span>
-      <span class="hamburger-bar"></span>
-    </button>
+    <div class="header-right-actions">
+      <!-- Terminal Trigger Pill -->
+      <button class="terminal-trigger-pill" id="terminalTriggerBtn" type="button" title="Open Terminal (Ctrl+K)">
+        <span class="term-dot"></span> CLI <span class="term-kbd">Ctrl+K</span>
+      </button>
+
+      <!-- Download Resume Button -->
+      <a
+        href="assets/Neelesh_Kumar_Tripathi_Resume.pdf"
+        download="Neelesh_Kumar_Tripathi_Resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="header-resume-download-btn"
+        id="headerResumeBtn"
+        title="Download Official Resume PDF"
+      >
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span>Resume</span>
+      </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
   </header>
 
   <!-- MOBILE FULLSCREEN DRAWER -->
@@ -58,6 +88,11 @@
       <li><a href="#tech-stack" class="mobile-nav-link">Tech Stack <span>↘</span></a></li>
       <li><a href="#dsa" class="mobile-nav-link">DSA &amp; Metrics <span>↘</span></a></li>
       <li><a href="#contact" class="mobile-nav-link">Contact <span>↘</span></a></li>
+      <li>
+        <a href="assets/Neelesh_Kumar_Tripathi_Resume.pdf" download="Neelesh_Kumar_Tripathi_Resume.pdf" target="_blank" rel="noopener noreferrer" class="mobile-nav-link mobile-resume-pill">
+          Download Resume (PDF) <span>↓</span>
+        </a>
+      </li>
     </ul>
     <div class="mobile-drawer-footer">
       <div class="mobile-contact-snippet">
@@ -75,7 +110,7 @@
   <!-- MAIN CONTENT CONTAINER -->
   <main class="site-main">
 
-    <!-- 1. HERO + INTRO SECTION -->
+    <!-- 1. HERO + INTRO SECTION (Layer 0 - Laptop Photo) -->
     <div class="section-content-block" id="heroWrapper" data-bg-index="0">
       
       <!-- HERO SECTION -->
@@ -90,7 +125,7 @@
             <span class="location-text">Mysuru &bull; Bangalore, India</span>
           </div>
 
-          <!-- Right: Role Title (Arrow removed as requested) -->
+          <!-- Right: Role Title -->
           <div class="hero-tagline-col">
             <h1 class="hero-role-title">
               Aspiring Software Developer &amp;<br>
@@ -131,9 +166,28 @@
               dense vector semantic caching, and writing clean, scalable software. 
               Solved <strong>500+ problems</strong> across LeetCode (Global Rating <strong>~1533</strong>), GeeksforGeeks, and Codolio.
             </p>
+            
+            <!-- Actions Wrap: Explore Work + Download Resume -->
             <div class="statement-action-wrap">
               <a href="#work" class="circular-action-btn">
                 Explore Work ↘
+              </a>
+
+              <!-- Attached Downloadable Resume Button -->
+              <a
+                href="assets/Neelesh_Kumar_Tripathi_Resume.pdf"
+                download="Neelesh_Kumar_Tripathi_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="resume-download-action-btn"
+                title="Download Official Resume PDF"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Download Resume</span>
               </a>
             </div>
           </div>
@@ -143,7 +197,7 @@
 
     </div>
 
-    <!-- 2. TECH STACK SECTION -->
+    <!-- 2. TECH STACK SECTION (Layer 1 - POV Laptop Photo) -->
     <div class="section-content-block" id="techStackWrapper" data-bg-index="1">
       
       <section id="tech-stack" class="section-wrapper content-relative">
@@ -173,6 +227,8 @@
                 <span class="skill-pill-dark">SQL</span>
                 <span class="skill-pill-dark">Java</span>
                 <span class="skill-pill-dark">C</span>
+                <span class="skill-pill-dark">NumPy</span>
+                <span class="skill-pill-dark">Pydantic</span>
               </div>
               <p class="domain-description-para">
                 &bull; <strong>C++:</strong> Primary choice for competitive programming and performance-critical algorithms (500+ problems solved). Deep understanding of memory pointers, references, and the Standard Template Library.<br>
@@ -301,7 +357,7 @@
 
     </div>
 
-    <!-- 3. PRODUCTION WORK SECTION (INTERACTIVE ACCORDION: CLICK ROW TO OPEN DETAILS IN BRIEF WITH ALL TECH) -->
+    <!-- 3. PRODUCTION WORK SECTION (Layer 2 - Stairs Photo) -->
     <div class="section-content-block" id="workWrapper" data-bg-index="2">
       
       <section id="work" class="section-wrapper content-relative">
@@ -591,7 +647,7 @@
 
     </div>
 
-    <!-- 4. DSA & ALGORITHMIC PULSE METRICS -->
+    <!-- 4. DSA & ALGORITHMIC PULSE METRICS (Layer 3 - Cafe Photo) -->
     <div class="section-content-block" id="dsaWrapper" data-bg-index="3">
       
       <section id="dsa" class="section-wrapper content-relative" style="padding-top: 40px; padding-bottom: 80px;">
@@ -602,7 +658,7 @@
         
         <div class="dsa-metric-row">
           <div class="dsa-metric-item">
-            <span class="dsa-big-stat">500+</span>
+            <span class="dsa-big-stat" data-target="500">500+</span>
             <span class="dsa-stat-label">DSA Problems Solved</span>
           </div>
           <div class="dsa-metric-item">
@@ -626,6 +682,21 @@
           <a href="https://github.com/neelesh1303" target="_blank" rel="noopener" class="footer-pill-btn secondary-pill">
             GitHub Contributions ↗
           </a>
+          <!-- Downloadable Resume Pill -->
+          <a
+            href="assets/Neelesh_Kumar_Tripathi_Resume.pdf"
+            download="Neelesh_Kumar_Tripathi_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-pill-btn resume-pill"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:4px;">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download Resume (PDF) ↓
+          </a>
         </div>
 
       </section>
@@ -634,7 +705,7 @@
 
   </main>
 
-  <!-- 5. FOOTER & CONTACT -->
+  <!-- 5. FOOTER & CONTACT (Layer 4 - Bike Photo) -->
   <footer id="contact" class="site-footer section-content-block" data-bg-index="4">
     
     <div class="footer-inner-container content-relative">
@@ -649,6 +720,22 @@
       </h2>
 
       <div class="footer-contact-pills">
+        <!-- Direct Download Resume Highlight Pill -->
+        <a
+          href="assets/Neelesh_Kumar_Tripathi_Resume.pdf"
+          download="Neelesh_Kumar_Tripathi_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-pill-btn resume-highlight-pill"
+          title="Download Verified Resume PDF"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:6px;">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download Resume (PDF) ↓
+        </a>
         <a href="mailto:neeleshtripathi36@gmail.com" class="footer-pill-btn">
           neeleshtripathi36@gmail.com ↗
         </a>
@@ -668,9 +755,10 @@
 
       <div class="footer-bottom-row">
         <div>
-          &copy; 2026 <strong>Neelesh Kumar Tripathi</strong>. All rights reserved.
+          &copy; <span id="year"></span> <strong>Neelesh Kumar Tripathi</strong>. All rights reserved.
         </div>
         <div class="footer-socials">
+          <a href="assets/Neelesh_Kumar_Tripathi_Resume.pdf" download="Neelesh_Kumar_Tripathi_Resume.pdf" class="footer-social-link">Download Resume</a>
           <a href="https://github.com/neelesh1303" target="_blank" rel="noopener" class="footer-social-link">GitHub</a>
           <a href="https://linkedin.com/in/neelesh-kumar-tripathi" target="_blank" rel="noopener" class="footer-social-link">LinkedIn</a>
           <a href="https://codolio.com/profile/neelesh1303" target="_blank" rel="noopener" class="footer-social-link">Codolio</a>
@@ -679,6 +767,41 @@
 
     </div>
   </footer>
+
+  <!-- INTERACTIVE CYBER TERMINAL (CTRL+K) -->
+  <div class="terminal-modal" id="terminalModal" aria-hidden="true" role="dialog" aria-label="Interactive Terminal Command Deck">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <div class="terminal-traffic-lights" aria-hidden="true">
+          <span class="terminal-dot red" id="terminalCloseBtn"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+        </div>
+        <div class="terminal-title">synapse@neelesh-os: ~ (type 'help' or 'resume')</div>
+        <button class="terminal-close-x" id="terminalCloseX" type="button" aria-label="Close terminal">&times;</button>
+      </div>
+      <div class="terminal-body" id="terminalOutput">
+        <div class="term-line-output system-banner">
+          NEELESH.OS // Synapse Interactive Shell [v2.5.0]<br />
+          Type <span class="term-accent">help</span> to view commands, <span class="term-accent">resume</span> to download CV, or <span class="term-accent">ESC</span> to exit.
+        </div>
+      </div>
+      <div class="terminal-input-row">
+        <span class="terminal-prompt">neelesh@dev:~$</span>
+        <input
+          type="text"
+          id="terminalInput"
+          class="terminal-input"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+          placeholder="type a command..."
+          aria-label="Terminal command input"
+        />
+      </div>
+    </div>
+  </div>
 
   <script src="js/app.js"></script>
 </body>
