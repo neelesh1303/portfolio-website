@@ -108,8 +108,13 @@ function initBackgroundScrollController() {
 }
 
 /**
- * 2. Subtle Interactive Particle Constellation Canvas
- * Floats gently over the photos without obscuring them, reacts to mouse
+ * 2. High-Density Dynamic Interactive Particle Constellation Canvas
+ * - Generates 150-180 responsive constellation nodes + 60 twinkling micro-stars (200+ dots total)
+ * - Dynamic cursor energy filaments that connect nearby particles directly to the mouse
+ * - Fluid vortex deflection & kinetic air-wake on mouse sweep
+ * - Real-time scroll velocity impulse that surges particles as you navigate sections
+ * - Interactive click shockwaves and 12-particle energetic spark bursts
+ * - Multi-tiered neon cyber palette (Electric Cyan, Cyber Blue, Azure, Luminous White)
  */
 function initInteractiveParticleCanvas() {
   const canvas = document.getElementById("interactiveCanvas");
@@ -121,8 +126,32 @@ function initInteractiveParticleCanvas() {
   let height = 0;
   let dpr = 1;
   const particles = [];
-  const mouse = { x: -1000, y: -1000, radius: 140, isDown: false };
+  const microDots = [];
   const shockwaves = [];
+  const burstSparks = [];
+
+  const mouse = {
+    x: -2000,
+    y: -2000,
+    lastX: -2000,
+    lastY: -2000,
+    vx: 0,
+    vy: 0,
+    radius: 165,
+    active: false,
+  };
+
+  let lastScrollY = window.pageYOffset || document.documentElement.scrollTop;
+  let scrollImpulseY = 0;
+
+  // Modern Neon Palette tailored for Neelesh's AI & Systems theme
+  const palette = [
+    { r: 0, g: 242, b: 254 },    // Electric Cyan
+    { r: 56, g: 189, b: 248 },   // Sky / Cyber Blue
+    { r: 96, g: 165, b: 250 },   // Deep Neon Azure
+    { r: 129, g: 140, b: 248 },  // Electric Indigo
+    { r: 255, g: 255, b: 255 },  // Pure Starlight White
+  ];
 
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -139,15 +168,50 @@ function initInteractiveParticleCanvas() {
 
   function seedParticles() {
     particles.length = 0;
-    const count = width < 768 ? 30 : 60;
-    for (let i = 0; i < count; i++) {
+    microDots.length = 0;
+
+    // High density: scaled dynamically to screen area
+    const isMobile = width < 768;
+    const mainCount = isMobile
+      ? Math.max(Math.floor((width * height) / 9500), 75)
+      : Math.min(Math.max(Math.floor((width * height) / 7200), 120), 185);
+
+    const ambientCount = Math.floor(mainCount * 0.45); // Additional ~50-80 ambient micro-dots
+
+    // 1. Interactive Constellation Nodes
+    for (let i = 0; i < mainCount; i++) {
+      const color = palette[Math.floor(Math.random() * palette.length)];
+      const baseSpeed = isMobile ? 0.45 : 0.65;
+      const angle = Math.random() * Math.PI * 2;
+      const speed = (Math.random() * 0.6 + 0.3) * baseSpeed;
+
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        radius: Math.random() * 1.5 + 0.8,
-        alpha: Math.random() * 0.35 + 0.15,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        baseVx: Math.cos(angle) * speed,
+        baseVy: Math.sin(angle) * speed,
+        radius: Math.random() * 1.8 + 1.2,
+        color: color,
+        alpha: Math.random() * 0.45 + 0.35,
+        pulsePhase: Math.random() * Math.PI * 2,
+        pulseSpeed: Math.random() * 0.03 + 0.015,
+        isHub: Math.random() < 0.12, // 12% of nodes are glowing energy hubs
+      });
+    }
+
+    // 2. Micro Twinkling Stars (Adds rich celestial depth)
+    for (let i = 0; i < ambientCount; i++) {
+      microDots.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        radius: Math.random() * 0.9 + 0.6,
+        baseAlpha: Math.random() * 0.35 + 0.15,
+        phase: Math.random() * Math.PI * 2,
+        speed: Math.random() * 0.04 + 0.02,
       });
     }
   }
@@ -155,52 +219,190 @@ function initInteractiveParticleCanvas() {
   window.addEventListener("resize", resize);
   resize();
 
+  // Mouse Movement & Kinetic Wake Tracking
   window.addEventListener("mousemove", (e) => {
+    mouse.active = true;
+    mouse.vx = (e.clientX - mouse.lastX) * 0.2;
+    mouse.vy = (e.clientY - mouse.lastY) * 0.2;
+    mouse.lastX = mouse.x;
+    mouse.lastY = mouse.y;
     mouse.x = e.clientX;
     mouse.y = e.clientY;
   });
 
   window.addEventListener("mouseleave", () => {
-    mouse.x = -1000;
-    mouse.y = -1000;
+    mouse.active = false;
+    mouse.x = -2000;
+    mouse.y = -2000;
   });
 
+  // Touch Support for Mobile
+  window.addEventListener("touchmove", (e) => {
+    if (e.touches && e.touches[0]) {
+      mouse.active = true;
+      mouse.x = e.touches[0].clientX;
+      mouse.y = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  window.addEventListener("touchend", () => {
+    mouse.active = false;
+    mouse.x = -2000;
+    mouse.y = -2000;
+  });
+
+  // Scroll Fade: Dots solely on opening Hero page, smoothly fading on scroll down
+  function updateCanvasScrollFade() {
+    const heroEl = document.getElementById("hero") || document.getElementById("heroWrapper");
+    const heroHeight = heroEl ? heroEl.offsetHeight : window.innerHeight;
+    const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+    // Fades smoothly from 1.0 down to 0 as user scrolls through the Hero section
+    const fadeDistance = heroHeight * 0.70;
+    const canvasOpacity = Math.max(0, Math.min(1, 1 - (currentScrollY / fadeDistance)));
+    canvas.style.opacity = canvasOpacity.toFixed(3);
+    canvas.style.visibility = canvasOpacity > 0 ? "visible" : "hidden";
+  }
+
+  // Scroll Velocity & Fade: Makes dots react smoothly and fade on scroll
+  window.addEventListener("scroll", () => {
+    updateCanvasScrollFade();
+
+    const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+    const deltaY = currentScrollY - lastScrollY;
+    lastScrollY = currentScrollY;
+
+    // Cap impulse to keep motion natural and smooth
+    scrollImpulseY = Math.max(Math.min(-deltaY * 0.045, 2.5), -2.5);
+
+    particles.forEach((p) => {
+      p.vy += scrollImpulseY * (p.radius / 2.5);
+    });
+  }, { passive: true });
+
+  updateCanvasScrollFade();
+
+  // Interactive Click: Expanding Double Shockwave + 12 Radial Sparks
   window.addEventListener("click", (e) => {
+    // 1. Dual Shockwave Rings
     shockwaves.push({
       x: e.clientX,
       y: e.clientY,
       radius: 0,
-      maxRadius: 150,
-      alpha: 0.6,
+      maxRadius: 180,
+      alpha: 0.8,
+      speed: 5.5,
+    });
+
+    // 2. Energetic Radial Sparks
+    const sparkCount = 12;
+    for (let k = 0; k < sparkCount; k++) {
+      const angle = (Math.PI * 2 * k) / sparkCount + (Math.random() - 0.5) * 0.4;
+      const speed = Math.random() * 4.5 + 2.5;
+      burstSparks.push({
+        x: e.clientX,
+        y: e.clientY,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        life: 1.0,
+        decay: Math.random() * 0.035 + 0.025,
+        radius: Math.random() * 1.6 + 1.2,
+      });
+    }
+
+    // 3. Impart direct impulse to particles near click
+    particles.forEach((p) => {
+      const dx = p.x - e.clientX;
+      const dy = p.y - e.clientY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 200 && dist > 2) {
+        const force = (1 - dist / 200) * 8.0;
+        p.vx += (dx / dist) * force;
+        p.vy += (dy / dist) * force;
+      }
     });
   });
 
   function animate() {
     ctx.clearRect(0, 0, width, height);
 
-    // Shockwaves
+    // 1. RENDER & UPDATE SHOCKWAVES
     for (let s = shockwaves.length - 1; s >= 0; s--) {
       const sw = shockwaves[s];
-      sw.radius += 4;
+      sw.radius += sw.speed;
       sw.alpha *= 0.94;
+
+      // Outer ring
       ctx.beginPath();
       ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(0, 242, 254, ${sw.alpha * 0.3})`;
-      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = `rgba(0, 242, 254, ${sw.alpha * 0.5})`;
+      ctx.lineWidth = 1.8;
       ctx.stroke();
 
-      if (sw.alpha < 0.02 || sw.radius > sw.maxRadius) {
+      // Inner faint harmonic ring
+      if (sw.radius > 20) {
+        ctx.beginPath();
+        ctx.arc(sw.x, sw.y, sw.radius * 0.65, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(96, 165, 250, ${sw.alpha * 0.35})`;
+        ctx.lineWidth = 1.0;
+        ctx.stroke();
+      }
+
+      if (sw.alpha < 0.015 || sw.radius > sw.maxRadius) {
         shockwaves.splice(s, 1);
       }
     }
 
-    // Connect lines
-    const maxDist = 110;
-    const maxDistSq = maxDist * maxDist;
+    // 2. RENDER & UPDATE BURST SPARKS
+    for (let b = burstSparks.length - 1; b >= 0; b--) {
+      const sp = burstSparks[b];
+      sp.x += sp.vx;
+      sp.y += sp.vy;
+      sp.vx *= 0.96;
+      sp.vy *= 0.96;
+      sp.life -= sp.decay;
 
-    for (let i = 0; i < particles.length; i++) {
+      if (sp.life <= 0) {
+        burstSparks.splice(b, 1);
+        continue;
+      }
+
+      ctx.beginPath();
+      ctx.arc(sp.x, sp.y, sp.radius * sp.life, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(0, 242, 254, ${sp.life * 0.9})`;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = "#00f2fe";
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+
+    // 3. RENDER AMBIENT TWINKLING MICRO-DOTS
+    for (let m = 0; m < microDots.length; m++) {
+      const md = microDots[m];
+      md.x += md.vx;
+      md.y += md.vy;
+      md.phase += md.speed;
+
+      if (md.x < 0) md.x = width;
+      if (md.x > width) md.x = 0;
+      if (md.y < 0) md.y = height;
+      if (md.y > height) md.y = 0;
+
+      const alpha = md.baseAlpha + Math.sin(md.phase) * 0.2;
+      ctx.beginPath();
+      ctx.arc(md.x, md.y, md.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(186, 230, 253, ${Math.max(alpha, 0.05).toFixed(3)})`;
+      ctx.fill();
+    }
+
+    // 4. DRAW CONSTELLATION CONNECTION LINES
+    const maxDist = width < 768 ? 95 : 125;
+    const maxDistSq = maxDist * maxDist;
+    const pLen = particles.length;
+
+    for (let i = 0; i < pLen; i++) {
       const p1 = particles[i];
-      for (let j = i + 1; j < particles.length; j++) {
+      for (let j = i + 1; j < pLen; j++) {
         const p2 = particles[j];
         const dx = p1.x - p2.x;
         const dy = p1.y - p2.y;
@@ -208,44 +410,113 @@ function initInteractiveParticleCanvas() {
 
         if (dsq < maxDistSq) {
           const dist = Math.sqrt(dsq);
-          const alpha = (1 - dist / maxDist) * 0.12;
+          const factor = 1 - dist / maxDist;
+          const alpha = factor * factor * 0.20; // Crisp quadratic alpha falloff
+
           ctx.beginPath();
           ctx.moveTo(p1.x, p1.y);
           ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = `rgba(0, 242, 254, ${alpha})`;
-          ctx.lineWidth = 0.75;
+          ctx.strokeStyle = `rgba(56, 189, 248, ${alpha.toFixed(3)})`;
+          ctx.lineWidth = 0.85;
           ctx.stroke();
         }
       }
     }
 
-    // Particles
-    for (let i = 0; i < particles.length; i++) {
-      const p = particles[i];
+    // 5. DRAW DYNAMIC ENERGY FILAMENTS TO MOUSE CURSOR
+    if (mouse.active) {
+      const mouseMaxDist = 160;
+      const mouseMaxDistSq = mouseMaxDist * mouseMaxDist;
 
-      // Mouse deflection
-      const dx = mouse.x - p.x;
-      const dy = mouse.y - p.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < mouse.radius && dist > 1) {
-        const force = (1 - dist / mouse.radius) * 1.5;
-        p.vx -= (dx / dist) * force * 0.25;
-        p.vy -= (dy / dist) * force * 0.25;
+      for (let i = 0; i < pLen; i++) {
+        const p = particles[i];
+        const dx = mouse.x - p.x;
+        const dy = mouse.y - p.y;
+        const dsq = dx * dx + dy * dy;
+
+        if (dsq < mouseMaxDistSq) {
+          const dist = Math.sqrt(dsq);
+          const factor = 1 - dist / mouseMaxDist;
+          const beamAlpha = (factor * 0.38).toFixed(3);
+
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.strokeStyle = `rgba(0, 242, 254, ${beamAlpha})`;
+          ctx.lineWidth = 1.1;
+          ctx.stroke();
+        }
       }
 
+      // Small glowing beacon around cursor
+      ctx.beginPath();
+      ctx.arc(mouse.x, mouse.y, 3, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(0, 242, 254, 0.75)";
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = "#00f2fe";
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+
+    // 6. UPDATE & RENDER INTERACTIVE CONSTELLATION PARTICLES
+    for (let i = 0; i < pLen; i++) {
+      const p = particles[i];
+
+      // Mouse Proximity Deflection & Tangential Vortex
+      if (mouse.active) {
+        const dx = mouse.x - p.x;
+        const dy = mouse.y - p.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < mouse.radius && dist > 1) {
+          const force = (1 - dist / mouse.radius);
+          // Radial repulsion
+          const repelX = -(dx / dist) * force * 1.8;
+          const repelY = -(dy / dist) * force * 1.8;
+
+          // Gentle tangential swirl
+          const swirlX = -(dy / dist) * force * 0.6;
+          const swirlY = (dx / dist) * force * 0.6;
+
+          p.vx += repelX + swirlX;
+          p.vy += repelY + swirlY;
+        }
+      }
+
+      // Natural damping & return to drift
       p.x += p.vx;
       p.y += p.vy;
-      p.vx *= 0.99;
-      p.vy *= 0.99;
+      p.vx = p.vx * 0.98 + p.baseVx * 0.02;
+      p.vy = p.vy * 0.98 + p.baseVy * 0.02;
 
-      if (p.x < 0) p.x = width;
-      if (p.x > width) p.x = 0;
-      if (p.y < 0) p.y = height;
-      if (p.y > height) p.y = 0;
+      // Screen Wrapping with smooth re-entry
+      if (p.x < -10) p.x = width + 10;
+      if (p.x > width + 10) p.x = -10;
+      if (p.y < -10) p.y = height + 10;
+      if (p.y > height + 10) p.y = -10;
 
+      // Pulsing brightness
+      p.pulsePhase += p.pulseSpeed;
+      const pulseMod = Math.sin(p.pulsePhase) * 0.15;
+      const currentAlpha = Math.max(Math.min(p.alpha + pulseMod, 0.85), 0.20);
+      const c = p.color;
+
+      // Glowing Hub Nodes have a radial aura
+      if (p.isHub) {
+        const glowRad = p.radius * 3.5;
+        const radGrad = ctx.createRadialGradient(p.x, p.y, p.radius * 0.5, p.x, p.y, glowRad);
+        radGrad.addColorStop(0, `rgba(${c.r}, ${c.g}, ${c.b}, ${(currentAlpha * 0.6).toFixed(3)})`);
+        radGrad.addColorStop(1, `rgba(${c.r}, ${c.g}, ${c.b}, 0)`);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, glowRad, 0, Math.PI * 2);
+        ctx.fillStyle = radGrad;
+        ctx.fill();
+      }
+
+      // Draw Main Dot Core
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0, 242, 254, ${p.alpha})`;
+      ctx.fillStyle = `rgba(${c.r}, ${c.g}, ${c.b}, ${currentAlpha.toFixed(3)})`;
       ctx.fill();
     }
 
@@ -550,8 +821,11 @@ function initCyberTerminal() {
         `;
         break;
 
+      case "esc":
+      case "escape":
       case "exit":
       case "quit":
+      case "close":
         close();
         break;
 

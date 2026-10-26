@@ -126,79 +126,50 @@ img {
   width: 100%;
   height: 100%;
   background-size: cover;
-  background-position: center 30%;
   background-repeat: no-repeat;
-  /* Reduced saturation filter: authentic colors remain visible */
-  filter: saturate(0.72) contrast(1.08) brightness(0.85);
+  filter: saturate(0.85) contrast(1.08) brightness(0.92);
   opacity: 0;
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s ease-out;
-  transform: scale(1.04);
-  will-change: opacity, transform;
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
 }
 
 .bg-canvas-layer.active {
-  opacity: var(--current-bg-opacity, 0.20);
-  transform: scale(1.0);
+  opacity: var(--current-bg-opacity, 0.48);
 }
 
-/* Individual layer positioning adjustments for best visual balance */
-#bgLayer0 { 
-  background-position: center 25%; 
-  /* Increased opacity for top photo as requested */
-  opacity: 0.50;
-}
-
-#bgLayer1 { 
-  /* P5 POV photo: laptop prominently visible & expanded */
-  background-position: center 74%; 
-  background-size: cover;
-  transform: scale(1.10);
-}
-
-#bgLayer2 { 
-  background-position: center 30%; 
-}
-
-#bgLayer3 { 
-  /* Layer 3: Neelesh cafe portrait behind DSA */
-  background-position: center 36%; 
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-#bgLayer4 { 
-  /* Layer 4: Neelesh motorcycle photo at last (filled ratio, face clearly visible) */
-  background-position: 72% 38%; 
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
+/* PC / Desktop Framing (min-width: 900px):
+   Full-screen cover with exact focal alignment so Neelesh's face, laptop, pose, and background are fully visible without extreme zoom or clipping */
 @media (min-width: 900px) {
-  #bgLayer1 {
-    background-position: center 72%;
-    background-size: cover;
-    transform: scale(1.14);
+  #bgLayer0 { 
+    /* Hero: Laptop hackathon photo - face, cap, and laptop clearly visible */
+    background-position: center 22%; 
   }
-  #bgLayer3 {
-    background-position: center 34%;
+  
+  #bgLayer1 { 
+    /* Tech Stack: POV shot of laptop keyboard and code */
+    background-position: center 58%; 
   }
-  #bgLayer4 {
-    background-position: 72% 38%;
+  
+  #bgLayer2,
+  #bgLayer3 { 
+    /* Work & DSA: Standing on cafe stairs - head, cap, and torso prominently framed */
+    background-position: center 26%; 
+  }
+  
+  #bgLayer4 { 
+    /* Contact: Motorcycle photo - face with headband & smile centered alongside CTA */
+    background-position: 62% 40%; 
   }
 }
 
+/* Mobile Screens (max-width: 899px):
+   Native vertical proportion for phone displays */
 @media (max-width: 899px) {
-  #bgLayer1 {
-    background-position: center 68%;
-    background-size: cover;
-    transform: scale(1.05);
-  }
-  #bgLayer3 {
-    background-position: center 32%;
-  }
-  #bgLayer4 {
-    background-position: 50% 24%;
-  }
+  #bgLayer0 { background-position: center 22%; }
+  #bgLayer1 { background-position: center 60%; }
+  #bgLayer2,
+  #bgLayer3 { background-position: center 18%; }
+  #bgLayer4 { background-position: 54% 28%; }
 }
 
 /* Vignette & Gradient Mask over Background */
@@ -208,13 +179,25 @@ img {
   width: 100%;
   height: 100%;
   background: radial-gradient(
-    ellipse at 50% 35%,
-    rgba(17, 17, 19, 0.22) 0%,
-    rgba(17, 17, 19, 0.65) 55%,
-    rgba(17, 17, 19, 0.94) 100%
+    ellipse at 50% 40%,
+    rgba(17, 17, 19, 0.10) 0%,
+    rgba(17, 17, 19, 0.52) 55%,
+    rgba(17, 17, 19, 0.90) 100%
   );
   pointer-events: none;
   z-index: 2;
+}
+
+/* Interactive Particle Overlay Canvas */
+.bg-interactive-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
 }
 
 /* Main content wrapper above fixed canvas */
