@@ -36,9 +36,6 @@ function initDevCommandCanvas() {
   const photoImg = document.getElementById("heroPhotoImg");
   const scanBeam = document.querySelector(".portrait-scanline-beam");
   const burstFx = document.getElementById("collisionBurstFx");
-  const statusLabel = document.getElementById("statusLabel");
-  const statusDot = document.getElementById("statusIndicatorDot");
-  const recollideBtn = document.getElementById("recollideBtn");
 
   let width = 0;
   let height = 0;
@@ -154,8 +151,6 @@ function initDevCommandCanvas() {
     if (photoImg) {
       photoImg.classList.remove("photo-assembled");
     }
-    if (statusLabel) statusLabel.textContent = "Dev Commands Floating...";
-    if (statusDot) statusDot.style.background = "#ff4d6d";
 
     createParticles();
 
@@ -165,8 +160,6 @@ function initDevCommandCanvas() {
     // After 650ms of floating, begin convergence towards center photo
     setTimeout(() => {
       animState = "colliding";
-      if (statusLabel) statusLabel.textContent = "Colliding into Portrait...";
-      if (statusDot) statusDot.style.background = "#ef233c";
 
       // Safety timeout: ensure collision triggers within 1.8s
       convergenceTimeout = setTimeout(() => {
@@ -234,8 +227,6 @@ function initDevCommandCanvas() {
       });
     }
 
-    if (statusLabel) statusLabel.textContent = "⚡ Assembled • Dev Commands Online";
-    if (statusDot) statusDot.style.background = "#10b981";
 
     // 4. "after colliding the photo must appear and then the dots (commands) must again start floating dynamically back"
     // Disperse particles radially outward from collision center back across the canvas
@@ -446,14 +437,21 @@ function initDevCommandCanvas() {
     });
   });
 
-  if (recollideBtn) {
-    recollideBtn.addEventListener("click", () => {
-      triggerAssemblySequence();
-    });
+  // Slowly fade away canvas commands as the user scrolls down
+  function handleScrollFade() {
+    const scrollY = window.scrollY || window.pageYOffset || 0;
+    const fadeDistance = window.innerHeight * 0.75;
+    const opacity = Math.max(0, Math.min(1, 1 - (scrollY / fadeDistance)));
+    canvas.style.opacity = opacity.toFixed(3);
+    if (opacity <= 0.005) {
+      canvas.style.visibility = "hidden";
+    } else {
+      canvas.style.visibility = "visible";
+    }
   }
 
-  // Expose global assemble trigger for terminal CLI
-  window.triggerPhotoCollision = triggerAssemblySequence;
+  window.addEventListener("scroll", handleScrollFade, { passive: true });
+  handleScrollFade();
 
   // Initialize
   resize();
@@ -627,23 +625,13 @@ function initCyberTerminal() {
       case "help":
         printLine(`
 Available System Commands:
-  &bull; <span class="term-accent">collide</span> or <span class="term-accent">assemble</span> &mdash; Replay Dev Command Particle Collision
   &bull; <span class="term-accent">projects</span> &mdash; View production architectures &amp; live links
   &bull; <span class="term-accent">skills</span> &mdash; Inspect C++, Python, Gemini API &amp; systems stack
   &bull; <span class="term-accent">metrics</span> &mdash; View LeetCode rating &amp; problem breakdown
   &bull; <span class="term-accent">resume</span> &mdash; Download official resume (PDF)
   &bull; <span class="term-accent">contact</span> &mdash; Reach out via email, phone, or LinkedIn
   &bull; <span class="term-accent">clear</span> &mdash; Clean terminal output screen
-  &bull; <span class="term-accent">exit</span> &mdash; Close terminal deck
         `);
-        break;
-
-      case "collide":
-      case "assemble":
-        printLine(`[INFO] Re-triggering Dev Commands Collision sequence...`);
-        if (typeof window.triggerPhotoCollision === "function") {
-          window.triggerPhotoCollision();
-        }
         break;
 
       case "projects":

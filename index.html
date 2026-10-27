@@ -37,23 +37,7 @@
     <canvas id="devCommandCanvas" class="bg-dev-canvas" aria-hidden="true"></canvas>
   </div>
 
-  <!-- TOP SUB-HEADER BAR (LOCATION & ROLE AVAILABILITY) -->
-  <div class="top-status-bar" id="topStatusBar">
-    <div class="top-status-inner">
-      <span class="top-status-left">
-        <svg class="top-pin-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="2.3" aria-hidden="true">
-          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-          <circle cx="12" cy="10" r="3"></circle>
-        </svg>
-        MYSURU, INDIA &bull; ASPIRING SOFTWARE DEVELOPER &amp; AI SYSTEMS ENGINEER
-      </span>
-      <span class="top-status-right">
-        <span class="status-pulse-dot" aria-hidden="true"></span>
-        OPEN FOR REMOTE / ONSITE / HYBRID ROLES IN INDIA
-      </span>
-    </div>
-  </div>
+
 
   <!-- FLOATING SITE HEADER -->
   <header class="site-header" id="siteHeader">
@@ -138,19 +122,20 @@
     <!-- 1. HERO SECTION (THEME MOCKUP MATCH WITH COMMAND COLLISION & CENTER PHOTO) -->
     <section id="hero" class="hero-theme-section">
 
-      <!-- GIANT BACKGROUND "PORTFOLIO" TITLE (DYNAMIC: CRUNCHED ON MOBILE, WIDENED ON LAPTOP, LONG VERTICALLY) -->
+      <!-- GIANT BACKGROUND "PORTFOLIO" TITLE (COMPLETELY VISIBLE, DYNAMIC, RICH CRIMSON RED) -->
       <div class="hero-bg-title-track" aria-hidden="true">
-        <svg class="hero-bg-svg-title" viewBox="0 0 1000 240" preserveAspectRatio="none" role="img" aria-hidden="true">
+        <svg class="hero-bg-svg-title" viewBox="0 0 1000 220" preserveAspectRatio="none" role="img"
+          aria-label="PORTFOLIO">
           <defs>
             <linearGradient id="heroTitleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#ff1a35" stop-opacity="0.95" />
-              <stop offset="20%" stop-color="#ef233c" stop-opacity="0.9" />
-              <stop offset="50%" stop-color="#b3131b" stop-opacity="0.45" />
-              <stop offset="75%" stop-color="#550810" stop-opacity="0.12" />
-              <stop offset="100%" stop-color="#0a0a0c" stop-opacity="0" />
+              <stop offset="0%" stop-color="#ff2a44" stop-opacity="0.95" />
+              <stop offset="25%" stop-color="#ef233c" stop-opacity="0.80" />
+              <stop offset="55%" stop-color="#b81424" stop-opacity="0.45" />
+              <stop offset="85%" stop-color="#4a040b" stop-opacity="0.15" />
+              <stop offset="100%" stop-color="#0a0a0c" stop-opacity="0.0" />
             </linearGradient>
           </defs>
-          <text x="500" y="200" text-anchor="middle" class="svg-portfolio-text" textLength="920"
+          <text x="500" y="196" text-anchor="middle" class="svg-portfolio-text" textLength="960"
             lengthAdjust="spacingAndGlyphs">DEVELOPER</text>
         </svg>
       </div>
@@ -227,11 +212,6 @@
               <div class="portrait-bottom-fade" aria-hidden="true"></div>
             </div>
 
-            <!-- Assembly Status Pill / Interactive Trigger -->
-            <div class="collision-status-bar" id="collisionStatusBar">
-              <span class="status-indicator-dot" id="statusIndicatorDot"></span>
-              <span class="status-label" id="statusLabel">Dev Commands Combining...</span>
-            </div>
           </div>
         </div>
 
@@ -254,10 +234,6 @@
               <div class="stat-meta-label">DSA PROBLEMS COMPLETED</div>
             </div>
             <div class="hero-stat-item">
-              <div class="stat-number-crimson">~4ms</div>
-              <div class="stat-meta-label">LLM CACHE LATENCY</div>
-            </div>
-            <div class="hero-stat-item">
               <div class="stat-number-crimson">4th</div>
               <div class="stat-meta-label">DEVJAMS VIT HACKATHON</div>
             </div>
@@ -267,21 +243,6 @@
             </div>
           </div>
 
-          <!-- DevJams VIT Hackathon 4th Place Winner Highlight Card -->
-          <div class="hero-hackathon-badge">
-            <div class="hackathon-badge-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-                aria-hidden="true">
-                <polygon
-                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                </polygon>
-              </svg>
-            </div>
-            <div class="hackathon-badge-content">
-              <span class="badge-title">DEVJAMS VIT HACKATHON</span>
-              <span class="badge-subtitle">Ranked 4th among 100+ national teams</span>
-            </div>
-          </div>
         </div>
 
       </div>
@@ -292,11 +253,11 @@
           <span class="hero-marquee-text">NEELESH KUMAR TRIPATHI &mdash; </span>
           <span class="hero-marquee-text">AI SYSTEMS &amp; DISTRIBUTED BACKENDS &mdash; </span>
           <span class="hero-marquee-text">500+ PROBLEMS SOLVED &mdash; </span>
-          <span class="hero-marquee-text">~4MS SEMANTIC CACHING &mdash; </span>
+          <span class="hero-marquee-text">DEVJAMS VIT RANK 4TH &mdash; </span>
           <span class="hero-marquee-text">NEELESH KUMAR TRIPATHI &mdash; </span>
           <span class="hero-marquee-text">AI SYSTEMS &amp; DISTRIBUTED BACKENDS &mdash; </span>
           <span class="hero-marquee-text">500+ PROBLEMS SOLVED &mdash; </span>
-          <span class="hero-marquee-text">~4MS SEMANTIC CACHING &mdash; </span>
+          <span class="hero-marquee-text">DEVJAMS VIT RANK 4TH &mdash; </span>
         </div>
       </div>
 
@@ -391,9 +352,6 @@
             <div class="project-header-info">
               <h3 class="project-title-text">LLM COST &amp; LATENCY OPTIMIZER</h3>
               <p class="project-type-tag">MULTI-TIER GATEWAY &amp; VECTOR CACHE</p>
-            </div>
-            <div class="project-status-badge">
-              <span class="status-pulse-dot red"></span> ~4ms
             </div>
           </div>
 
@@ -518,9 +476,6 @@
             <div class="project-header-info">
               <h3 class="project-title-text">FINNIE</h3>
               <p class="project-type-tag">CAMPUS LOST &amp; FOUND PLATFORM</p>
-            </div>
-            <div class="project-status-badge">
-              <span class="status-pulse-dot red"></span> ~10ms
             </div>
           </div>
 
@@ -764,7 +719,7 @@
         systems, distributed backends, and algorithmic problem solving.
       </p>
 
-      <div class="edu-skills-horizontal-grid two-column">
+      <div class="edu-skills-horizontal-grid three-column">
 
         <!-- COLUMN 1: EDUCATION (VERBATIM FROM RESUME) -->
         <div class="edu-col-card">
@@ -799,21 +754,6 @@
             </div>
           </div>
 
-          <!-- Role Preference Banner -->
-          <div class="edu-role-pref-card">
-            <div class="pref-card-header">
-              <svg class="location-pin-icon" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.3" aria-hidden="true">
-                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
-              <span>MYSURU, INDIA</span>
-            </div>
-            <p class="pref-card-body">
-              Looking for <strong>Remote, On-site, or Hybrid roles in India</strong> for Software Developer &amp; AI
-              Systems positions.
-            </p>
-          </div>
         </div>
 
         <!-- COLUMN 2: TECHNICAL SKILLS (EXCLUSIVELY FROM RESUME) -->
@@ -833,10 +773,10 @@
               <span class="skill-tag-item highlighted">C++</span>
               <span class="skill-tag-item highlighted">Python</span>
               <span class="skill-tag-item highlighted">JavaScript</span>
-              <span class="skill-tag-item">SQL</span>
-              <span class="skill-tag-item">NumPy</span>
-              <span class="skill-tag-item">Sentence-Transformers</span>
-              <span class="skill-tag-item">Pydantic</span>
+              <span class="skill-tag-item highlighted">SQL</span>
+              <span class="skill-tag-item highlighted">NumPy</span>
+              <span class="skill-tag-item highlighted">Sentence-Transformers</span>
+              <span class="skill-tag-item highlighted">Pydantic</span>
             </div>
           </div>
 
@@ -848,12 +788,12 @@
             <div class="skills-tag-cloud">
               <span class="skill-tag-item highlighted">Gemini API</span>
               <span class="skill-tag-item highlighted">Groq</span>
-              <span class="skill-tag-item">OpenRouter</span>
+              <span class="skill-tag-item highlighted">OpenRouter</span>
               <span class="skill-tag-item highlighted">RAG</span>
-              <span class="skill-tag-item">Embeddings</span>
+              <span class="skill-tag-item highlighted">Embeddings</span>
               <span class="skill-tag-item highlighted">Semantic Caching</span>
-              <span class="skill-tag-item">LLM Routing</span>
-              <span class="skill-tag-item">Prompt Engineering</span>
+              <span class="skill-tag-item highlighted">LLM Routing</span>
+              <span class="skill-tag-item highlighted">Prompt Engineering</span>
             </div>
           </div>
 
@@ -866,10 +806,10 @@
               <span class="skill-tag-item highlighted">Node.js</span>
               <span class="skill-tag-item highlighted">Express.js</span>
               <span class="skill-tag-item highlighted">FastAPI</span>
-              <span class="skill-tag-item">Flask</span>
-              <span class="skill-tag-item">OpenAI SDK</span>
-              <span class="skill-tag-item">RESTful APIs</span>
-              <span class="skill-tag-item">JWT Authentication</span>
+              <span class="skill-tag-item highlighted">Flask</span>
+              <span class="skill-tag-item highlighted">OpenAI SDK</span>
+              <span class="skill-tag-item highlighted">RESTful APIs</span>
+              <span class="skill-tag-item highlighted">JWT Authentication</span>
             </div>
           </div>
 
@@ -880,8 +820,8 @@
             </div>
             <div class="skills-tag-cloud">
               <span class="skill-tag-item highlighted">MongoDB</span>
-              <span class="skill-tag-item">MySQL</span>
-              <span class="skill-tag-item">SQLite</span>
+              <span class="skill-tag-item highlighted">MySQL</span>
+              <span class="skill-tag-item highlighted">SQLite</span>
               <span class="skill-tag-item highlighted">Redis</span>
             </div>
           </div>
@@ -892,15 +832,15 @@
               <span class="skills-dot-red"></span> DEVELOPER TOOLS
             </div>
             <div class="skills-tag-cloud">
-              <span class="skill-tag-item">Git</span>
-              <span class="skill-tag-item">GitHub</span>
+              <span class="skill-tag-item highlighted">Git</span>
+              <span class="skill-tag-item highlighted">GitHub</span>
               <span class="skill-tag-item highlighted">GitHub Actions</span>
-              <span class="skill-tag-item">Jest</span>
-              <span class="skill-tag-item">Supertest</span>
-              <span class="skill-tag-item">Postman</span>
-              <span class="skill-tag-item">VS Code</span>
-              <span class="skill-tag-item">Render</span>
-              <span class="skill-tag-item">Vercel</span>
+              <span class="skill-tag-item highlighted">Jest</span>
+              <span class="skill-tag-item highlighted">Supertest</span>
+              <span class="skill-tag-item highlighted">Postman</span>
+              <span class="skill-tag-item highlighted">VS Code</span>
+              <span class="skill-tag-item highlighted">Render</span>
+              <span class="skill-tag-item highlighted">Vercel</span>
             </div>
           </div>
 
@@ -911,12 +851,46 @@
             </div>
             <div class="skills-tag-cloud">
               <span class="skill-tag-item highlighted">Data Structures &amp; Algorithms</span>
-              <span class="skill-tag-item">OOP</span>
-              <span class="skill-tag-item">Computer Networks</span>
-              <span class="skill-tag-item">Operating Systems</span>
+              <span class="skill-tag-item highlighted">OOP</span>
+              <span class="skill-tag-item highlighted">Computer Networks</span>
+              <span class="skill-tag-item highlighted">Operating Systems</span>
             </div>
           </div>
 
+        </div>
+
+        <!-- COLUMN 3: LEADERSHIP & IMPACT (VERBATIM FROM RESUME) -->
+        <div class="leadership-col-card">
+          <div class="column-header-block">
+            <div class="section-tag-red">03 // LEADERSHIP &amp; IMPACT</div>
+            <h3 class="sub-column-title">EXTRACURRICULARS</h3>
+          </div>
+
+          <div class="leadership-content-block">
+            <div class="leadership-role-card">
+              <div class="leadership-card-top">
+                <span class="leadership-badge-pill">CORE MEMBER</span>
+                <span class="leadership-date">Aug. 2024 &mdash; Jan. 2026</span>
+              </div>
+              <h4 class="leadership-role-title">Management Core Member</h4>
+              <div class="leadership-club-name">The BYTE Club, NIE Mysuru</div>
+              <ul class="leadership-bullet-list">
+                <li>
+                  <strong>HackForge 2025 Event Lead:</strong> Led the intercollegiate flagship tech event, coordinating
+                  participant and judging teams across the state.
+                </li>
+                <li>
+                  <strong>Workshops &amp; Coding Events:</strong> Organized 10+ hands-on technical workshops and
+                  competitive coding events for 200+ students.
+                </li>
+                <li>
+                  <strong>Club Operations &amp; Strategy:</strong> Coordinated event logistics, industry sponsorships,
+                  and strategic planning for seamless community operations.
+                </li>
+              </ul>
+            </div>
+
+          </div>
         </div>
 
       </div>
@@ -993,14 +967,7 @@
             Hybrid across India) and high-impact engineering projects. Let&rsquo;s connect!
           </p>
 
-          <div class="footer-available-chip">
-            <svg class="location-pin-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.3" aria-hidden="true">
-              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-            <span>MYSURU, INDIA &bull; OPEN TO REMOTE / ONSITE / HYBRID IN INDIA</span>
-          </div>
+
         </div>
 
         <div class="footer-cta-right">
@@ -1105,15 +1072,14 @@
           <span class="terminal-dot yellow"></span>
           <span class="terminal-dot green"></span>
         </div>
-        <div class="terminal-title">neelesh@synapse-os: ~ (type 'help' or 'collide')</div>
+        <div class="terminal-title">neelesh@synapse-os: ~ (type 'help' or 'projects')</div>
         <button class="terminal-close-x" id="terminalCloseX" type="button" aria-label="Close terminal">&times;</button>
       </div>
       <div class="terminal-body" id="terminalOutput">
         <div class="term-line-output system-banner">
           NEELESH.OS // Dev Commands Terminal Deck [v3.0.0]<br />
-          Type <span class="term-accent">help</span> to view commands, <span class="term-accent">collide</span> to
-          re-run collision, <span class="term-accent">resume</span> to download CV, or <span
-            class="term-accent">ESC</span> to exit.
+          Type <span class="term-accent">help</span> to view commands, <span class="term-accent">projects</span> to
+          view work, or <span class="term-accent">resume</span> to download CV.
         </div>
       </div>
       <div class="terminal-input-row">

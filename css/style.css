@@ -145,6 +145,7 @@ img {
   width: 100%;
   height: 100%;
   display: block;
+  transition: opacity 0.2s ease-out;
 }
 
 .bg-vignette-overlay {
@@ -462,18 +463,18 @@ img {
    ========================================================================== */
 .hero-theme-section {
   position: relative;
-  min-height: 96vh;
+  min-height: 94vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-top: 40px;
+  padding-top: 8px;
   overflow: hidden;
 }
 
 /* Giant Red "PORTFOLIO" in background with dynamic width and tall vertical height */
 .hero-bg-title-track {
   position: absolute;
-  top: 0;
+  top: -12px;
   left: 0;
   width: 100%;
   display: flex;
@@ -483,25 +484,25 @@ img {
   pointer-events: none;
   user-select: none;
   overflow: visible;
-  padding: 0 16px;
+  padding: 0 12px;
 }
 
 .hero-bg-svg-title {
-  width: calc(100% - 32px);
-  max-width: 1480px;
-  height: clamp(260px, 28vw, 420px);
+  width: calc(100% - 24px);
+  max-width: 1540px;
+  height: clamp(300px, 34vw, 480px);
   display: block;
   overflow: visible;
-  filter: drop-shadow(0 15px 35px rgba(239, 35, 60, 0.35));
+  filter: drop-shadow(0 15px 35px rgba(239, 35, 60, 0.4));
 }
 
 .svg-portfolio-text {
   font-family: 'Teko', 'Bebas Neue', 'Anton', sans-serif;
   font-weight: 700;
-  font-size: 235px;
+  font-size: 265px;
   fill: url(#heroTitleGrad);
   text-anchor: middle;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 /* Three-column Hero Grid */
@@ -513,7 +514,7 @@ img {
   align-items: center;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 10px 40px 30px;
+  padding: 0 40px 24px;
   gap: 28px;
   width: 100%;
 }
@@ -529,7 +530,7 @@ img {
   font-family: var(--font-script);
   font-size: 2.6rem;
   font-weight: 700;
-  color: var(--accent-red-light);
+  color: #ffffff;
   line-height: 1.1;
   margin-bottom: 2px;
   transform: rotate(-3deg);
@@ -812,28 +813,7 @@ img {
 }
 
 .collision-status-bar {
-  margin-top: 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(16, 16, 20, 0.7);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-full);
-  padding: 5px 14px;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-secondary);
-  z-index: 3;
-  transition: all var(--transition-fast);
-}
-
-.status-indicator-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent-red-bright);
-  box-shadow: 0 0 8px var(--accent-red-bright);
+  display: none !important;
 }
 
 /* Right Hero Column */
@@ -1371,12 +1351,15 @@ img {
    EDUCATION & SKILLS + WORK PROCESS + RED QUOTE CARD (Theme Mockup Replica)
    ========================================================================== */
 /* ==========================================================================
-   HORIZONTAL EDUCATION & SKILLS SECTION (2-COLUMN RESUME ALIGNED)
+   HORIZONTAL EDUCATION, SKILLS & LEADERSHIP SECTION (3-COLUMN RESUME ALIGNED)
    ========================================================================== */
+.edu-skills-horizontal-grid,
+.edu-skills-horizontal-grid.three-column,
 .edu-skills-horizontal-grid.two-column {
   display: grid;
-  grid-template-columns: 1fr 1.35fr;
-  gap: 32px;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  gap: 28px;
+  width: 100%;
   align-items: stretch;
   margin-top: 36px;
 }
@@ -1394,21 +1377,135 @@ img {
 }
 
 .edu-col-card,
-.skills-col-card {
+.skills-col-card,
+.leadership-col-card {
   background: var(--bg-card);
   border: 1px solid var(--bg-card-border);
   border-radius: var(--radius-lg);
   padding: 28px 24px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .edu-col-card:hover,
-.skills-col-card:hover {
+.skills-col-card:hover,
+.leadership-col-card:hover {
   border-color: rgba(239, 35, 60, 0.3);
   transform: translateY(-3px);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(239, 35, 60, 0.08);
+}
+
+/* Column 3: Leadership & Extracurriculars */
+.leadership-content-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: 20px;
+}
+
+.leadership-role-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.leadership-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leadership-badge-pill {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(239, 35, 60, 0.18);
+  border: 1px solid rgba(239, 35, 60, 0.45);
+  color: #ff4d6d;
+}
+
+.leadership-date {
+  font-size: 0.72rem;
+  color: var(--accent-red-bright);
+  font-weight: 700;
+}
+
+.leadership-role-title {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.leadership-club-name {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.leadership-bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.leadership-bullet-list li {
+  font-size: 0.8rem;
+  color: #d4d4d8;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 14px;
+}
+
+.leadership-bullet-list li::before {
+  content: '•';
+  color: var(--accent-red-bright);
+  font-size: 1rem;
+  position: absolute;
+  left: 0;
+  top: -1px;
+}
+
+.leadership-bullet-list li strong {
+  color: #ffffff;
+}
+
+.engineering-mindset-card {
+  background: linear-gradient(135deg, rgba(239, 35, 60, 0.12), rgba(16, 16, 20, 0.9));
+  border: 1px solid rgba(239, 35, 60, 0.35);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mindset-spark-icon {
+  color: var(--accent-red-bright);
+}
+
+.mindset-quote-text {
+  font-family: var(--font-heading);
+  font-size: 0.84rem;
+  font-style: italic;
+  color: #f4f4f5;
+  line-height: 1.55;
+}
+
+.mindset-author {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #ff4d6d;
+  letter-spacing: 0.05em;
 }
 
 .edu-role-pref-card {
@@ -1544,26 +1641,28 @@ img {
 }
 
 .skill-tag-item {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(239, 35, 60, 0.09);
+  border: 1px solid rgba(239, 35, 60, 0.42);
   border-radius: var(--radius-sm);
   padding: 4px 10px;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 600;
-  color: #e4e4e7;
+  color: #ffffff;
   transition: all var(--transition-fast);
 }
 
 .skill-tag-item:hover {
-  background: rgba(217, 4, 41, 0.15);
+  background: rgba(217, 4, 41, 0.22);
   border-color: var(--accent-red-bright);
   color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 0 10px rgba(239, 35, 60, 0.35);
 }
 
 .skill-tag-item.highlighted {
-  border-color: rgba(239, 35, 60, 0.4);
-  background: rgba(239, 35, 60, 0.09);
+  border-color: rgba(239, 35, 60, 0.45);
+  background: rgba(239, 35, 60, 0.12);
   color: #ffffff;
 }
 
@@ -2123,7 +2222,8 @@ img {
     flex-wrap: wrap;
     gap: 24px;
   }
-  .edu-skills-horizontal-grid {
+  .edu-skills-horizontal-grid,
+  .edu-skills-horizontal-grid.three-column {
     grid-template-columns: 1fr;
   }
 }
@@ -2134,6 +2234,7 @@ img {
     grid-template-columns: 1fr;
   }
   .edu-skills-horizontal-grid,
+  .edu-skills-horizontal-grid.three-column,
   .edu-skills-horizontal-grid.two-column {
     grid-template-columns: 1fr;
   }
@@ -2155,13 +2256,14 @@ img {
     display: flex;
   }
   .hero-theme-section {
-    padding-top: 20px;
+    padding-top: 6px;
   }
   .hero-bg-title-track {
-    padding: 0 12px;
+    top: -8px;
+    padding: 0 10px;
   }
   .hero-bg-svg-title {
-    width: calc(100% - 24px);
+    width: calc(100% - 20px);
     height: clamp(230px, 58vw, 320px);
   }
   .dsa-metrics-grid.four-cards {
@@ -2169,7 +2271,7 @@ img {
   }
   .hero-grid-container {
     grid-template-columns: 1fr;
-    padding: 10px 20px 20px;
+    padding: 4px 16px 20px;
     gap: 24px;
   }
   .hero-center-col {
