@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Neelesh Kumar Tripathi — Software Engineer &amp; AI Systems Builder</title>
+  
+  <meta name="description" content="Portfolio of Neelesh Kumar Tripathi — Software Engineer specializing in AI Systems, LLM Semantic Routing, Distributed Backends, and Algorithmic Problem Solving. B.E. Information Science @ NIE Mysore (CGPA: 8.60).">
+  <meta name="author" content="Neelesh Kumar Tripathi">
+  <meta name="theme-color" content="#111113">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- TOP DYNAMIC SCROLL READING BAR -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- FIXED ATMOSPHERIC BACKGROUND CANVAS (ALL 5 PICTURES WITH SEAMLESS CROSS-FADE ON SCROLL) -->
+  <div class="fixed-bg-canvas" id="fixedBgCanvas" aria-hidden="true">
+    <div class="bg-canvas-layer active" id="bgLayer0" style="background-image: url('assets/images/neelesh_laptop.jpg');"></div>
+    <div class="bg-canvas-layer" id="bgLayer1" style="background-image: url('assets/images/neelesh_pov_laptop.jpg');"></div>
+    <div class="bg-canvas-layer" id="bgLayer2" style="background-image: url('assets/images/neelesh_stairs.jpg');"></div>
+    <div class="bg-canvas-layer" id="bgLayer3" style="background-image: url('assets/images/neelesh_stairs.jpg');"></div>
+    <div class="bg-canvas-layer" id="bgLayer4" style="background-image: url('assets/images/neelesh_bike.jpg');"></div>
+    <div class="bg-canvas-vignette" id="bgCanvasVignette"></div>
+    <!-- Interactive Particle Overlay Canvas -->
+    <canvas id="interactiveCanvas" class="bg-interactive-canvas" aria-hidden="true"></canvas>
+  </div>
+
+  <!-- FLOATING SITE HEADER -->
+  <header class="site-header" id="siteHeader">
+    <a href="#hero" class="brand-link" id="brandLink">
+      <span class="brand-name">Neelesh Kumar Tripathi</span>
+    </a>
+    
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav" aria-label="Main Navigation">
+      <ul class="nav-menu-list">
+        <li><a href="#work" class="nav-link-item">Work</a></li>
+        <li><a href="#tech-stack" class="nav-link-item">Tech Stack</a></li>
+        <li><a href="#dsa" class="nav-link-item">DSA &amp; Metrics</a></li>
+        <li><a href="#contact" class="nav-link-item">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-right-actions">
+      <!-- Terminal Trigger Pill -->
+      <button class="terminal-trigger-pill" id="terminalTriggerBtn" type="button" title="Open Terminal (Ctrl+K)">
+        <span class="term-dot"></span> CLI <span class="term-kbd">Ctrl+K</span>
+      </button>
+
+      <!-- Download Resume Button -->
+      <a
+        href="assets/Neelesh_Kumar_Tripathi_Resume.pdf"
+        download="Neelesh_Kumar_Tripathi_Resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="header-resume-download-btn"
+        id="headerResumeBtn"
+        title="Download Official Resume PDF"
+      >
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span>Resume</span>
+      </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-menu-toggle" id="mobileMenuBtn" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE FULLSCREEN DRAWER -->
+  <div class="mobile-nav-drawer" id="mobileDrawer" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <span class="mobile-drawer-brand">Neelesh Tripathi</span>
+      <button class="mobile-drawer-close" id="mobileCloseBtn" aria-label="Close menu">&times;</button>
+    </div>
+    <ul class="mobile-drawer-links">
+      <li><a href="#work" class="mobile-nav-link">Work <span>↘</span></a></li>
+      <li><a href="#tech-stack" class="mobile-nav-link">Tech Stack <span>↘</span></a></li>
+      <li><a href="#dsa" class="mobile-nav-link">DSA &amp; Metrics <span>↘</span></a></li>
+      <li><a href="#contact" class="mobile-nav-link">Contact <span>↘</span></a></li>
+      <li>
+        <a href="assets/Neelesh_Kumar_Tripathi_Resume.pdf" download="Neelesh_Kumar_Tripathi_Resume.pdf" target="_blank" rel="noopener noreferrer" class="mobile-nav-link mobile-resume-pill">
+          Download Resume (PDF) <span>↓</span>
+        </a>
+      </li>
+    </ul>
+    <div class="mobile-drawer-footer">
+      <div class="mobile-contact-snippet">
+        <a href="mailto:neeleshtripathi36@gmail.com" class="mobile-contact-email">neeleshtripathi36@gmail.com</a>
+        <a href="tel:+916387974286" class="mobile-contact-phone">+91 6387974286</a>
+      </div>
+      <div class="mobile-drawer-socials">
+        <a href="https://github.com/neelesh1303" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/neelesh-kumar-tripathi" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://codolio.com/profile/neelesh1303" target="_blank" rel="noopener">Codolio</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="site-main">
+
+    <!-- 1. HERO + INTRO SECTION (Layer 0 - Laptop Photo) -->
+    <div class="section-content-block" id="heroWrapper" data-bg-index="0">
+      
+      <!-- HERO SECTION -->
+      <section id="hero" class="hero-section">
+        
+        <div class="hero-content-container">
+          <!-- Left: Location & Status -->
+          <div class="hero-location-badge">
+            <svg class="location-pin-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C7.8 2 4.4 5.4 4.4 9.6C4.4 15.2 12 22 12 22C12 22 19.6 15.2 19.6 9.6C19.6 5.4 16.2 2 12 2ZM12 12.5C10.4 12.5 9.1 11.2 9.1 9.6C9.1 8 10.4 6.7 12 6.7C13.6 6.7 14.9 8 14.9 9.6C14.9 11.2 13.6 12.5 12 12.5Z"/>
+            </svg>
+            <span class="location-text">Mysuru &bull; Bangalore, India</span>
+          </div>
+
+          <!-- Right: Role Title -->
+          <div class="hero-tagline-col">
+            <h1 class="hero-role-title">
+              Aspiring Software Developer &amp;<br>
+              AI Engineer
+            </h1>
+          </div>
+        </div>
+
+        <!-- Running Marquee Text Strip (Dennis Snellenberg Style) -->
+        <div class="hero-marquee-wrapper" aria-hidden="true">
+          <div class="hero-marquee-track">
+            <span class="hero-marquee-text">Neelesh Kumar Tripathi &mdash; </span>
+            <span class="hero-marquee-text">Neelesh Kumar Tripathi &mdash; </span>
+            <span class="hero-marquee-text">Neelesh Kumar Tripathi &mdash; </span>
+            <span class="hero-marquee-text">Neelesh Kumar Tripathi &mdash; </span>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- INTRO & STATEMENT SECTION -->
+      <section id="intro" class="section-wrapper statement-section-editorial">
+        <div class="statement-grid">
+          
+          <div>
+            <h2 class="statement-headline">
+              Helping craft high-performance distributed backends, intelligent LLM gateways, and robust algorithmic architectures.
+            </h2>
+          </div>
+
+          <div class="statement-right-col">
+            <p class="statement-body-text">
+              Information Science undergraduate at <strong>The National Institute of Engineering, Mysuru</strong> (CGPA: <strong>8.60 / 10</strong>). 
+              Senior Secondary from Little Flower School, Gorakhpur with <strong>91%</strong> distinction.
+            </p>
+            <p class="statement-body-text">
+              Passionate about building production-grade full-stack products, optimizing LLM inference costs with 
+              dense vector semantic caching, and writing clean, scalable software. 
+              Solved <strong>500+ problems</strong> across LeetCode (Global Rating <strong>~1533</strong>), GeeksforGeeks, and Codolio.
+            </p>
+            
+            <!-- Actions Wrap: Explore Work + Download Resume -->
+            <div class="statement-action-wrap">
+              <a href="#work" class="circular-action-btn">
+                Explore Work ↘
+              </a>
+
+              <!-- Attached Downloadable Resume Button -->
+              <a
+                href="assets/Neelesh_Kumar_Tripathi_Resume.pdf"
+                download="Neelesh_Kumar_Tripathi_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="resume-download-action-btn"
+                title="Download Official Resume PDF"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Download Resume</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 2. TECH STACK SECTION (Layer 1 - POV Laptop Photo) -->
+    <div class="section-content-block" id="techStackWrapper" data-bg-index="1">
+      
+      <section id="tech-stack" class="section-wrapper content-relative">
+        
+        <div class="section-subtitle-tag">
+          // ENGINEERING TECH STACK &amp; CAPABILITIES
+        </div>
+        <h2 class="section-heading-editorial">
+          Tools &amp; Technologies I Work With
+        </h2>
+        <p class="section-lead-desc">
+          A comprehensive breakdown of core languages, artificial intelligence engineering, distributed backend frameworks, caching layers, and computer science foundations.
+        </p>
+
+        <div class="tech-domain-rows">
+          
+          <!-- Domain 1: Programming Languages -->
+          <div class="tech-domain-row">
+            <div class="domain-left-title">
+              01 / Core Languages
+            </div>
+            <div>
+              <div class="domain-skills-pills">
+                <span class="skill-pill-dark">C++ (STL, C++17)</span>
+                <span class="skill-pill-dark">Python 3.x</span>
+                <span class="skill-pill-dark">JavaScript (ES6+)</span>
+                <span class="skill-pill-dark">SQL</span>
+                <span class="skill-pill-dark">Java</span>
+                <span class="skill-pill-dark">C</span>
+                <span class="skill-pill-dark">NumPy</span>
+                <span class="skill-pill-dark">Pydantic</span>
+              </div>
+              <p class="domain-description-para">
+                &bull; <strong>C++:</strong> Primary choice for competitive programming and performance-critical algorithms (500+ problems solved). Deep understanding of memory pointers, references, and the Standard Template Library.<br>
+                &bull; <strong>Python:</strong> Extensively utilized for asynchronous microservices with FastAPI, Sentence-Transformers vector math, OpenCV computer vision pipelines, and Whisper speech models.<br>
+                &bull; <strong>JavaScript &amp; SQL:</strong> Modern asynchronous event-driven programming, relational schema normalization, query optimization, and complex joins.
+              </p>
+            </div>
+          </div>
+
+          <!-- Domain 2: AI & LLM Systems Engineering -->
+          <div class="tech-domain-row">
+            <div class="domain-left-title">
+              02 / AI &amp; LLM Systems
+            </div>
+            <div>
+              <div class="domain-skills-pills">
+                <span class="skill-pill-dark">Google Gemini API</span>
+                <span class="skill-pill-dark">Sentence-Transformers (all-MiniLM-L6-v2)</span>
+                <span class="skill-pill-dark">Semantic Caching</span>
+                <span class="skill-pill-dark">RAG Architectures</span>
+                <span class="skill-pill-dark">NumPy Cosine Similarity</span>
+                <span class="skill-pill-dark">Groq LPUs</span>
+                <span class="skill-pill-dark">OpenRouter API</span>
+                <span class="skill-pill-dark">Prompt Engineering</span>
+              </div>
+              <p class="domain-description-para">
+                &bull; <strong>Semantic Vector Caching:</strong> Built a production gateway using dense 384-dimensional embeddings (Sentence-Transformers) and cosine similarity cutoff at <strong>0.85</strong>, achieving <strong>~4ms cache hits</strong> and saving 100% of LLM inference cost on repeated or paraphrased prompts.<br>
+                &bull; <strong>RAG (Retrieval-Augmented Generation):</strong> Implemented vectorization of verified student placement archives with Gemini embeddings to eliminate LLM hallucinations.<br>
+                &bull; <strong>Multi-Provider Routing:</strong> Engineered fallback tunnels across Groq LPUs (ultra-low latency 14ms) and Gemini 1.5 Flash, with ordered multi-provider resilience.
+              </p>
+            </div>
+          </div>
+
+          <!-- Domain 3: Backend & Distributed Architectures -->
+          <div class="tech-domain-row">
+            <div class="domain-left-title">
+              03 / Backend &amp; APIs
+            </div>
+            <div>
+              <div class="domain-skills-pills">
+                <span class="skill-pill-dark">Node.js</span>
+                <span class="skill-pill-dark">Express.js</span>
+                <span class="skill-pill-dark">FastAPI (Python)</span>
+                <span class="skill-pill-dark">Flask</span>
+                <span class="skill-pill-dark">RESTful API Architecture</span>
+                <span class="skill-pill-dark">JWT Authentication</span>
+                <span class="skill-pill-dark">Flask-Limiter</span>
+                <span class="skill-pill-dark">Axios</span>
+              </div>
+              <p class="domain-description-para">
+                &bull; <strong>FastAPI:</strong> Built asynchronous microservices leveraging Pydantic data validation schemas, dependency injection, and automatic OpenAPI documentation.<br>
+                &bull; <strong>Express.js:</strong> Modular RESTful APIs with JWT authentication, password hashing, and custom college-email domain verification.<br>
+                &bull; <strong>Rate Limiting &amp; Security:</strong> Token-bucket rate limiting via Flask-Limiter and Redis to protect public endpoints against abuse and brute-force traffic.
+              </p>
+            </div>
+          </div>
+
+          <!-- Domain 4: Databases & Caching Layer -->
+          <div class="tech-domain-row">
+            <div class="domain-left-title">
+              04 / Databases &amp; Caching
+            </div>
+            <div>
+              <div class="domain-skills-pills">
+                <span class="skill-pill-dark">Redis (Cache-Aside Pattern)</span>
+                <span class="skill-pill-dark">MongoDB &amp; Mongoose</span>
+                <span class="skill-pill-dark">MySQL</span>
+                <span class="skill-pill-dark">SQLite Vector Store</span>
+                <span class="skill-pill-dark">Query Indexing</span>
+              </div>
+              <p class="domain-description-para">
+                &bull; <strong>Redis:</strong> In-memory caching for frequently queried placement and company data, cutting repeat query volume with graceful cache fallback.<br>
+                &bull; <strong>MySQL:</strong> Relational schema normalization and query optimization recording <strong>~10ms average query latency</strong> in FinNIE.<br>
+                &bull; <strong>MongoDB:</strong> Document modeling for dynamic career roadmaps, senior review collections, and interview experiences.
+              </p>
+            </div>
+          </div>
+
+          <!-- Domain 5: DevOps, Tooling & Testing -->
+          <div class="tech-domain-row">
+            <div class="domain-left-title">
+              05 / DevOps &amp; Testing
+            </div>
+            <div>
+              <div class="domain-skills-pills">
+                <span class="skill-pill-dark">Git &amp; GitHub</span>
+                <span class="skill-pill-dark">GitHub Actions (CI/CD)</span>
+                <span class="skill-pill-dark">Jest</span>
+                <span class="skill-pill-dark">Supertest</span>
+                <span class="skill-pill-dark">Postman</span>
+                <span class="skill-pill-dark">VS Code</span>
+                <span class="skill-pill-dark">Render</span>
+                <span class="skill-pill-dark">Vercel</span>
+              </div>
+              <p class="domain-description-para">
+                &bull; <strong>CI/CD Pipelines:</strong> Automated GitHub Actions workflows executing linting, unit testing (Jest &amp; Supertest), build validation, and deployment on every pull request.<br>
+                &bull; <strong>API Verification:</strong> Comprehensive Postman test assertions and environment management across staging and production.
+              </p>
+            </div>
+          </div>
+
+          <!-- Domain 6: Computer Science Core -->
+          <div class="tech-domain-row">
+            <div class="domain-left-title">
+              06 / CS Fundamentals
+            </div>
+            <div>
+              <div class="domain-skills-pills">
+                <span class="skill-pill-dark">Data Structures &amp; Algorithms</span>
+                <span class="skill-pill-dark">Graph Theory &amp; Dijkstra</span>
+                <span class="skill-pill-dark">Dynamic Programming</span>
+                <span class="skill-pill-dark">Object-Oriented Programming (OOP)</span>
+                <span class="skill-pill-dark">Computer Networks</span>
+                <span class="skill-pill-dark">Operating Systems</span>
+              </div>
+              <p class="domain-description-para">
+                &bull; <strong>Asymptotic Complexity:</strong> Rigorous Big-O time and space optimization, sliding windows, two pointers, prefix sums, tree traversals, and dynamic programming.<br>
+                &bull; <strong>Systems Fundamentals:</strong> Solid understanding of OS thread scheduling, process synchronization, HTTP/1.1 vs HTTP/2 protocols, and TCP handshakes.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- 3. PRODUCTION WORK SECTION (Layer 2 - Stairs Photo) -->
+    <div class="section-content-block" id="workWrapper" data-bg-index="2">
+      
+      <section id="work" class="section-wrapper content-relative">
+        
+        <div class="section-subtitle-tag">
+          // PRODUCTION SYSTEMS &amp; ARCHITECTURES
+        </div>
+        <h2 class="section-heading-editorial">
+          My Projects
+        </h2>
+        <p class="section-lead-desc">
+          Click any project topic to expand its architecture brief, performance metrics, and complete technology stack.
+        </p>
+
+        <!-- Interactive Project Accordion List -->
+        <div class="project-accordion-container" id="projectAccordion">
+          
+          <!-- Project 1: Crackd -->
+          <div class="project-accordion-item is-expanded" data-project="crackd">
+            <div class="project-accordion-header" role="button" tabindex="0" aria-expanded="true">
+              <div class="project-header-left">
+                <span class="project-index">01</span>
+                <h3 class="project-row-title">Crackd</h3>
+                <span class="project-quick-tag">Gemini RAG &bull; Redis Cache</span>
+              </div>
+              <div class="project-header-right">
+                <span class="project-meta-category">AI Placement &amp; Roadmap Platform</span>
+                <div class="project-toggle-indicator">
+                  <span class="toggle-text">View Architecture</span>
+                  <span class="toggle-icon">&minus;</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- EXPANDABLE BRIEF DETAIL ACCORDION -->
+            <div class="project-accordion-body">
+              <div class="project-detail-inner">
+                <div class="project-detail-grid-layout">
+                  
+                  <div class="project-detail-summary-col">
+                    <div class="project-card-top-row">
+                      <span class="project-card-num">PRODUCTION SYSTEM</span>
+                      <span class="project-metric-tag">Gemini RAG &bull; Redis Cache-Aside</span>
+                    </div>
+                    <h4 class="project-detail-heading">AI-Powered Placement Assistance &amp; Roadmap Platform</h4>
+                    <p class="project-detail-desc">
+                      A production-grade career preparation ecosystem tailored for engineering undergraduates. Resolves fragmented interview prep by synthesizing verified company archives into personalized weekly study tracks and contextual question simulations.
+                    </p>
+                    <div class="project-detail-actions">
+                      <a href="https://crackd-placement-assistance-platfor.vercel.app/" target="_blank" rel="noopener" class="project-live-btn">
+                        <span class="live-pulse-dot"></span> Live Deployment ↗
+                      </a>
+                      <a href="https://github.com/neelesh1303/Crackd-Placement-Assistance-Platform/" target="_blank" rel="noopener" class="project-code-btn">
+                        View Source Code on GitHub ↗
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="project-detail-tech-col">
+                    <div class="project-tech-header">
+                      Technologies Used
+                    </div>
+                    <div class="domain-skills-pills">
+                      <span class="skill-pill-dark">MERN Stack</span>
+                      <span class="skill-pill-dark">MongoDB</span>
+                      <span class="skill-pill-dark">Google Gemini API</span>
+                      <span class="skill-pill-dark">Redis Cache-Aside</span>
+                      <span class="skill-pill-dark">JWT Auth</span>
+                      <span class="skill-pill-dark">GitHub Actions CI/CD</span>
+                      <span class="skill-pill-dark">Jest &amp; Supertest</span>
+                    </div>
+                    <div class="project-tech-header" style="margin-top: 18px;">
+                      Key Architectural Highlights
+                    </div>
+                    <ul class="project-architecture-list">
+                      <li><strong>Gemini API &amp; Cosine RAG:</strong> Embedded past senior interview transcripts with Google Gemini, retrieving contextual interview questions via MongoDB vector similarity.</li>
+                      <li><strong>Redis In-Memory Caching:</strong> Cache-aside architecture for high-frequency company archives and role syllabi, reducing primary database load by ~65% with sub-10ms response delivery.</li>
+                      <li><strong>Secure Auth &amp; CI/CD:</strong> Engineered JWT authentication with custom institutional email verification, validated by automated GitHub Actions CI/CD workflows running Jest and Supertest test suites.</li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: LLM Cost Optimizer -->
+          <div class="project-accordion-item" data-project="llm-gateway">
+            <div class="project-accordion-header" role="button" tabindex="0" aria-expanded="false">
+              <div class="project-header-left">
+                <span class="project-index">02</span>
+                <h3 class="project-row-title">LLM Cost Optimizer</h3>
+                <span class="project-quick-tag">FastAPI &bull; Semantic Caching</span>
+              </div>
+              <div class="project-header-right">
+                <span class="project-meta-category">Multi-Tier Gateway &amp; Vector Cache</span>
+                <div class="project-toggle-indicator">
+                  <span class="toggle-text">View Architecture</span>
+                  <span class="toggle-icon">+</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- EXPANDABLE BRIEF DETAIL ACCORDION -->
+            <div class="project-accordion-body">
+              <div class="project-detail-inner">
+                <div class="project-detail-grid-layout">
+                  
+                  <div class="project-detail-summary-col">
+                    <div class="project-card-top-row">
+                      <span class="project-card-num">GATEWAY &amp; VECTOR CACHE</span>
+                      <span class="project-metric-tag">~4ms Latency &bull; $0 Token Cost</span>
+                    </div>
+                    <h4 class="project-detail-heading">LLM Cost &amp; Latency Optimizer Gateway</h4>
+                    <p class="project-detail-desc">
+                      High-throughput API proxy gateway built with Python and FastAPI that dramatically curbs inference expenses and latency by serving semantically identical prompts from memory and intelligently routing queries.
+                    </p>
+                    <div class="project-detail-actions">
+                      <a href="https://github.com/neelesh1303/LLM_COST_AND_LATENCY_OPTIMIZER" target="_blank" rel="noopener" class="project-code-btn">
+                        View Source Code on GitHub ↗
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="project-detail-tech-col">
+                    <div class="project-tech-header">
+                      Technologies Used
+                    </div>
+                    <div class="domain-skills-pills">
+                      <span class="skill-pill-dark">Python 3.10</span>
+                      <span class="skill-pill-dark">FastAPI</span>
+                      <span class="skill-pill-dark">Sentence-Transformers (all-MiniLM-L6-v2)</span>
+                      <span class="skill-pill-dark">NumPy Cosine Math</span>
+                      <span class="skill-pill-dark">Groq LPUs</span>
+                      <span class="skill-pill-dark">Gemini 1.5 Flash</span>
+                      <span class="skill-pill-dark">SQLite Vector Store</span>
+                    </div>
+                    <div class="project-tech-header" style="margin-top: 18px;">
+                      Key Architectural Highlights
+                    </div>
+                    <ul class="project-architecture-list">
+                      <li><strong>Dense Semantic Caching:</strong> Converts incoming queries into 384-dimensional dense vectors using Sentence-Transformers and computes NumPy cosine similarity. Prompts exceeding a <strong>0.85 threshold</strong> return in <strong>~4ms at $0 cost</strong>.</li>
+                      <li><strong>Intelligent Tier Routing:</strong> Cache misses are categorized by token size and reasoning complexity: simple tasks dispatch to ultra-low-latency Groq LPUs (~14ms TTFT), while complex queries fall back to Gemini 1.5 Flash.</li>
+                      <li><strong>Asynchronous Microservice:</strong> Fully asynchronous microservice leveraging Pydantic validation schemas, dependency injection, and SQLite vector record persistence.</li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: SignBridge -->
+          <div class="project-accordion-item" data-project="signbridge">
+            <div class="project-accordion-header" role="button" tabindex="0" aria-expanded="false">
+              <div class="project-header-left">
+                <span class="project-index">03</span>
+                <h3 class="project-row-title">SignBridge</h3>
+                <span class="project-quick-tag">OpenCV &bull; MediaPipe &bull; Whisper</span>
+              </div>
+              <div class="project-header-right">
+                <span class="project-meta-category">Bidirectional Sign &harr; Speech AI (DevJams 4th)</span>
+                <div class="project-toggle-indicator">
+                  <span class="toggle-text">View Architecture</span>
+                  <span class="toggle-icon">+</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- EXPANDABLE BRIEF DETAIL ACCORDION -->
+            <div class="project-accordion-body">
+              <div class="project-detail-inner">
+                <div class="project-detail-grid-layout">
+                  
+                  <div class="project-detail-summary-col">
+                    <div class="project-card-top-row">
+                      <span class="project-card-num">HACKATHON WINNER (VIT)</span>
+                      <span class="project-metric-tag">4th / 100+ Teams &bull; 80%+ Accuracy</span>
+                    </div>
+                    <h4 class="project-detail-heading">SignBridge &mdash; Bidirectional Sign Language &harr; Speech System</h4>
+                    <p class="project-detail-desc">
+                      Award-winning assistive communication system built in a 24-hour sprint at DevJams VIT (ranking 4th out of 100+ national teams). Bridges communication gaps between the deaf/mute community and verbal speakers without human interpreters.
+                    </p>
+                    <div class="project-detail-actions">
+                      <a href="https://github.com/neelesh1303" target="_blank" rel="noopener" class="project-code-btn">
+                        View Source Code on GitHub ↗
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="project-detail-tech-col">
+                    <div class="project-tech-header">
+                      Technologies Used
+                    </div>
+                    <div class="domain-skills-pills">
+                      <span class="skill-pill-dark">Python</span>
+                      <span class="skill-pill-dark">OpenCV</span>
+                      <span class="skill-pill-dark">MediaPipe Hands</span>
+                      <span class="skill-pill-dark">MediaPipe Pose</span>
+                      <span class="skill-pill-dark">OpenAI Whisper ASR</span>
+                      <span class="skill-pill-dark">Scikit-Learn</span>
+                      <span class="skill-pill-dark">Web Speech API</span>
+                    </div>
+                    <div class="project-tech-header" style="margin-top: 18px;">
+                      Key Architectural Highlights
+                    </div>
+                    <ul class="project-architecture-list">
+                      <li><strong>Real-Time Skeleton Tracking:</strong> Ingests live webcam video feeds via OpenCV and extracts 21 hand landmarks and 33 upper-body pose coordinates using MediaPipe at 30+ FPS on standard CPU hardware.</li>
+                      <li><strong>Gesture Classification:</strong> Normalized spatial coordinates feed into custom machine learning models, achieving <strong>80%+ accuracy</strong> across 180+ recorded training sign samples.</li>
+                      <li><strong>Bidirectional Voice Pipeline:</strong> Integrated OpenAI Whisper for speech-to-text sign animation prompts, alongside native speech synthesis engines for instant sign-to-voice articulation.</li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: FinNIE -->
+          <div class="project-accordion-item" data-project="finnie">
+            <div class="project-accordion-header" role="button" tabindex="0" aria-expanded="false">
+              <div class="project-header-left">
+                <span class="project-index">04</span>
+                <h3 class="project-row-title">FinNIE</h3>
+                <span class="project-quick-tag">Flask &bull; MySQL &bull; Rate-Limited</span>
+              </div>
+              <div class="project-header-right">
+                <span class="project-meta-category">Campus Lost &amp; Found Platform</span>
+                <div class="project-toggle-indicator">
+                  <span class="toggle-text">View Architecture</span>
+                  <span class="toggle-icon">+</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- EXPANDABLE BRIEF DETAIL ACCORDION -->
+            <div class="project-accordion-body">
+              <div class="project-detail-inner">
+                <div class="project-detail-grid-layout">
+                  
+                  <div class="project-detail-summary-col">
+                    <div class="project-card-top-row">
+                      <span class="project-card-num">CAMPUS PLATFORM</span>
+                      <span class="project-metric-tag">~10ms Query Latency &bull; Rate-Limited</span>
+                    </div>
+                    <h4 class="project-detail-heading">FinNIE &mdash; Campus Lost &amp; Found Platform</h4>
+                    <p class="project-detail-desc">
+                      Full-stack campus item locator platform built with Flask and MySQL. Replaces chaotic social media lost-and-found posts with a centralized, searchable database featuring verified student identity matching.
+                    </p>
+                    <div class="project-detail-actions">
+                      <a href="https://github.com/neelesh1303/FinNIE-lost-and-found-item-tracker" target="_blank" rel="noopener" class="project-code-btn">
+                        View Source Code on GitHub ↗
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="project-detail-tech-col">
+                    <div class="project-tech-header">
+                      Technologies Used
+                    </div>
+                    <div class="domain-skills-pills">
+                      <span class="skill-pill-dark">Python</span>
+                      <span class="skill-pill-dark">Flask</span>
+                      <span class="skill-pill-dark">MySQL (~10ms)</span>
+                      <span class="skill-pill-dark">Flask-Limiter</span>
+                      <span class="skill-pill-dark">RESTful APIs</span>
+                      <span class="skill-pill-dark">Relational Normalization</span>
+                    </div>
+                    <div class="project-tech-header" style="margin-top: 18px;">
+                      Key Architectural Highlights
+                    </div>
+                    <ul class="project-architecture-list">
+                      <li><strong>Indexed MySQL Relational Schema:</strong> Engineered normalized relational tables with composite B-tree indexes across item categories, status flags, and timestamps, sustaining <strong>~10ms average query latency</strong>.</li>
+                      <li><strong>Abuse Prevention &amp; Rate Limiting:</strong> Configured token-bucket rate limiting via Flask-Limiter to defend public endpoints against scraper bots and brute-force spam.</li>
+                      <li><strong>Search &amp; Claim Lifecycle:</strong> Implemented multi-field fuzzy search, category categorization filters, image attachments, and verified institutional email verification for secure item claims.</li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- 4. DSA & ALGORITHMIC PULSE METRICS (Extends Stairs Photo from Work Section) -->
+    <div class="section-content-block" id="dsaWrapper" data-bg-index="2">
+      
+      <section id="dsa" class="section-wrapper content-relative" style="padding-top: 40px; padding-bottom: 80px;">
+        
+        <div class="section-subtitle-tag">
+          // PROBLEM SOLVING &amp; COMPETITIVE PROGRAMMING
+        </div>
+        
+        <div class="dsa-metric-row">
+          <div class="dsa-metric-item">
+            <span class="dsa-big-stat" data-target="500">500+</span>
+            <span class="dsa-stat-label">DSA Problems Solved</span>
+          </div>
+          <div class="dsa-metric-item">
+            <span class="dsa-big-stat">~1533</span>
+            <span class="dsa-stat-label">LeetCode Global Rating</span>
+          </div>
+          <div class="dsa-metric-item">
+            <span class="dsa-big-stat">4th</span>
+            <span class="dsa-stat-label">DevJams VIT Hackathon</span>
+          </div>
+          <div class="dsa-metric-item">
+            <span class="dsa-big-stat">8.60</span>
+            <span class="dsa-stat-label">CGPA @ NIE Mysuru</span>
+          </div>
+        </div>
+
+        <div class="dsa-actions-row">
+          <a href="https://codolio.com/profile/neelesh1303" target="_blank" rel="noopener" class="footer-pill-btn">
+            View Codolio Profile ↗
+          </a>
+          <a href="https://github.com/neelesh1303" target="_blank" rel="noopener" class="footer-pill-btn secondary-pill">
+            GitHub Contributions ↗
+          </a>
+          <!-- Downloadable Resume Pill -->
+          <a
+            href="assets/Neelesh_Kumar_Tripathi_Resume.pdf"
+            download="Neelesh_Kumar_Tripathi_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-pill-btn resume-pill"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:4px;">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download Resume (PDF) ↓
+          </a>
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- 5. FOOTER & CONTACT (Layer 4 - Bike Photo) -->
+  <footer id="contact" class="site-footer section-content-block" data-bg-index="4">
+    
+    <div class="footer-inner-container content-relative">
+      
+      <div class="section-subtitle-tag">
+        // LET'S CONNECT
+      </div>
+
+      <h2 class="footer-cta-heading">
+        Let's work<br>
+        together.
+      </h2>
+
+      <div class="footer-contact-pills">
+        <!-- Direct Download Resume Highlight Pill -->
+        <a
+          href="assets/Neelesh_Kumar_Tripathi_Resume.pdf"
+          download="Neelesh_Kumar_Tripathi_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-pill-btn resume-highlight-pill"
+          title="Download Verified Resume PDF"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:6px;">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          Download Resume (PDF) ↓
+        </a>
+        <a href="mailto:neeleshtripathi36@gmail.com" class="footer-pill-btn">
+          neeleshtripathi36@gmail.com ↗
+        </a>
+        <a href="tel:+916387974286" class="footer-pill-btn">
+          +91 6387974286 ↗
+        </a>
+        <a href="https://linkedin.com/in/neelesh-kumar-tripathi" target="_blank" rel="noopener" class="footer-pill-btn">
+          LinkedIn ↗
+        </a>
+        <a href="https://github.com/neelesh1303" target="_blank" rel="noopener" class="footer-pill-btn">
+          GitHub ↗
+        </a>
+        <a href="https://codolio.com/profile/neelesh1303" target="_blank" rel="noopener" class="footer-pill-btn">
+          Codolio ↗
+        </a>
+      </div>
+
+      <div class="footer-bottom-row">
+        <div>
+          &copy; <span id="year"></span> <strong>Neelesh Kumar Tripathi</strong>. All rights reserved.
+        </div>
+        <div class="footer-socials">
+          <a href="assets/Neelesh_Kumar_Tripathi_Resume.pdf" download="Neelesh_Kumar_Tripathi_Resume.pdf" class="footer-social-link">Download Resume</a>
+          <a href="https://github.com/neelesh1303" target="_blank" rel="noopener" class="footer-social-link">GitHub</a>
+          <a href="https://linkedin.com/in/neelesh-kumar-tripathi" target="_blank" rel="noopener" class="footer-social-link">LinkedIn</a>
+          <a href="https://codolio.com/profile/neelesh1303" target="_blank" rel="noopener" class="footer-social-link">Codolio</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- INTERACTIVE CYBER TERMINAL (CTRL+K) -->
+  <div class="terminal-modal" id="terminalModal" aria-hidden="true" role="dialog" aria-label="Interactive Terminal Command Deck">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <div class="terminal-traffic-lights" aria-hidden="true">
+          <span class="terminal-dot red" id="terminalCloseBtn"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+        </div>
+        <div class="terminal-title">synapse@neelesh-os: ~ (type 'help' or 'resume')</div>
+        <button class="terminal-close-x" id="terminalCloseX" type="button" aria-label="Close terminal">&times;</button>
+      </div>
+      <div class="terminal-body" id="terminalOutput">
+        <div class="term-line-output system-banner">
+          NEELESH.OS // Synapse Interactive Shell [v2.5.0]<br />
+          Type <span class="term-accent">help</span> to view commands, <span class="term-accent">resume</span> to download CV, or <span class="term-accent">ESC</span> to exit.
+        </div>
+      </div>
+      <div class="terminal-input-row">
+        <span class="terminal-prompt">neelesh@dev:~$</span>
+        <input
+          type="text"
+          id="terminalInput"
+          class="terminal-input"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+          placeholder="type a command..."
+          aria-label="Terminal command input"
+        />
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
