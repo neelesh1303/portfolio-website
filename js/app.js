@@ -233,8 +233,9 @@ function initDevCommandCanvas() {
     setTimeout(() => {
       animState = "ambient";
 
-      particles.forEach((p, idx) => {
-        const angle = (idx / particles.length) * Math.PI * 2 + (Math.random() - 0.5) * 0.6;
+      particles.forEach((p) => {
+        // Fully random angle per particle — no index-based bias
+        const angle = Math.random() * Math.PI * 2;
         // Strong outward burst velocity so they spread back across the screen dynamically
         const burstSpeed = p.type === "command"
           ? (Math.random() * 4.5 + 2.8)
@@ -313,11 +314,27 @@ function initDevCommandCanvas() {
         p.x += p.vx;
         p.y += p.vy;
 
-        // Bounce at screen boundaries with clean rebound
-        if (p.x < 15) { p.x = 15; p.vx = Math.abs(p.vx); }
-        if (p.x > width - 15) { p.x = width - 15; p.vx = -Math.abs(p.vx); }
-        if (p.y < 15) { p.y = 15; p.vy = Math.abs(p.vy); }
-        if (p.y > height - 15) { p.y = height - 15; p.vy = -Math.abs(p.vy); }
+        // Bounce at screen boundaries — flip component and add small random perpendicular nudge
+        if (p.x < 15) {
+          p.x = 15;
+          p.vx = Math.abs(p.vx) + Math.random() * 0.15;
+          p.vy += (Math.random() - 0.5) * 0.4;
+        }
+        if (p.x > width - 15) {
+          p.x = width - 15;
+          p.vx = -(Math.abs(p.vx) + Math.random() * 0.15);
+          p.vy += (Math.random() - 0.5) * 0.4;
+        }
+        if (p.y < 15) {
+          p.y = 15;
+          p.vy = Math.abs(p.vy) + Math.random() * 0.15;
+          p.vx += (Math.random() - 0.5) * 0.4;
+        }
+        if (p.y > height - 15) {
+          p.y = height - 15;
+          p.vy = -(Math.abs(p.vy) + Math.random() * 0.15);
+          p.vx += (Math.random() - 0.5) * 0.4;
+        }
 
         // Interactive mouse deflection
         if (mouse.active) {
@@ -338,8 +355,11 @@ function initDevCommandCanvas() {
           p.vx *= 0.985;
           p.vy *= 0.985;
         } else if (currentSpeed < 0.35) {
-          p.vx *= 1.04;
-          p.vy *= 1.04;
+          // Re-seed with a random direction instead of scaling (avoids all particles drifting one way)
+          const freshAngle = Math.random() * Math.PI * 2;
+          const freshSpeed = 0.45 + Math.random() * 0.3;
+          p.vx = Math.cos(freshAngle) * freshSpeed;
+          p.vy = Math.sin(freshAngle) * freshSpeed;
         }
 
       } else if (animState === "colliding") {
