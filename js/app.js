@@ -44,16 +44,15 @@ function initDevCommandCanvas() {
   let height = 0;
   let dpr = 1;
 
-  // Short, authentic dev commands
+  // Short, authentic dev commands aligned with resume stack
   const COMMAND_LIST = [
-    "git push", "fastapi dev", "docker up", "redis-cli", "O(log N)",
-    "npm run dev", "curl -X POST", "const ai = ...", "SELECT *", "kubectl get",
-    "gcc -O3", "dijkstra()", "pip install", "uvicorn", "jwt.sign()",
-    "pydantic", "async def", "res.json()", "ssh dev", "grep -rn",
-    "vector<int>", "chmod +x", "git commit", "sudo su", "yarn build",
-    "cosine_sim()", "gemini-1.5", "groq LPU", "14ms TTFT", "MongoDB",
-    "MySQL", "Express", "Python 3.10", "C++17 STL", "CI/CD",
-    "Redis cache", "RAG pipeline", "FastAPI", "Jest test", "REST API"
+    "git push", "fastapi dev", "redis-cli", "O(log N)", "npm run dev",
+    "curl -X POST", "SELECT *", "g++ -O3", "dijkstra()", "pip install",
+    "uvicorn", "jwt.sign()", "pydantic", "async def", "res.json()",
+    "vector<int>", "git commit", "cosine_sim()", "gemini-1.5", "groq LPU",
+    "MongoDB", "MySQL", "SQLite", "Express", "Python 3.x", "C++ STL",
+    "GitHub Actions", "Redis cache", "RAG pipeline", "FastAPI", "Jest test",
+    "Supertest", "RESTful API", "NumPy", "Sentence-Transformers", "OpenRouter"
   ];
 
   const particles = [];
@@ -145,6 +144,8 @@ function initDevCommandCanvas() {
     }
   }
 
+  let convergenceTimeout = null;
+
   function triggerAssemblySequence() {
     animState = "floating";
     stateTimer = performance.now();
@@ -158,20 +159,31 @@ function initDevCommandCanvas() {
 
     createParticles();
 
-    // After 600ms of floating, begin convergence towards center photo
+    // Clear any pending convergence timeout
+    if (convergenceTimeout) clearTimeout(convergenceTimeout);
+
+    // After 650ms of floating, begin convergence towards center photo
     setTimeout(() => {
       animState = "colliding";
       if (statusLabel) statusLabel.textContent = "Colliding into Portrait...";
       if (statusDot) statusDot.style.background = "#ef233c";
-    }, 600);
+
+      // Safety timeout: ensure collision triggers within 1.8s
+      convergenceTimeout = setTimeout(() => {
+        if (!isCollided) {
+          onPhotoCollided();
+        }
+      }, 1800);
+    }, 650);
   }
 
   function onPhotoCollided() {
     if (isCollided) return;
     isCollided = true;
     animState = "impact";
+    if (convergenceTimeout) clearTimeout(convergenceTimeout);
 
-    // Reveal Photo with Filter and Glitch Transition
+    // 1. Reveal Center Photo with Filter, Glow and Scale Transition
     if (photoImg) {
       photoImg.classList.add("photo-assembled");
     }
@@ -186,30 +198,30 @@ function initDevCommandCanvas() {
       burstFx.classList.add("active");
     }
 
-    // Canvas Shockwave Rings
+    // 2. Canvas Shockwave Rings Expanding Outward
     shockwaves.push({
       x: targetX,
       y: targetY,
-      radius: 20,
-      maxRadius: 280,
+      radius: 15,
+      maxRadius: 320,
       alpha: 1.0,
-      speed: 10,
+      speed: 11,
       color: "239, 35, 60"
     });
     shockwaves.push({
       x: targetX,
       y: targetY,
-      radius: 10,
-      maxRadius: 200,
+      radius: 8,
+      maxRadius: 240,
       alpha: 0.9,
-      speed: 7,
+      speed: 8,
       color: "255, 255, 255"
     });
 
-    // Spawn 32 explosive burst sparks
-    for (let i = 0; i < 32; i++) {
+    // 3. Spawn explosive burst sparks
+    for (let i = 0; i < 36; i++) {
       const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 9 + 4;
+      const speed = Math.random() * 10 + 4;
       burstSparks.push({
         x: targetX,
         y: targetY,
@@ -222,21 +234,29 @@ function initDevCommandCanvas() {
       });
     }
 
-    if (statusLabel) statusLabel.textContent = "⚡ Assembled from Dev Commands";
+    if (statusLabel) statusLabel.textContent = "⚡ Assembled • Dev Commands Online";
     if (statusDot) statusDot.style.background = "#10b981";
 
-    // After impact pulse, switch to ambient drifting mode
+    // 4. "after colliding the photo must appear and then the dots (commands) must again start floating dynamically back"
+    // Disperse particles radially outward from collision center back across the canvas
     setTimeout(() => {
       animState = "ambient";
-      // Scatter particles gently outward for ambient float
-      particles.forEach((p) => {
-        const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 1.2 + 0.4;
-        p.vx = Math.cos(angle) * speed;
-        p.vy = Math.sin(angle) * speed;
+
+      particles.forEach((p, idx) => {
+        const angle = (idx / particles.length) * Math.PI * 2 + (Math.random() - 0.5) * 0.6;
+        // Strong outward burst velocity so they spread back across the screen dynamically
+        const burstSpeed = p.type === "command"
+          ? (Math.random() * 4.5 + 2.8)
+          : (Math.random() * 6.5 + 3.8);
+
+        p.vx = Math.cos(angle) * burstSpeed;
+        p.vy = Math.sin(angle) * burstSpeed;
+        p.x = targetX + Math.cos(angle) * (Math.random() * 30 + 15);
+        p.y = targetY + Math.sin(angle) * (Math.random() * 30 + 15);
         p.collided = false;
+        p.alpha = p.type === "command" ? (Math.random() * 0.35 + 0.55) : (Math.random() * 0.4 + 0.35);
       });
-    }, 900);
+    }, 280);
   }
 
   // Animation Loop (60 FPS)
@@ -298,15 +318,15 @@ function initDevCommandCanvas() {
       const p = particles[i];
 
       if (animState === "floating" || animState === "ambient") {
-        // Natural ambient drift
+        // Natural dynamic ambient drift
         p.x += p.vx;
         p.y += p.vy;
 
-        // Bounce at boundaries
-        if (p.x < 10) { p.x = 10; p.vx *= -1; }
-        if (p.x > width - 10) { p.x = width - 10; p.vx *= -1; }
-        if (p.y < 10) { p.y = 10; p.vy *= -1; }
-        if (p.y > height - 10) { p.y = height - 10; p.vy *= -1; }
+        // Bounce at screen boundaries with clean rebound
+        if (p.x < 15) { p.x = 15; p.vx = Math.abs(p.vx); }
+        if (p.x > width - 15) { p.x = width - 15; p.vx = -Math.abs(p.vx); }
+        if (p.y < 15) { p.y = 15; p.vy = Math.abs(p.vy); }
+        if (p.y > height - 15) { p.y = height - 15; p.vy = -Math.abs(p.vy); }
 
         // Interactive mouse deflection
         if (mouse.active) {
@@ -320,11 +340,16 @@ function initDevCommandCanvas() {
           }
         }
 
-        // Friction to restore normal drift
-        p.vx *= 0.98;
-        p.vy *= 0.98;
-        if (Math.abs(p.vx) < 0.2) p.vx += (Math.random() - 0.5) * 0.15;
-        if (Math.abs(p.vy) < 0.2) p.vy += (Math.random() - 0.5) * 0.15;
+        // Smooth cruise velocity governor: gracefully settle high burst speeds into steady dynamic floating drift
+        const currentSpeed = Math.hypot(p.vx, p.vy);
+        const cruiseSpeed = p.type === "command" ? 0.75 : 0.95;
+        if (currentSpeed > cruiseSpeed) {
+          p.vx *= 0.985;
+          p.vy *= 0.985;
+        } else if (currentSpeed < 0.35) {
+          p.vx *= 1.04;
+          p.vy *= 1.04;
+        }
 
       } else if (animState === "colliding") {
         // High-velocity gravitational vortex pull toward center portrait

@@ -123,9 +123,11 @@ Available commands:
         if (args[0] === 'resume' || args[0] === 'resume.pdf' || args[0] === 'resume.txt') {
           this.print(`
 <b style="color:#fff">NEELESH KUMAR TRIPATHI</b>
-• BE in Information Science @ The National Institute of Engineering, Mysuru (CGPA: 8.60/10)
-• AI Systems & Full-Stack Developer | 500+ DSA Solved (LeetCode Global Rating ~1533)
-• Key Projects: Crackd (MERN + Gemini RAG), LLM Cost & Latency Optimizer, FinNIE, SignBridge (VIT 4th)
+• BE in Information Science @ The National Institute of Engineering, Mysore (CGPA: 8.60/10)
+• AI Systems & Distributed Backend Developer | 500+ DSA Problems Solved (LeetCode ~1533)
+• Ranked 4th among 100+ teams at DevJams VIT (SignBridge AI)
+• Looking for Remote, Onsite, or Hybrid roles in India (Mysuru / Bangalore / Pan-India)
+• Key Projects: Crackd (MERN + Gemini RAG), LLM Cost & Latency Optimizer, FinNIE
 • Phone: +91 6387974286 | Email: neeleshtripathi36@gmail.com
 <a href="#resume-modal" onclick="window.appController?.openResumeModal();" style="color:var(--accent-cyan); text-decoration:underline;">[Click to launch Full High-Res Resume Modal]</a>
           `);
@@ -160,11 +162,12 @@ Available commands:
 
       case 'skills':
         this.print(`
-<b style="color:var(--accent-cyan)">Languages:</b> C, C++, Python, JavaScript, SQL, Java
-<b style="color:var(--accent-cyan)">AI / LLM:</b> Gemini API, Groq, OpenRouter, RAG, Semantic Caching, Embeddings
-<b style="color:var(--accent-cyan)">Backend:</b> Node.js, Express.js, FastAPI, Flask, RESTful APIs, JWT Auth
-<b style="color:var(--accent-cyan)">Databases:</b> MongoDB, MySQL, SQLite, Redis
-<b style="color:var(--accent-cyan)">DevOps:</b> Git, GitHub Actions, Docker, Jest, Supertest, Postman
+<b style="color:var(--accent-cyan)">Languages & Libraries:</b> C, C++, Python, JavaScript, SQL, NumPy, Sentence-Transformers, Pydantic
+<b style="color:var(--accent-cyan)">AI / LLM:</b> Gemini API, Groq, OpenRouter, RAG, Embeddings, Semantic Caching, LLM Routing, Prompt Engineering
+<b style="color:var(--accent-cyan)">Backend Development:</b> Node.js, Express.js, FastAPI, Flask, OpenAI SDK, RESTful APIs, JWT Authentication
+<b style="color:var(--accent-cyan)">Databases & Caching:</b> MongoDB, MySQL, SQLite, Redis
+<b style="color:var(--accent-cyan)">Developer Tools:</b> Git, GitHub, GitHub Actions, Jest, Supertest, Postman, VS Code, Render, Vercel
+<b style="color:var(--accent-cyan)">Core Concepts:</b> Data Structures & Algorithms, OOP, Computer Networks, Operating Systems
         `);
         break;
 
