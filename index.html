@@ -14,11 +14,11 @@
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 
-  <!-- Google Fonts: Anton (Hero Display), Caveat (Handwriting Script), JetBrains Mono (Dev Commands & Terminal), Plus Jakarta Sans & Space Grotesk -->
+  <!-- Google Fonts: Teko (Tall Condensed Display), Bebas Neue, Anton, Caveat, JetBrains Mono, Plus Jakarta Sans & Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@500;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Caveat:wght@500;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Teko:wght@600;700&display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
@@ -37,13 +37,20 @@
     <canvas id="devCommandCanvas" class="bg-dev-canvas" aria-hidden="true"></canvas>
   </div>
 
-  <!-- TOP SUB-HEADER BAR (THEME INSPIRED) -->
+  <!-- TOP SUB-HEADER BAR (LOCATION & ROLE AVAILABILITY) -->
   <div class="top-status-bar" id="topStatusBar">
     <div class="top-status-inner">
-      <span class="top-status-left">ASPIRING SOFTWARE DEVELOPER &bull; AI ENGINEER</span>
+      <span class="top-status-left">
+        <svg class="top-pin-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2.3" aria-hidden="true">
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        MYSURU, INDIA &bull; ASPIRING SOFTWARE DEVELOPER &amp; AI SYSTEMS ENGINEER
+      </span>
       <span class="top-status-right">
         <span class="status-pulse-dot" aria-hidden="true"></span>
-        AVAILABLE FOR OPPORTUNITIES
+        OPEN FOR REMOTE / ONSITE / HYBRID ROLES IN INDIA
       </span>
     </div>
   </div>
@@ -60,7 +67,7 @@
       <ul class="nav-menu-list">
         <li><a href="#work" class="nav-link-item">Work</a></li>
         <li><a href="#tech-stack" class="nav-link-item">Tech Stack</a></li>
-        <li><a href="#education-process" class="nav-link-item">Process &amp; Skills</a></li>
+        <li><a href="#education-skills" class="nav-link-item">Education &amp; Skills</a></li>
         <li><a href="#dsa" class="nav-link-item">DSA &amp; Metrics</a></li>
         <li><a href="#contact" class="nav-link-item">Contact</a></li>
       </ul>
@@ -102,7 +109,7 @@
     <ul class="mobile-drawer-links">
       <li><a href="#work" class="mobile-nav-link">Work <span>↘</span></a></li>
       <li><a href="#tech-stack" class="mobile-nav-link">Tech Stack <span>↘</span></a></li>
-      <li><a href="#education-process" class="mobile-nav-link">Process &amp; Skills <span>↘</span></a></li>
+      <li><a href="#education-skills" class="mobile-nav-link">Education &amp; Skills <span>↘</span></a></li>
       <li><a href="#dsa" class="mobile-nav-link">DSA &amp; Metrics <span>↘</span></a></li>
       <li><a href="#contact" class="mobile-nav-link">Contact <span>↘</span></a></li>
       <li>
@@ -131,9 +138,21 @@
     <!-- 1. HERO SECTION (THEME MOCKUP MATCH WITH COMMAND COLLISION & CENTER PHOTO) -->
     <section id="hero" class="hero-theme-section">
 
-      <!-- GIANT BACKGROUND "PORTFOLIO" TITLE -->
+      <!-- GIANT BACKGROUND "PORTFOLIO" TITLE (DYNAMIC: CRUNCHED ON MOBILE, WIDENED ON LAPTOP, LONG VERTICALLY) -->
       <div class="hero-bg-title-track" aria-hidden="true">
-        <div class="hero-bg-title">PORTFOLIO</div>
+        <svg class="hero-bg-svg-title" viewBox="0 0 1000 240" preserveAspectRatio="none" role="img" aria-hidden="true">
+          <defs>
+            <linearGradient id="heroTitleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#ff1a35" stop-opacity="0.95" />
+              <stop offset="20%" stop-color="#ef233c" stop-opacity="0.9" />
+              <stop offset="50%" stop-color="#b3131b" stop-opacity="0.45" />
+              <stop offset="75%" stop-color="#550810" stop-opacity="0.12" />
+              <stop offset="100%" stop-color="#0a0a0c" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+          <text x="500" y="200" text-anchor="middle" class="svg-portfolio-text" textLength="920"
+            lengthAdjust="spacingAndGlyphs">DEVELOPER</text>
+        </svg>
       </div>
 
       <!-- MAIN HERO THREE-COLUMN GRID -->
@@ -151,12 +170,23 @@
           </div>
           <p class="hero-bio-paragraph">
             I design and build high-performance distributed backends, intelligent LLM gateways, and robust algorithmic
-            architectures. Passionate about clean code, smooth interactions, and details that make a difference.
+            architectures with 500+ DSA problems solved. Ranked 4th among 100+ national teams at DevJams VIT. Actively
+            looking for Remote, Onsite, or Hybrid roles in India.
           </p>
 
-          <div class="hero-status-pill">
-            <span class="status-pulse-dot red" aria-hidden="true"></span>
-            <span>AVAILABLE WORLDWIDE &bull; MYSURU &amp; BANGALORE</span>
+          <div class="hero-status-pill-group">
+            <div class="hero-status-pill">
+              <svg class="location-pin-icon" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.3" aria-hidden="true">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>MYSURU, INDIA</span>
+            </div>
+            <div class="hero-role-preference-pill">
+              <span class="status-pulse-dot red" aria-hidden="true"></span>
+              <span>LOOKING FOR REMOTE &bull; ONSITE &bull; HYBRID ROLES IN INDIA</span>
+            </div>
           </div>
 
           <div class="hero-action-buttons">
@@ -235,22 +265,22 @@
               <div class="stat-number-crimson">8.60</div>
               <div class="stat-meta-label">CGPA @ NIE MYSURU</div>
             </div>
-            <div class="hero-stat-item">
-              <div class="stat-number-crimson">3+</div>
-              <div class="stat-meta-label">YEARS DEV EXPERIENCE</div>
-            </div>
           </div>
 
-          <!-- Replay Dev Command Collision Button -->
-          <div class="recollide-btn-wrapper">
-            <button type="button" class="recollide-action-btn" id="recollideBtn"
-              title="Replay Floating Commands Collision">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+          <!-- DevJams VIT Hackathon 4th Place Winner Highlight Card -->
+          <div class="hero-hackathon-badge">
+            <div class="hackathon-badge-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                aria-hidden="true">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                </polygon>
               </svg>
-              <span>Re-collide Commands</span>
-            </button>
+            </div>
+            <div class="hackathon-badge-content">
+              <span class="badge-title">DEVJAMS VIT HACKATHON</span>
+              <span class="badge-subtitle">Ranked 4th among 100+ national teams</span>
+            </div>
           </div>
         </div>
 
@@ -427,7 +457,7 @@
               <p class="project-type-tag">BIDIRECTIONAL SIGN &harr; SPEECH AI (DEVJAMS 4TH)</p>
             </div>
             <div class="project-status-badge">
-              <span class="status-pulse-dot red"></span> WINNER
+              <span class="status-pulse-dot red"></span> AWARD WINNING
             </div>
           </div>
 
@@ -724,147 +754,171 @@
 
     </section>
 
-    <!-- 4. EDUCATION & SKILLS + WORK PROCESS + THEME RED QUOTE SECTION (THEME MOCKUP REPLICA) -->
-    <section id="education-process" class="section-theme-wrapper">
+    <!-- 4. EDUCATION & SKILLS HORIZONTAL SECTION (RESUME ALIGNED) -->
+    <section id="education-skills" class="section-theme-wrapper">
 
-      <div class="education-process-grid">
+      <div class="section-tag-red">// BACKGROUND &amp; CAPABILITIES</div>
+      <h2 class="section-title-large">EDUCATION &amp; SKILLS</h2>
+      <p class="section-lead-subtitle">
+        Academic foundations from The National Institute of Engineering paired with specialized engineering across LLM
+        systems, distributed backends, and algorithmic problem solving.
+      </p>
 
-        <!-- COLUMN 1: EDUCATION & SKILLS PILLS -->
-        <div class="edu-skills-column">
+      <div class="edu-skills-horizontal-grid two-column">
+
+        <!-- COLUMN 1: EDUCATION (VERBATIM FROM RESUME) -->
+        <div class="edu-col-card">
           <div class="column-header-block">
-            <div class="section-tag-red">// BACKGROUND</div>
-            <h2 class="sub-column-title">EDUCATION &amp; SKILLS</h2>
+            <div class="section-tag-red">01 // ACADEMICS</div>
+            <h3 class="sub-column-title">EDUCATION</h3>
           </div>
 
-          <!-- Education Section -->
-          <div class="edu-sub-block">
-            <h3 class="edu-block-heading">EDUCATION</h3>
-
-            <div class="edu-timeline-list">
-              <div class="edu-item">
-                <div class="edu-item-header">
-                  <div class="edu-degree">B.E. in Information Science &amp; Engineering</div>
-                  <div class="edu-period">2022 &mdash; 2026</div>
-                </div>
-                <div class="edu-institution">The National Institute of Engineering, Mysuru</div>
-                <div class="edu-meta-score">CGPA: <strong>8.60 / 10.0</strong></div>
+          <div class="edu-timeline-list">
+            <div class="edu-item">
+              <div class="edu-item-header">
+                <div class="edu-degree">Bachelor of Engineering in Information Science</div>
+                <div class="edu-period">Sep. 2023 &mdash; May 2027</div>
               </div>
-
-              <div class="edu-item">
-                <div class="edu-item-header">
-                  <div class="edu-degree">Senior Secondary (Class XII)</div>
-                  <div class="edu-period">2020 &mdash; 2022</div>
-                </div>
-                <div class="edu-institution">Little Flower School, Gorakhpur</div>
-                <div class="edu-meta-score">Percentage: <strong>91.0% Distinction</strong></div>
+              <div class="edu-institution">The National Institute of Engineering, Mysore, Karnataka</div>
+              <div class="edu-meta-score">CGPA: <strong>8.60 / 10.0</strong></div>
+              <div class="edu-tags-row">
+                <span class="edu-mini-tag">Data Structures &amp; Algorithms</span>
+                <span class="edu-mini-tag">OOP</span>
+                <span class="edu-mini-tag">Computer Networks</span>
+                <span class="edu-mini-tag">Operating Systems</span>
               </div>
+            </div>
 
-              <div class="edu-item">
-                <div class="edu-item-header">
-                  <div class="edu-degree">Secondary Education (Class X)</div>
-                  <div class="edu-period">2018 &mdash; 2020</div>
-                </div>
-                <div class="edu-institution">Little Flower School, Gorakhpur</div>
-                <div class="edu-meta-score">Percentage: <strong>89.8% Distinction</strong></div>
+            <div class="edu-item">
+              <div class="edu-item-header">
+                <div class="edu-degree">Senior Secondary Education (Class XII)</div>
+                <div class="edu-period">July 2022</div>
               </div>
+              <div class="edu-institution">Little Flower School, Gorakhpur, Uttar Pradesh</div>
+              <div class="edu-meta-score">Percentage: <strong>91%</strong></div>
             </div>
           </div>
 
-          <!-- Skills Quick Matrix -->
-          <div class="skills-sub-block">
-            <h3 class="edu-block-heading">SKILLS MATRIX</h3>
+          <!-- Role Preference Banner -->
+          <div class="edu-role-pref-card">
+            <div class="pref-card-header">
+              <svg class="location-pin-icon" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.3" aria-hidden="true">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>MYSURU, INDIA</span>
+            </div>
+            <p class="pref-card-body">
+              Looking for <strong>Remote, On-site, or Hybrid roles in India</strong> for Software Developer &amp; AI
+              Systems positions.
+            </p>
+          </div>
+        </div>
+
+        <!-- COLUMN 2: TECHNICAL SKILLS (EXCLUSIVELY FROM RESUME) -->
+        <div class="skills-col-card">
+          <div class="column-header-block">
+            <div class="section-tag-red">02 // TECHNICAL SKILLS</div>
+            <h3 class="sub-column-title">SKILLS MATRIX</h3>
+          </div>
+
+          <!-- 1. Languages & Libraries -->
+          <div class="skills-domain-group">
+            <div class="skills-group-title">
+              <span class="skills-dot-red"></span> LANGUAGES &amp; LIBRARIES
+            </div>
             <div class="skills-tag-cloud">
-              <span class="skill-tag-item">C++ STL</span>
-              <span class="skill-tag-item">PYTHON</span>
-              <span class="skill-tag-item">JAVASCRIPT</span>
-              <span class="skill-tag-item">FASTAPI</span>
-              <span class="skill-tag-item">EXPRESS.JS</span>
-              <span class="skill-tag-item">GEMINI API</span>
-              <span class="skill-tag-item">REDIS</span>
-              <span class="skill-tag-item">MONGODB</span>
-              <span class="skill-tag-item">MYSQL</span>
-              <span class="skill-tag-item">SEMANTIC CACHE</span>
-              <span class="skill-tag-item">RAG PIPELINES</span>
-              <span class="skill-tag-item">GROQ LPUS</span>
-              <span class="skill-tag-item">GIT &amp; CI/CD</span>
-              <span class="skill-tag-item">DSA (500+)</span>
-              <span class="skill-tag-item">OPENCV</span>
-              <span class="skill-tag-item">WHISPER ASR</span>
+              <span class="skill-tag-item highlighted">C</span>
+              <span class="skill-tag-item highlighted">C++</span>
+              <span class="skill-tag-item highlighted">Python</span>
+              <span class="skill-tag-item highlighted">JavaScript</span>
+              <span class="skill-tag-item">SQL</span>
+              <span class="skill-tag-item">NumPy</span>
+              <span class="skill-tag-item">Sentence-Transformers</span>
+              <span class="skill-tag-item">Pydantic</span>
             </div>
           </div>
+
+          <!-- 2. AI / LLM -->
+          <div class="skills-domain-group">
+            <div class="skills-group-title">
+              <span class="skills-dot-red"></span> AI / LLM
+            </div>
+            <div class="skills-tag-cloud">
+              <span class="skill-tag-item highlighted">Gemini API</span>
+              <span class="skill-tag-item highlighted">Groq</span>
+              <span class="skill-tag-item">OpenRouter</span>
+              <span class="skill-tag-item highlighted">RAG</span>
+              <span class="skill-tag-item">Embeddings</span>
+              <span class="skill-tag-item highlighted">Semantic Caching</span>
+              <span class="skill-tag-item">LLM Routing</span>
+              <span class="skill-tag-item">Prompt Engineering</span>
+            </div>
+          </div>
+
+          <!-- 3. Backend Development -->
+          <div class="skills-domain-group">
+            <div class="skills-group-title">
+              <span class="skills-dot-red"></span> BACKEND DEVELOPMENT
+            </div>
+            <div class="skills-tag-cloud">
+              <span class="skill-tag-item highlighted">Node.js</span>
+              <span class="skill-tag-item highlighted">Express.js</span>
+              <span class="skill-tag-item highlighted">FastAPI</span>
+              <span class="skill-tag-item">Flask</span>
+              <span class="skill-tag-item">OpenAI SDK</span>
+              <span class="skill-tag-item">RESTful APIs</span>
+              <span class="skill-tag-item">JWT Authentication</span>
+            </div>
+          </div>
+
+          <!-- 4. Databases & Caching -->
+          <div class="skills-domain-group">
+            <div class="skills-group-title">
+              <span class="skills-dot-red"></span> DATABASES &amp; CACHING
+            </div>
+            <div class="skills-tag-cloud">
+              <span class="skill-tag-item highlighted">MongoDB</span>
+              <span class="skill-tag-item">MySQL</span>
+              <span class="skill-tag-item">SQLite</span>
+              <span class="skill-tag-item highlighted">Redis</span>
+            </div>
+          </div>
+
+          <!-- 5. Developer Tools -->
+          <div class="skills-domain-group">
+            <div class="skills-group-title">
+              <span class="skills-dot-red"></span> DEVELOPER TOOLS
+            </div>
+            <div class="skills-tag-cloud">
+              <span class="skill-tag-item">Git</span>
+              <span class="skill-tag-item">GitHub</span>
+              <span class="skill-tag-item highlighted">GitHub Actions</span>
+              <span class="skill-tag-item">Jest</span>
+              <span class="skill-tag-item">Supertest</span>
+              <span class="skill-tag-item">Postman</span>
+              <span class="skill-tag-item">VS Code</span>
+              <span class="skill-tag-item">Render</span>
+              <span class="skill-tag-item">Vercel</span>
+            </div>
+          </div>
+
+          <!-- 6. Core Concepts -->
+          <div class="skills-domain-group">
+            <div class="skills-group-title">
+              <span class="skills-dot-red"></span> CORE CONCEPTS
+            </div>
+            <div class="skills-tag-cloud">
+              <span class="skill-tag-item highlighted">Data Structures &amp; Algorithms</span>
+              <span class="skill-tag-item">OOP</span>
+              <span class="skill-tag-item">Computer Networks</span>
+              <span class="skill-tag-item">Operating Systems</span>
+            </div>
+          </div>
+
         </div>
 
-        <!-- COLUMN 2: WORK PROCESS (THEME TIMELINE NODES 01 TO 05) -->
-        <div class="process-column">
-          <div class="column-header-block">
-            <div class="section-tag-red">// METHODOLOGY</div>
-            <h2 class="sub-column-title">WORK PROCESS</h2>
-          </div>
-
-          <div class="process-timeline-wrapper">
-            <!-- Connecting glowing vertical red line -->
-            <div class="process-vertical-track" aria-hidden="true"></div>
-
-            <!-- Step 01: Discover -->
-            <div class="process-step-node">
-              <div class="step-num-circle">01</div>
-              <div class="step-content">
-                <h4 class="step-title">DISCOVER</h4>
-                <p class="step-desc">
-                  Understanding core engineering requirements, target audience, performance constraints, and API schema
-                  design.
-                </p>
-              </div>
-            </div>
-
-            <!-- Step 02: Ideate -->
-            <div class="process-step-node">
-              <div class="step-num-circle">02</div>
-              <div class="step-content">
-                <h4 class="step-title">IDEATE</h4>
-                <p class="step-desc">
-                  Algorithmic strategy, Big-O trade-offs, vector caching architecture, and database normalization
-                  strategies.
-                </p>
-              </div>
-            </div>
-
-            <!-- Step 03: Design -->
-            <div class="process-step-node">
-              <div class="step-num-circle">03</div>
-              <div class="step-content">
-                <h4 class="step-title">DESIGN</h4>
-                <p class="step-desc">
-                  Crafting modular API contracts, vector embeddings, caching layers, and resilient fallback pipelines.
-                </p>
-              </div>
-            </div>
-
-            <!-- Step 04: Develop -->
-            <div class="process-step-node">
-              <div class="step-num-circle">04</div>
-              <div class="step-content">
-                <h4 class="step-title">DEVELOP</h4>
-                <p class="step-desc">
-                  Building fast, asynchronous, scalable services with clean code, type safety, and comprehensive unit
-                  tests.
-                </p>
-              </div>
-            </div>
-
-            <!-- Step 05: Deliver -->
-            <div class="process-step-node">
-              <div class="step-num-circle">05</div>
-              <div class="step-content">
-                <h4 class="step-title">DELIVER</h4>
-                <p class="step-desc">
-                  Automated CI/CD pipelines, production deployment, verification, and live latency monitoring.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
       </div>
 
     </section>
@@ -874,7 +928,7 @@
       <div class="section-tag-red">// PROBLEM SOLVING &amp; COMPETITIVE PROGRAMMING</div>
       <h2 class="section-title-large">ALGORITHMIC METRICS</h2>
 
-      <div class="dsa-metrics-grid">
+      <div class="dsa-metrics-grid four-cards">
         <div class="dsa-metric-card">
           <div class="dsa-metric-large-num" data-target="500">500+</div>
           <div class="dsa-metric-label">DSA Problems Solved</div>
@@ -890,13 +944,13 @@
         <div class="dsa-metric-card">
           <div class="dsa-metric-large-num">4th</div>
           <div class="dsa-metric-label">DevJams VIT Hackathon</div>
-          <p class="dsa-metric-sub">Ranked 4th out of 100+ national teams</p>
+          <p class="dsa-metric-sub">Ranked 4th among 100+ national teams</p>
         </div>
 
         <div class="dsa-metric-card">
           <div class="dsa-metric-large-num">8.60</div>
-          <div class="dsa-metric-label">CGPA @ NIE Mysuru</div>
-          <p class="dsa-metric-sub">Information Science &amp; Engineering</p>
+          <div class="dsa-metric-label">CGPA @ NIE Mysore</div>
+          <p class="dsa-metric-sub">Bachelor of Engineering in Information Science</p>
         </div>
       </div>
 
@@ -935,13 +989,17 @@
             TOGETHER <span class="title-spark-icon" aria-hidden="true">&plus;</span>
           </h2>
           <p class="footer-lead-text">
-            I&rsquo;m currently open for new projects, full-time engineering roles, and AI research collaborations.
-            Let&rsquo;s create something that drives results.
+            I&rsquo;m currently looking for full-time Software Developer &amp; AI Systems roles (Remote, Onsite, or
+            Hybrid across India) and high-impact engineering projects. Let&rsquo;s connect!
           </p>
 
           <div class="footer-available-chip">
-            <span class="status-pulse-dot red" aria-hidden="true"></span>
-            <span>AVAILABLE FOR OPPORTUNITIES</span>
+            <svg class="location-pin-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.3" aria-hidden="true">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>MYSURU, INDIA &bull; OPEN TO REMOTE / ONSITE / HYBRID IN INDIA</span>
           </div>
         </div>
 
@@ -978,7 +1036,7 @@
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
               </span>
-              <span class="contact-row-text">Mysuru &amp; Bangalore, India</span>
+              <span class="contact-row-text">Mysuru, India &bull; Open to Remote / Onsite / Hybrid across India</span>
             </div>
 
             <a href="https://linkedin.com/in/neelesh-kumar-tripathi" target="_blank" rel="noopener"
