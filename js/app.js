@@ -34,16 +34,23 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ==========================================================================
-   INTRO — a computer that types `npm install portfolio`, then the camera
-   dives into its screen as you scroll and the site takes over.
+   INTRO — a computer that types `npm install portfolio`; once it is ready
+   the camera dives into its screen on its own and the site takes over.
    ========================================================================== */
+const ZOOM_MS = 2600;
+
 function initIntro(onEnter) {
   const intro = $("#intro");
-  if (!intro || reducedMotion) {
+  // deep links (e.g. #work) and reduced motion go straight to the site
+  if (!intro || reducedMotion || (location.hash && location.hash !== "#intro")) {
     if (intro) intro.remove();
     onEnter();
     return;
   }
+
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  window.scrollTo(0, 0);
+  document.body.classList.add("is-locked");
 
   const stage = $("#introStage");
   const computer = $("#computer");
@@ -53,13 +60,17 @@ function initIntro(onEnter) {
   const keyboard = $("#keyboard");
   const fading = [$(".stand-neck"), $(".stand-base"), $(".desk-shadow"), keyboard, $(".monitor-chin")];
 
-  buildKeyboard(keyboard);
-  runBootScript($("#screenBody"), keyboard, pct, () => intro.classList.add("is-ready"));
-
-  // geometry measured with no transform applied (transform-origin 0 0):
-  // box = the computer's layout box, sc = screen centre and size in local px
+  // geometry measured with no transform applied (transform-origin 0 0)
   let g = null;
+  let p = 0;
   let entered = false;
+  let zooming = false;
+
+  buildKeyboard(keyboard);
+  runBootScript($("#screenBody"), keyboard, pct, () => {
+    intro.classList.add("is-ready");
+    setTimeout(zoom, 650);
+  });
 
   const measure = () => {
     computer.style.transformOrigin = "0 0";
@@ -93,8 +104,6 @@ function initIntro(onEnter) {
 
   function update() {
     if (!g) return;
-    const max = intro.offsetHeight - innerHeight;
-    const p = clamp(window.scrollY / max);
     const z = easeInOut(clamp(p / 0.78));
     const S = g.base * (1 + (g.kmax - 1) * z);
     // keep the screen centre on a straight path from its resting spot to the viewport centre
@@ -114,34 +123,28 @@ function initIntro(onEnter) {
     }
   }
 
-  let ticking = false;
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(() => {
-        ticking = false;
-        update();
-      });
-    },
-    { passive: true }
-  );
-  window.addEventListener("resize", measure);
+  // plays the dive into the screen on a timeline, then removes the intro
+  function zoom() {
+    if (zooming) return;
+    zooming = true;
+    const start = performance.now();
+    const tick = (now) => {
+      p = clamp((now - start) / ZOOM_MS);
+      update();
+      if (p < 1) return requestAnimationFrame(tick);
+      document.body.classList.remove("is-locked");
+      window.removeEventListener("resize", measure);
+      intro.remove();
+    };
+    requestAnimationFrame(tick);
+  }
 
-  $("#introSkip").addEventListener("click", () => {
-    window.scrollTo({ top: intro.offsetHeight - innerHeight, behavior: "smooth" });
-  });
+  window.addEventListener("resize", measure);
+  $("#introSkip").addEventListener("click", zoom);
 
   // fonts change the computer's box, so measure once they are ready
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(measure);
   measure();
-
-  // landing on a deep link (e.g. #work) skips straight into the site
-  if (location.hash && location.hash !== "#intro") {
-    entered = true;
-    onEnter();
-  }
 }
 
 function buildKeyboard(el) {
@@ -239,7 +242,7 @@ async function runBootScript(body, keyboard, pct, done) {
   await type("npm run start");
   line('<span class="t-dim">&gt; portfolio@2027.0.0 start</span>');
   await sleep(200);
-  line('<span class="t-ok">✓ ready</span> <span class="t-dim">— scroll to enter</span> ↓<span class="caret"></span>');
+  line('<span class="t-ok">✓ ready</span> <span class="t-dim">— launching portfolio…</span><span class="caret"></span>');
   done();
 }
 
@@ -344,7 +347,7 @@ function initHeader() {
   // paper sections need dark header text; dark sections need light text
   const paperSections = $$(".intro, .hero, .stack, .contact");
   const onScroll = () => {
-    header.classList.toggle("is-scrolled", window.scrollY > innerHeight * 1.7);
+    header.classList.toggle("is-scrolled", window.scrollY > 30);
     const y = 50;
     header.classList.toggle(
       "on-paper",

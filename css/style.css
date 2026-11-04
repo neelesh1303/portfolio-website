@@ -257,13 +257,12 @@ svg {
   display: none;
 }
 
+/* a fixed overlay: it plays on its own, then is removed from the page */
 .js .intro {
   display: block;
-  position: relative;
-  z-index: 60;
-  height: 260vh;
-  margin-bottom: -100vh;
-  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 250;
 }
 
 .reduced .intro {
@@ -272,10 +271,8 @@ svg {
 
 .intro-stage {
   --p: 0;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  height: 100svh;
+  position: absolute;
+  inset: 0;
   overflow: hidden;
   display: grid;
   place-items: center;
