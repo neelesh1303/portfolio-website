@@ -744,10 +744,10 @@ svg {
 
 .hero-photo {
   position: absolute;
-  left: calc(307 * var(--u));
-  top: calc(-118 * var(--u));
-  width: calc(825 * var(--u));
-  height: calc(1080 * var(--u));
+  left: calc(240 * var(--u));
+  top: calc(56 * var(--u));
+  width: calc(960 * var(--u));
+  height: calc(782 * var(--u));
   transform: translate3d(0, var(--drift, 0px), 0);
   will-change: transform;
 }
@@ -758,8 +758,8 @@ svg {
   position: absolute;
   inset: 0;
   transition: --r 0.6s var(--ease);
-  mask-image: linear-gradient(to bottom, #000 78%, transparent 99%);
-  -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 99%);
+  mask-image: linear-gradient(to bottom, #000 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 90%, transparent 100%);
 }
 
 .portrait img {
@@ -1103,7 +1103,7 @@ svg {
 .brand-plate {
   position: absolute;
   left: 50%;
-  top: 56%;
+  top: 58%;
   z-index: 4;
   width: calc(364 * var(--u));
   min-width: 260px;
@@ -2648,13 +2648,19 @@ svg {
   .hero-photo {
     order: 3;
     width: calc(100% + 2 * var(--gx));
-    height: calc(470 * var(--u));
+    height: calc(400 * var(--u));
     margin: 18px calc(-1 * var(--gx)) 0;
+    /* stacked layout: drifting would push the photo into the stack row */
+    --drift: 0px !important;
+  }
+
+  .portrait img {
+    object-fit: cover;
   }
 
   .brand-plate {
     top: auto;
-    bottom: 28%;
+    bottom: 40%;
     width: calc(300 * var(--u));
     margin-left: calc(-150 * var(--u));
   }
