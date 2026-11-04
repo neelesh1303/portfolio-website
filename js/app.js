@@ -66,6 +66,7 @@ function initIntro(onEnter) {
   let zooming = false;
 
   buildKeyboard(keyboard);
+  buildEditor($("#ideCode"));
   // the dive starts as soon as the install command is entered;
   // the install output keeps streaming on the screen while it zooms
   runBootScript($("#screenBody"), keyboard, pct, () => {
@@ -148,6 +149,42 @@ function initIntro(onEnter) {
   measure();
 }
 
+// the file open in the intro's editor, highlighted like a real IDE
+function buildEditor(el) {
+  if (!el) return;
+  const src = [
+    "// portfolio.config.js",
+    "export const neelesh = {",
+    '  name: "Neelesh Kumar Tripathi",',
+    '  role: ["Software Developer", "AI Engineer"],',
+    '  based: "Mysuru, India",',
+    '  college: { name: "NIE", cgpa: 8.60, grad: 2027 },',
+    '  stack: ["C++", "Python", "FastAPI", "Redis"],',
+    "  dsaSolved: 500,",
+    "  openToWork: true,",
+    "};",
+    "export default boot(neelesh);",
+  ];
+  const esc = (t) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const RULES = /(\/\/.*$)|("[^"]*")|\b(\d+(?:\.\d+)?)\b|\b(export|const|default|true|false)\b|(\w+)(?=:)|(\w+)(?=\()|\b(neelesh)\b/g;
+  const CLS = [, "tk-c", "tk-s", "tk-n", "tk-k", "tk-p", "tk-f", "tk-v"];
+  const paint = (line) => {
+    let out = "";
+    let last = 0;
+    line.replace(RULES, (m, ...g) => {
+      const at = g[7];
+      const i = g.slice(0, 7).findIndex((x) => x !== undefined) + 1;
+      out += esc(line.slice(last, at)) + `<span class="${CLS[i]}">${esc(m)}</span>`;
+      last = at + m.length;
+      return m;
+    });
+    return out + esc(line.slice(last));
+  };
+  el.innerHTML = src
+    .map((l, i) => `<div class="cl${i === 8 ? " is-cur" : ""}"><span class="ln">${i + 1}</span><span>${paint(l)}</span></div>`)
+    .join("");
+}
+
 function buildKeyboard(el) {
   if (!el) return;
   const rows = [
@@ -215,28 +252,28 @@ async function runBootScript(body, keyboard, pct, onEntered) {
   await type("npm install portfolio");
   onEntered();
 
-  line('<span class="t-dim">npm</span> <span class="t-tag">http</span> <span class="t-dim">fetch GET 200 registry.npmjs.org/@neelesh/portfolio</span>');
+  line('<span class="t-dim">npm</span> <span class="t-tag">http</span> <span class="t-dim">fetch GET</span> <span class="t-ok">200</span> <span class="t-dim">registry.npmjs.org/</span><span class="t-pkg">@neelesh/portfolio</span>');
 
   // animated progress bar
   const bar = line("");
   const W = 26;
   for (let i = 0; i <= 100; i += 2) {
     const fill = Math.round((i / 100) * W);
-    bar.innerHTML = `<span class="t-dim">[</span>${"█".repeat(fill)}${"░".repeat(W - fill)}<span class="t-dim">]</span> ${String(i).padStart(3, " ")}% <span class="t-dim">resolving dependencies</span>`;
+    bar.innerHTML = `<span class="t-dim">[</span><span class="t-bar">${"█".repeat(fill)}</span><span class="t-dim">${"░".repeat(W - fill)}]</span> <span class="t-num">${String(i).padStart(3, " ")}%</span> <span class="t-dim">resolving dependencies</span>`;
     setPct(i * 0.6);
     await sleep(18);
   }
 
   const deps = ["cpp-stl", "python", "javascript", "fastapi", "express", "redis", "mongodb", "gemini-rag"];
   for (let i = 0; i < deps.length; i++) {
-    line(`<span class="t-plus">+</span> ${deps[i]}`);
+    line(`<span class="t-plus">+</span> <span class="t-pkg">${deps[i]}</span><span class="t-ver">@latest</span>`);
     setPct(60 + ((i + 1) / deps.length) * 30);
     await sleep(85);
   }
 
   line('added <span class="t-ok">4 projects</span> <span class="t-dim">· crackd · llm-optimizer · signbridge · finnie</span>');
   await sleep(120);
-  line('added <span class="t-ok">500+</span> solved problems <span class="t-dim">· cgpa@8.60</span>');
+  line('added <span class="t-num">500+</span> solved problems <span class="t-dim">· cgpa@</span><span class="t-num">8.60</span>');
   await sleep(120);
   line('<span class="t-dim">audited 1 developer ·</span> found <span class="t-ok">0 vulnerabilities</span>');
   setPct(100);
