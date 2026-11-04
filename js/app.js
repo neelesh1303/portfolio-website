@@ -752,6 +752,18 @@ function initContactTitle() {
   const title = $("#contactTitle");
   if (!title) return;
   const lines = $$(".t-inner", title);
+
+  // size the headline so its widest line exactly fills the column, whatever the words are
+  const fit = () => {
+    title.style.fontSize = "";
+    const base = parseFloat(getComputedStyle(title).fontSize);
+    const widest = Math.max(...lines.map((l) => l.scrollWidth));
+    if (widest > 0) title.style.fontSize = (base * title.clientWidth) / widest + "px";
+  };
+  fit();
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(fit);
+  window.addEventListener("resize", fit);
+
   if (reducedMotion || !("IntersectionObserver" in window)) {
     lines.forEach((l) => (l.style.transform = "none"));
     return;

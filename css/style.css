@@ -2021,6 +2021,12 @@ svg {
   letter-spacing: -0.06em;
 }
 
+/* lines never wrap; JS scales the font so the widest line fills the width */
+.contact-title .t-inner {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 .contact-arrow {
   display: inline-grid;
   place-items: center;
