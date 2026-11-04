@@ -1,813 +1,772 @@
-/**
- * NEELESH KUMAR TRIPATHI — PORTFOLIO CONTROLLER
- * 1. High-Performance Dev Commands & Particle Collision Engine
- *    - Floating dev command tokens (git push, docker up, fastapi, etc.) & glowing dots
- *    - Converges and collides into center hero portrait to form the photo
- *    - Impact shockwaves, burst sparks, and filter unblur reveal
- *    - Ambient post-collision drifting with kinetic mouse interactivity
- *    - Replay collision trigger (button & terminal command)
- * 2. Project Architecture Drawer Toggle
- * 3. Top Dynamic Reading Progress Bar
- * 4. Animated Numerical Metrics Counter
- * 5. Interactive Cyber Terminal (Ctrl+K) with Crimson Theme & Custom Commands
- * 6. Mobile Navigation Drawer & Smooth Scrolling
- */
+/* ==========================================================================
+   NEELESH KUMAR TRIPATHI — PORTFOLIO
+   Interactions: preloader, cursor, reveals, scramble text, counters,
+   spotlight colour reveals, card tilt, project modal, capability filter,
+   gallery, journey progress, terminal (Ctrl+K)
+   ========================================================================== */
+
+const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const $ = (sel, root = document) => root.querySelector(sel);
+const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
 
 document.addEventListener("DOMContentLoaded", () => {
-  initDevCommandCanvas();
-  initProjectArchitectureToggles();
-  initScrollReadingProgress();
-  initMetricsCounterAnimation();
-  initCyberTerminal();
-  initMobileMenu();
-  initSmoothScroll();
   initYear();
+  initHeader();
+  initMobileMenu();
+  initScrollProgress();
+  initAmbient();
+  initCursor();
+  initMagnetic();
+  initPortrait();
+  initWorkCards();
+  initProjectModal();
+  initCapabilities();
+  initGallery();
+  initJourney();
+  initCta();
+  initCopy();
+  initTerminal();
+  runPreloader(() => {
+    document.body.classList.remove("is-loading");
+    document.body.classList.add("is-ready");
+    $$("[data-scramble-load]").forEach((el, i) => setTimeout(() => scramble(el), 150 + i * 120));
+    initReveals();
+    initRoleRotator();
+    demoPortraitSpotlight();
+  });
 });
 
 /* ==========================================================================
-   1. DEV COMMANDS & PARTICLE COLLISION ENGINE
+   PRELOADER
    ========================================================================== */
-function initDevCommandCanvas() {
-  const canvas = document.getElementById("devCommandCanvas");
-  if (!canvas) return;
-  const ctx = canvas.getContext("2d");
-  if (!ctx) return;
+function runPreloader(done) {
+  const loader = $("#preloader");
+  const bar = $("#preloaderBar");
+  const count = $("#preloaderCount");
+  if (!loader || reducedMotion) {
+    if (loader) loader.classList.add("is-done");
+    done();
+    return;
+  }
 
-  const photoImg = document.getElementById("heroPhotoImg");
-  const scanBeam = document.querySelector(".portrait-scanline-beam");
-  const burstFx = document.getElementById("collisionBurstFx");
+  const duration = 1100;
+  const start = performance.now();
+  function tick(now) {
+    const t = clamp((now - start) / duration, 0, 1);
+    const eased = 1 - Math.pow(1 - t, 3);
+    bar.style.transform = `scaleX(${eased})`;
+    count.textContent = String(Math.round(eased * 100)).padStart(3, "0");
+    if (t < 1) requestAnimationFrame(tick);
+    else {
+      loader.classList.add("is-done");
+      setTimeout(done, 250);
+    }
+  }
+  requestAnimationFrame(tick);
+}
 
-  let width = 0;
-  let height = 0;
-  let dpr = 1;
+/* ==========================================================================
+   SCRAMBLE TEXT
+   ========================================================================== */
+const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&*<>/";
 
-  // Short, authentic dev commands aligned with resume stack
-  const COMMAND_LIST = [
-    "git push", "fastapi dev", "redis-cli", "O(log N)", "npm run dev",
-    "curl -X POST", "SELECT *", "g++ -O3", "dijkstra()", "pip install",
-    "uvicorn", "jwt.sign()", "pydantic", "async def", "res.json()",
-    "vector<int>", "git commit", "cosine_sim()", "gemini-1.5", "groq LPU",
-    "MongoDB", "MySQL", "SQLite", "Express", "Python 3.x", "C++ STL",
-    "GitHub Actions", "Redis cache", "RAG pipeline", "FastAPI", "Jest test",
-    "Supertest", "RESTful API", "NumPy", "Sentence-Transformers", "OpenRouter"
+function scramble(el) {
+  if (reducedMotion) return;
+  const final = el.dataset.final || el.textContent;
+  el.dataset.final = final;
+  const frames = 22;
+  let frame = 0;
+
+  function step() {
+    let out = "";
+    for (let i = 0; i < final.length; i++) {
+      const ch = final[i];
+      const settleAt = (i / final.length) * frames * 0.75 + frames * 0.25;
+      if (ch === " " || frame >= settleAt) out += ch;
+      else out += SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+    }
+    el.textContent = out;
+    frame++;
+    if (frame <= frames) requestAnimationFrame(() => setTimeout(step, 28));
+    else el.textContent = final;
+  }
+  step();
+}
+
+/* ==========================================================================
+   SCROLL REVEALS (staggered per batch)
+   ========================================================================== */
+function initReveals() {
+  const items = $$(".reveal");
+  if (reducedMotion || !("IntersectionObserver" in window)) {
+    items.forEach((el) => el.classList.add("in"));
+    return;
+  }
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      const visible = entries.filter((e) => e.isIntersecting);
+      visible.forEach((entry, i) => {
+        const el = entry.target;
+        io.unobserve(el);
+        setTimeout(() => {
+          el.classList.add("in");
+          if (el.hasAttribute("data-scramble")) scramble(el);
+        }, i * 90);
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
+  );
+  items.forEach((el) => io.observe(el));
+
+  // stat counters start when the stats panel appears
+  const counters = $$("[data-count]");
+  const cio = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        cio.unobserve(entry.target);
+        countUp(entry.target);
+      });
+    },
+    { threshold: 0.6 }
+  );
+  counters.forEach((el) => cio.observe(el));
+}
+
+function countUp(el) {
+  const target = parseFloat(el.dataset.count);
+  const decimals = parseInt(el.dataset.decimals || "0", 10);
+  const duration = 1600;
+  const start = performance.now();
+  function tick(now) {
+    const t = clamp((now - start) / duration, 0, 1);
+    const eased = 1 - Math.pow(1 - t, 4);
+    el.textContent = (target * eased).toFixed(decimals);
+    if (t < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+/* ==========================================================================
+   HERO ROLE TYPEWRITER
+   ========================================================================== */
+function initRoleRotator() {
+  const el = $("#roleRotator");
+  if (!el) return;
+  const roles = [
+    "AI Systems Engineer",
+    "Distributed Backend Developer",
+    "LLM Gateway Builder",
+    "Competitive Programmer",
+    "Open to Remote · Onsite · Hybrid",
   ];
+  if (reducedMotion) return;
 
-  const particles = [];
-  const shockwaves = [];
-  const burstSparks = [];
+  let r = 0;
+  let c = roles[0].length;
+  let deleting = true;
+  let wait = 1800;
 
-  const mouse = {
-    x: -3000,
-    y: -3000,
-    radius: 140,
-    active: false,
+  function loop() {
+    const word = roles[r];
+    if (deleting) {
+      c--;
+      el.textContent = word.slice(0, c);
+      if (c === 0) {
+        deleting = false;
+        r = (r + 1) % roles.length;
+        wait = 250;
+      } else wait = 28;
+    } else {
+      const next = roles[r];
+      c++;
+      el.textContent = next.slice(0, c);
+      if (c === next.length) {
+        deleting = true;
+        wait = 2200;
+      } else wait = 55;
+    }
+    setTimeout(loop, wait);
+  }
+  setTimeout(loop, wait);
+}
+
+/* ==========================================================================
+   HEADER, ACTIVE NAV, MOBILE MENU, SCROLL PROGRESS
+   ========================================================================== */
+function initHeader() {
+  const header = $("#siteHeader");
+  const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 30);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  const links = $$(".nav-link");
+  const sections = links.map((l) => document.getElementById(l.dataset.nav)).filter(Boolean);
+  if (!("IntersectionObserver" in window)) return;
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        links.forEach((l) => l.classList.toggle("is-active", l.dataset.nav === entry.target.id));
+      });
+    },
+    { rootMargin: "-45% 0px -50% 0px" }
+  );
+  sections.forEach((s) => io.observe(s));
+}
+
+function initMobileMenu() {
+  const toggle = $("#menuToggle");
+  const menu = $("#mobileMenu");
+  if (!toggle || !menu) return;
+
+  const set = (open) => {
+    document.body.classList.toggle("menu-open", open);
+    document.body.classList.toggle("is-locked", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    menu.setAttribute("aria-hidden", String(!open));
   };
 
-  // State: "floating" -> "colliding" -> "impact" -> "ambient"
-  let animState = "floating";
-  let stateTimer = 0;
-  let targetX = 0;
-  let targetY = 0;
-  let isCollided = false;
-
-  function resize() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    canvas.style.width = width + "px";
-    canvas.style.height = height + "px";
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    updateTargetCoords();
-  }
-
-  function updateTargetCoords() {
-    if (photoImg) {
-      const rect = photoImg.getBoundingClientRect();
-      targetX = rect.left + rect.width / 2;
-      targetY = rect.top + rect.height / 2;
-    } else {
-      targetX = width / 2;
-      targetY = height * 0.45;
-    }
-  }
-
-  function createParticles() {
-    particles.length = 0;
-    const isMobile = width < 768;
-    const commandCount = isMobile ? 22 : 38;
-    const dotCount = isMobile ? 45 : 85;
-
-    // 1. Text Command Particles
-    for (let i = 0; i < commandCount; i++) {
-      const text = COMMAND_LIST[i % COMMAND_LIST.length];
-      const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 0.6 + 0.35;
-
-      particles.push({
-        type: "command",
-        text: text,
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        alpha: Math.random() * 0.45 + 0.45,
-        targetAlpha: 0.85,
-        color: i % 3 === 0 ? "#ef233c" : (i % 3 === 1 ? "#ff4d6d" : "#ffffff"),
-        collided: false,
-        size: isMobile ? 10 : 12,
-      });
-    }
-
-    // 2. Glowing Dot Particles
-    for (let i = 0; i < dotCount; i++) {
-      const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 0.8 + 0.4;
-      const isCrimson = Math.random() > 0.3;
-
-      particles.push({
-        type: "dot",
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        radius: Math.random() * 2 + 1.2,
-        alpha: Math.random() * 0.5 + 0.3,
-        color: isCrimson ? "rgba(239, 35, 60," : "rgba(255, 255, 255,",
-        collided: false,
-      });
-    }
-  }
-
-  let convergenceTimeout = null;
-
-  function triggerAssemblySequence() {
-    animState = "floating";
-    stateTimer = performance.now();
-    isCollided = false;
-
-    if (photoImg) {
-      photoImg.classList.remove("photo-assembled");
-    }
-
-    createParticles();
-
-    // Clear any pending convergence timeout
-    if (convergenceTimeout) clearTimeout(convergenceTimeout);
-
-    // After 650ms of floating, begin convergence towards center photo
-    setTimeout(() => {
-      animState = "colliding";
-
-      // Safety timeout: ensure collision triggers within 1.8s
-      convergenceTimeout = setTimeout(() => {
-        if (!isCollided) {
-          onPhotoCollided();
-        }
-      }, 1800);
-    }, 650);
-  }
-
-  function onPhotoCollided() {
-    if (isCollided) return;
-    isCollided = true;
-    animState = "impact";
-    if (convergenceTimeout) clearTimeout(convergenceTimeout);
-
-    // 1. Reveal Center Photo with Filter, Glow and Scale Transition
-    if (photoImg) {
-      photoImg.classList.add("photo-assembled");
-    }
-    if (scanBeam) {
-      scanBeam.classList.remove("scan");
-      void scanBeam.offsetWidth; // Trigger reflow
-      scanBeam.classList.add("scan");
-    }
-    if (burstFx) {
-      burstFx.classList.remove("active");
-      void burstFx.offsetWidth;
-      burstFx.classList.add("active");
-    }
-
-    // 2. Canvas Shockwave Rings Expanding Outward
-    shockwaves.push({
-      x: targetX,
-      y: targetY,
-      radius: 15,
-      maxRadius: 320,
-      alpha: 1.0,
-      speed: 11,
-      color: "239, 35, 60"
-    });
-    shockwaves.push({
-      x: targetX,
-      y: targetY,
-      radius: 8,
-      maxRadius: 240,
-      alpha: 0.9,
-      speed: 8,
-      color: "255, 255, 255"
-    });
-
-    // 3. Spawn explosive burst sparks
-    for (let i = 0; i < 36; i++) {
-      const angle = Math.random() * Math.PI * 2;
-      const speed = Math.random() * 10 + 4;
-      burstSparks.push({
-        x: targetX,
-        y: targetY,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        radius: Math.random() * 2.5 + 1.5,
-        alpha: 1.0,
-        decay: Math.random() * 0.03 + 0.02,
-        color: Math.random() > 0.4 ? "#ef233c" : "#ffffff"
-      });
-    }
-
-
-    // 4. "after colliding the photo must appear and then the dots (commands) must again start floating dynamically back"
-    // Disperse particles radially outward from collision center back across the canvas
-    setTimeout(() => {
-      animState = "ambient";
-
-      particles.forEach((p) => {
-        // Fully random angle per particle — no index-based bias
-        const angle = Math.random() * Math.PI * 2;
-        // Strong outward burst velocity so they spread back across the screen dynamically
-        const burstSpeed = p.type === "command"
-          ? (Math.random() * 4.5 + 2.8)
-          : (Math.random() * 6.5 + 3.8);
-
-        p.vx = Math.cos(angle) * burstSpeed;
-        p.vy = Math.sin(angle) * burstSpeed;
-        p.x = targetX + Math.cos(angle) * (Math.random() * 30 + 15);
-        p.y = targetY + Math.sin(angle) * (Math.random() * 30 + 15);
-        p.collided = false;
-        p.alpha = p.type === "command" ? (Math.random() * 0.35 + 0.55) : (Math.random() * 0.4 + 0.35);
-      });
-    }, 280);
-  }
-
-  // Animation Loop (60 FPS)
-  function animate() {
-    requestAnimationFrame(animate);
-
-    ctx.clearRect(0, 0, width, height);
-
-    // Dynamic target update in case of scroll or resize
-    updateTargetCoords();
-
-    // 1. Draw Shockwave Rings
-    for (let i = shockwaves.length - 1; i >= 0; i--) {
-      const sw = shockwaves[i];
-      sw.radius += sw.speed;
-      sw.alpha -= 0.025;
-
-      if (sw.alpha <= 0 || sw.radius >= sw.maxRadius) {
-        shockwaves.splice(i, 1);
-        continue;
-      }
-
-      ctx.beginPath();
-      ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(${sw.color}, ${sw.alpha * 0.8})`;
-      ctx.lineWidth = 3;
-      ctx.stroke();
-    }
-
-    // 2. Draw Burst Sparks
-    for (let i = burstSparks.length - 1; i >= 0; i--) {
-      const sp = burstSparks[i];
-      sp.x += sp.vx;
-      sp.y += sp.vy;
-      sp.vx *= 0.94;
-      sp.vy *= 0.94;
-      sp.alpha -= sp.decay;
-
-      if (sp.alpha <= 0) {
-        burstSparks.splice(i, 1);
-        continue;
-      }
-
-      ctx.beginPath();
-      ctx.arc(sp.x, sp.y, sp.radius, 0, Math.PI * 2);
-      ctx.fillStyle = sp.color;
-      ctx.globalAlpha = sp.alpha;
-      ctx.shadowBlur = 8;
-      ctx.shadowColor = sp.color;
-      ctx.fill();
-      ctx.shadowBlur = 0;
-      ctx.globalAlpha = 1;
-    }
-
-    // 3. Update & Draw Particles
-    let collidedCount = 0;
-
-    for (let i = 0; i < particles.length; i++) {
-      const p = particles[i];
-
-      if (animState === "floating" || animState === "ambient") {
-        // Natural dynamic ambient drift
-        p.x += p.vx;
-        p.y += p.vy;
-
-        // Bounce at screen boundaries — flip component and add small random perpendicular nudge
-        if (p.x < 15) {
-          p.x = 15;
-          p.vx = Math.abs(p.vx) + Math.random() * 0.15;
-          p.vy += (Math.random() - 0.5) * 0.4;
-        }
-        if (p.x > width - 15) {
-          p.x = width - 15;
-          p.vx = -(Math.abs(p.vx) + Math.random() * 0.15);
-          p.vy += (Math.random() - 0.5) * 0.4;
-        }
-        if (p.y < 15) {
-          p.y = 15;
-          p.vy = Math.abs(p.vy) + Math.random() * 0.15;
-          p.vx += (Math.random() - 0.5) * 0.4;
-        }
-        if (p.y > height - 15) {
-          p.y = height - 15;
-          p.vy = -(Math.abs(p.vy) + Math.random() * 0.15);
-          p.vx += (Math.random() - 0.5) * 0.4;
-        }
-
-        // Interactive mouse deflection
-        if (mouse.active) {
-          const mdx = p.x - mouse.x;
-          const mdy = p.y - mouse.y;
-          const mdist = Math.hypot(mdx, mdy);
-          if (mdist < mouse.radius && mdist > 0) {
-            const force = (mouse.radius - mdist) / mouse.radius;
-            p.vx += (mdx / mdist) * force * 1.5;
-            p.vy += (mdy / mdist) * force * 1.5;
-          }
-        }
-
-        // Smooth cruise velocity governor: gracefully settle high burst speeds into steady dynamic floating drift
-        const currentSpeed = Math.hypot(p.vx, p.vy);
-        const cruiseSpeed = p.type === "command" ? 0.75 : 0.95;
-        if (currentSpeed > cruiseSpeed) {
-          p.vx *= 0.985;
-          p.vy *= 0.985;
-        } else if (currentSpeed < 0.35) {
-          // Re-seed with a random direction instead of scaling (avoids all particles drifting one way)
-          const freshAngle = Math.random() * Math.PI * 2;
-          const freshSpeed = 0.45 + Math.random() * 0.3;
-          p.vx = Math.cos(freshAngle) * freshSpeed;
-          p.vy = Math.sin(freshAngle) * freshSpeed;
-        }
-
-      } else if (animState === "colliding") {
-        // High-velocity gravitational vortex pull toward center portrait
-        const dx = targetX - p.x;
-        const dy = targetY - p.y;
-        const dist = Math.hypot(dx, dy);
-
-        if (dist > 35) {
-          const pull = Math.min(18, Math.max(3.5, (dist / width) * 25));
-          const swirl = (dist / width) * 4;
-
-          p.vx += (dx / dist) * pull * 0.08 + (-dy / dist) * swirl * 0.04;
-          p.vy += (dy / dist) * pull * 0.08 + (dx / dist) * swirl * 0.04;
-
-          p.vx *= 0.94;
-          p.vy *= 0.94;
-
-          p.x += p.vx * 1.6;
-          p.y += p.vy * 1.6;
-        } else {
-          // Inside collision radius!
-          p.collided = true;
-          collidedCount++;
-          // Float tightly inside the portrait area
-          p.x += (Math.random() - 0.5) * 1.5;
-          p.y += (Math.random() - 0.5) * 1.5;
-        }
-      }
-
-      // Draw Particle
-      if (p.type === "command") {
-        // Draw Dev Command Text
-        ctx.font = `600 ${p.size}px 'JetBrains Mono', monospace`;
-        ctx.fillStyle = p.color;
-        ctx.globalAlpha = p.alpha;
-
-        // Draw indicator dot
-        ctx.beginPath();
-        ctx.arc(p.x - 6, p.y - 3, 2.5, 0, Math.PI * 2);
-        ctx.fillStyle = "#ef233c";
-        ctx.shadowBlur = 6;
-        ctx.shadowColor = "#ef233c";
-        ctx.fill();
-        ctx.shadowBlur = 0;
-
-        // Text label
-        ctx.fillStyle = p.color;
-        ctx.fillText(p.text, p.x, p.y);
-        ctx.globalAlpha = 1;
-
-      } else {
-        // Draw Glowing Dot
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `${p.color} ${p.alpha})`;
-        ctx.shadowBlur = p.color.includes("239") ? 7 : 3;
-        ctx.shadowColor = p.color.includes("239") ? "#ef233c" : "#ffffff";
-        ctx.fill();
-        ctx.shadowBlur = 0;
-      }
-    }
-
-    // Check if majority of particles converged
-    if (animState === "colliding" && collidedCount >= particles.length * 0.75) {
-      onPhotoCollided();
-    }
-  }
-
-  // Event Listeners
+  toggle.addEventListener("click", () => set(!document.body.classList.contains("menu-open")));
+  $$("a", menu).forEach((a) => a.addEventListener("click", () => set(false)));
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") set(false);
+  });
   window.addEventListener("resize", () => {
-    resize();
+    if (window.innerWidth > 920) set(false);
   });
 
-  window.addEventListener("mousemove", (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-    mouse.active = true;
-  });
-
-  window.addEventListener("mouseleave", () => {
-    mouse.active = false;
-  });
-
-  window.addEventListener("click", (e) => {
-    // Shockwave ripple on click
-    shockwaves.push({
-      x: e.clientX,
-      y: e.clientY,
-      radius: 10,
-      maxRadius: 160,
-      alpha: 0.85,
-      speed: 8,
-      color: "239, 35, 60"
+  const termBtn = $("#mobileTerminalBtn");
+  if (termBtn) {
+    termBtn.addEventListener("click", () => {
+      set(false);
+      window.dispatchEvent(new CustomEvent("terminal:open"));
     });
-  });
-
-  // Slowly fade away canvas commands as the user scrolls down
-  function handleScrollFade() {
-    const scrollY = window.scrollY || window.pageYOffset || 0;
-    const fadeDistance = window.innerHeight * 0.75;
-    const opacity = Math.max(0, Math.min(1, 1 - (scrollY / fadeDistance)));
-    canvas.style.opacity = opacity.toFixed(3);
-    if (opacity <= 0.005) {
-      canvas.style.visibility = "hidden";
-    } else {
-      canvas.style.visibility = "visible";
-    }
   }
+}
 
-  window.addEventListener("scroll", handleScrollFade, { passive: true });
-  handleScrollFade();
-
-  // Initialize
-  resize();
-  triggerAssemblySequence();
-  animate();
+function initScrollProgress() {
+  const bar = $("#scrollProgress");
+  let ticking = false;
+  const update = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
+    ticking = false;
+  };
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    },
+    { passive: true }
+  );
+  update();
 }
 
 /* ==========================================================================
-   2. PROJECT ARCHITECTURE DRAWER TOGGLES
+   AMBIENT SPOTLIGHT + CUSTOM CURSOR + MAGNETIC BUTTONS
    ========================================================================== */
-function initProjectArchitectureToggles() {
-  const toggleBtns = document.querySelectorAll(".toggle-arch-btn");
-  if (!toggleBtns.length) return;
+function initAmbient() {
+  if (!finePointer) return;
+  const root = document.documentElement;
+  let raf = 0;
+  window.addEventListener("pointermove", (e) => {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      root.style.setProperty("--mx", e.clientX + "px");
+      root.style.setProperty("--my", e.clientY + "px");
+    });
+  });
+}
 
-  toggleBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const targetId = btn.getAttribute("data-target");
-      const drawer = document.getElementById(targetId);
-      if (!drawer) return;
+function initCursor() {
+  if (!finePointer || reducedMotion) return;
+  const dot = $("#cursorDot");
+  const ring = $("#cursorRing");
+  const label = $("#cursorLabel");
+  document.body.classList.add("has-cursor");
 
-      const isExpanded = drawer.classList.contains("expanded");
-      const icon = btn.querySelector(".toggle-icon");
-      const textSpan = btn.querySelector("span:first-child");
+  let x = innerWidth / 2;
+  let y = innerHeight / 2;
+  let rx = x;
+  let ry = y;
 
-      if (isExpanded) {
-        drawer.classList.remove("expanded");
-        btn.setAttribute("aria-expanded", "false");
-        if (icon) icon.textContent = "+";
-        if (textSpan) textSpan.textContent = "View Architecture";
-      } else {
-        drawer.classList.add("expanded");
-        btn.setAttribute("aria-expanded", "true");
-        if (icon) icon.textContent = "−";
-        if (textSpan) textSpan.textContent = "Hide Architecture";
+  window.addEventListener("pointermove", (e) => {
+    x = e.clientX;
+    y = e.clientY;
+    dot.style.transform = `translate(${x}px, ${y}px)`;
+  });
+
+  (function follow() {
+    rx += (x - rx) * 0.18;
+    ry += (y - ry) * 0.18;
+    ring.style.transform = `translate(${rx}px, ${ry}px)`;
+    requestAnimationFrame(follow);
+  })();
+
+  document.addEventListener("pointerover", (e) => {
+    const labelled = e.target.closest("[data-cursor]");
+    const interactive = e.target.closest("a, button, [role='button'], .shot, .cap, input");
+    ring.classList.toggle("is-label", !!labelled);
+    ring.classList.toggle("is-hover", !!interactive && !labelled);
+    label.textContent = labelled ? labelled.dataset.cursor : "";
+  });
+
+  document.addEventListener("pointerleave", () => {
+    dot.classList.add("is-hidden");
+    ring.classList.add("is-hidden");
+  });
+  document.addEventListener("pointerenter", () => {
+    dot.classList.remove("is-hidden");
+    ring.classList.remove("is-hidden");
+  });
+}
+
+function initMagnetic() {
+  if (!finePointer || reducedMotion) return;
+  $$(".magnetic").forEach((el) => {
+    el.addEventListener("pointermove", (e) => {
+      const r = el.getBoundingClientRect();
+      const dx = e.clientX - (r.left + r.width / 2);
+      const dy = e.clientY - (r.top + r.height / 2);
+      el.style.transform = `translate(${dx * 0.25}px, ${dy * 0.35}px)`;
+    });
+    el.addEventListener("pointerleave", () => {
+      el.style.transform = "";
+    });
+  });
+}
+
+/* ==========================================================================
+   HERO PORTRAIT — mono photo with colour spotlight + parallax
+   ========================================================================== */
+function initPortrait() {
+  const visual = $("#heroVisual");
+  const portrait = $("#portrait");
+  if (!visual || !portrait) return;
+
+  const setSpot = (clientX, clientY) => {
+    const r = portrait.getBoundingClientRect();
+    portrait.style.setProperty("--mx", ((clientX - r.left) / r.width) * 100 + "%");
+    portrait.style.setProperty("--my", ((clientY - r.top) / r.height) * 100 + "%");
+  };
+
+  visual.addEventListener("pointermove", (e) => {
+    setSpot(e.clientX, e.clientY);
+    portrait.classList.add("is-lit");
+  });
+  visual.addEventListener("pointerleave", () => portrait.classList.remove("is-lit"));
+  visual.addEventListener("pointerdown", (e) => {
+    setSpot(e.clientX, e.clientY);
+    portrait.classList.add("is-lit");
+  });
+  if (!finePointer) {
+    visual.addEventListener("pointerup", () => setTimeout(() => portrait.classList.remove("is-lit"), 1400));
+  }
+
+  if (finePointer && !reducedMotion) {
+    window.addEventListener("pointermove", (e) => {
+      const px = (e.clientX / innerWidth - 0.5) * -18;
+      const py = (e.clientY / innerHeight - 0.5) * -12;
+      portrait.style.setProperty("--px", px + "px");
+      portrait.style.setProperty("--py", py + "px");
+    });
+  }
+}
+
+function demoPortraitSpotlight() {
+  const portrait = $("#portrait");
+  if (!portrait || reducedMotion) return;
+  setTimeout(() => {
+    portrait.style.setProperty("--mx", "52%");
+    portrait.style.setProperty("--my", "38%");
+    portrait.classList.add("is-lit");
+    setTimeout(() => {
+      if (!portrait.matches(":hover")) portrait.classList.remove("is-lit");
+    }, 1800);
+  }, 900);
+}
+
+/* ==========================================================================
+   WORK CARDS — spotlight colour reveal + 3D tilt
+   ========================================================================== */
+function initWorkCards() {
+  const cards = $$(".work-card");
+
+  cards.forEach((card) => {
+    card.addEventListener("pointermove", (e) => {
+      const r = card.getBoundingClientRect();
+      const x = e.clientX - r.left;
+      const y = e.clientY - r.top;
+      card.style.setProperty("--mx", x + "px");
+      card.style.setProperty("--my", y + "px");
+      if (finePointer && !reducedMotion) {
+        card.style.setProperty("--rx", (0.5 - y / r.height) * 6 + "deg");
+        card.style.setProperty("--ry", (x / r.width - 0.5) * 8 + "deg");
+      }
+    });
+    card.addEventListener("pointerleave", () => {
+      card.style.setProperty("--rx", "0deg");
+      card.style.setProperty("--ry", "0deg");
+    });
+  });
+
+  // Touch screens have no hover: reveal colour on the card nearest the centre of the screen
+  if (!finePointer && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle("is-center", entry.isIntersecting);
+          if (entry.isIntersecting) {
+            entry.target.style.setProperty("--mx", "50%");
+            entry.target.style.setProperty("--my", "45%");
+          }
+        });
+      },
+      { rootMargin: "-38% 0px -38% 0px" }
+    );
+    cards.forEach((c) => io.observe(c));
+  }
+}
+
+/* ==========================================================================
+   PROJECT MODAL
+   ========================================================================== */
+function initProjectModal() {
+  const modal = $("#projectModal");
+  const content = $("#modalContent");
+  const img = $("#modalImg");
+  const closeBtn = $(".modal-close", modal);
+  let lastFocus = null;
+
+  const open = (card) => {
+    const tpl = $(".work-details", card);
+    content.replaceChildren(tpl.content.cloneNode(true));
+    img.src = $(".work-img-color", card).src;
+    lastFocus = document.activeElement;
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("is-locked");
+    $(".modal-panel", modal).scrollTop = 0;
+    setTimeout(() => closeBtn.focus(), 50);
+  };
+
+  const close = () => {
+    if (!modal.classList.contains("is-open")) return;
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("is-locked");
+    if (lastFocus) lastFocus.focus({ preventScroll: true });
+  };
+
+  $$("[data-project]").forEach((card) => {
+    card.addEventListener("click", () => open(card));
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        open(card);
       }
     });
   });
+
+  $$("[data-close]", modal).forEach((el) => el.addEventListener("click", close));
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close();
+  });
 }
 
 /* ==========================================================================
-   3. READING PROGRESS BAR
+   CAPABILITIES → TOOLS HIGHLIGHT
    ========================================================================== */
-function initScrollReadingProgress() {
-  const bar = document.getElementById("scrollProgress");
-  if (!bar) return;
+function initCapabilities() {
+  const caps = $$(".cap");
+  const panel = $("#toolsPanel");
+  if (!caps.length || !panel) return;
+  const tools = $$(".tool", panel);
+  let pinned = null;
 
+  const show = (domain) => {
+    caps.forEach((c) => c.classList.toggle("is-active", c.dataset.domain === domain));
+    panel.classList.toggle("is-filtering", !!domain);
+    tools.forEach((t) => t.classList.toggle("is-lit", !!domain && t.dataset.d.split(" ").includes(domain)));
+  };
+
+  caps.forEach((cap) => {
+    if (finePointer) {
+      cap.addEventListener("pointerenter", () => show(cap.dataset.domain));
+      cap.addEventListener("pointerleave", () => show(pinned));
+    }
+    cap.addEventListener("focus", () => show(cap.dataset.domain));
+    cap.addEventListener("blur", () => show(pinned));
+    cap.addEventListener("click", () => {
+      pinned = pinned === cap.dataset.domain ? null : cap.dataset.domain;
+      show(pinned);
+    });
+  });
+}
+
+/* ==========================================================================
+   GALLERY ACCORDION
+   ========================================================================== */
+function initGallery() {
+  const shots = $$("#gallery .shot");
+  const activate = (shot) => shots.forEach((s) => s.classList.toggle("is-active", s === shot));
+  shots.forEach((shot) => {
+    if (finePointer) shot.addEventListener("pointerenter", () => activate(shot));
+    shot.addEventListener("click", () => activate(shot));
+  });
+}
+
+/* ==========================================================================
+   JOURNEY PROGRESS LINE
+   ========================================================================== */
+function initJourney() {
+  const track = $("#journey-track");
+  if (!track) return;
+  const steps = $$(".step", track);
   let ticking = false;
 
-  function updateProgress() {
-    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
-    bar.style.width = Math.min(Math.max(progress, 0), 100) + "%";
-  }
+  const update = () => {
+    ticking = false;
+    const r = track.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const p = clamp((vh * 0.8 - r.top) / (r.height + vh * 0.25), 0, 1);
+    track.style.setProperty("--p", p.toFixed(3));
+    steps.forEach((s, i) => s.classList.toggle("is-on", p >= i / steps.length + 0.02));
+  };
 
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        updateProgress();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, { passive: true });
-
-  updateProgress();
-}
-
-/* ==========================================================================
-   4. ANIMATED METRICS COUNTER
-   ========================================================================== */
-function initMetricsCounterAnimation() {
-  const counters = document.querySelectorAll("[data-target]");
-  if (!counters.length) return;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const targetVal = parseInt(el.getAttribute("data-target"), 10);
-        if (isNaN(targetVal)) return;
-
-        let start = 0;
-        const duration = 1600;
-        const startTime = performance.now();
-
-        function step(now) {
-          const elapsed = now - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          // Ease out cubic
-          const easeProgress = 1 - Math.pow(1 - progress, 3);
-          const current = Math.floor(easeProgress * targetVal);
-
-          el.textContent = current + "+";
-
-          if (progress < 1) {
-            requestAnimationFrame(step);
-          } else {
-            el.textContent = targetVal + "+";
-          }
-        }
-
-        requestAnimationFrame(step);
-        observer.unobserve(el);
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
       }
-    });
-  }, { threshold: 0.3 });
-
-  counters.forEach((c) => observer.observe(c));
+    },
+    { passive: true }
+  );
+  window.addEventListener("resize", update);
+  update();
 }
 
 /* ==========================================================================
-   5. INTERACTIVE CYBER TERMINAL (CTRL+K)
+   CTA LIGHT + COPY EMAIL + TOAST
    ========================================================================== */
-function initCyberTerminal() {
-  const modal = document.getElementById("terminalModal");
-  const input = document.getElementById("terminalInput");
-  const output = document.getElementById("terminalOutput");
-  const triggerBtn = document.getElementById("terminalTriggerBtn");
-  const closeBtn = document.getElementById("terminalCloseBtn");
-  const closeX = document.getElementById("terminalCloseX");
+function initCta() {
+  const cta = $("#cta");
+  if (!cta || !finePointer) return;
+  cta.addEventListener("pointermove", (e) => {
+    const r = cta.getBoundingClientRect();
+    cta.style.setProperty("--mx", e.clientX - r.left + "px");
+    cta.style.setProperty("--my", e.clientY - r.top + "px");
+  });
+}
 
+function initCopy() {
+  $$("[data-copy]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const text = btn.dataset.copy;
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+      }
+      toast("Email copied to clipboard");
+    });
+  });
+}
+
+let toastTimer = 0;
+function toast(msg) {
+  const el = $("#toast");
+  el.textContent = msg;
+  el.classList.add("is-show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove("is-show"), 2200);
+}
+
+/* ==========================================================================
+   TERMINAL (CTRL+K)
+   ========================================================================== */
+function initTerminal() {
+  const modal = $("#terminalModal");
+  const input = $("#terminalInput");
+  const output = $("#terminalOutput");
   if (!modal || !input || !output) return;
 
+  const history = [];
+  let histIdx = 0;
   let isOpen = false;
 
-  function openTerminal() {
+  const open = () => {
     modal.classList.add("open");
     modal.setAttribute("aria-hidden", "false");
     isOpen = true;
     setTimeout(() => input.focus(), 100);
-  }
-
-  function closeTerminal() {
+  };
+  const close = () => {
     modal.classList.remove("open");
     modal.setAttribute("aria-hidden", "true");
     isOpen = false;
-  }
+  };
 
-  if (triggerBtn) triggerBtn.addEventListener("click", openTerminal);
-  if (closeBtn) closeBtn.addEventListener("click", closeTerminal);
-  if (closeX) closeX.addEventListener("click", closeTerminal);
-
+  $("#terminalTriggerBtn").addEventListener("click", open);
+  $("#terminalClose").addEventListener("click", close);
+  window.addEventListener("terminal:open", open);
   modal.addEventListener("click", (e) => {
-    if (e.target === modal) closeTerminal();
+    if (e.target === modal) close();
   });
-
   window.addEventListener("keydown", (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
       e.preventDefault();
-      if (isOpen) closeTerminal();
-      else openTerminal();
-    } else if (e.key === "Escape" && isOpen) {
-      closeTerminal();
-    }
+      isOpen ? close() : open();
+    } else if (e.key === "Escape" && isOpen) close();
   });
 
-  function printLine(html) {
+  const print = (html) => {
     const line = document.createElement("div");
-    line.className = "term-line-output";
+    line.className = "term-line";
     line.innerHTML = html;
     output.appendChild(line);
     output.scrollTop = output.scrollHeight;
-  }
+  };
 
-  function executeCommand(raw) {
-    const cmd = raw.trim().toLowerCase();
-    printLine(`<span class="terminal-prompt">neelesh@dev:~$</span> ${escapeHTML(raw)}`);
+  const link = (href, text, external = true) =>
+    `<a href="${href}"${external ? ' target="_blank" rel="noopener"' : ""}>${text}</a>`;
 
-    switch (cmd) {
-      case "help":
-        printLine(`
-Available System Commands:
-  &bull; <span class="term-accent">projects</span> &mdash; View production architectures &amp; live links
-  &bull; <span class="term-accent">skills</span> &mdash; Inspect C++, Python, Gemini API &amp; systems stack
-  &bull; <span class="term-accent">metrics</span> &mdash; View LeetCode rating &amp; problem breakdown
-  &bull; <span class="term-accent">resume</span> &mdash; Download official resume (PDF)
-  &bull; <span class="term-accent">contact</span> &mdash; Reach out via email, phone, or LinkedIn
-  &bull; <span class="term-accent">clear</span> &mdash; Clean terminal output screen
-        `);
-        break;
+  const goto = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return false;
+    close();
+    el.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth" });
+    return true;
+  };
 
-      case "projects":
-        printLine(`
-[01] Crackd &mdash; AI Placement &amp; Roadmap Platform (MERN, Gemini RAG, Redis Cache)
-     <a href="https://crackd-placement-assistance-platfor.vercel.app/" target="_blank" style="color:#ef233c;text-decoration:underline;">Live App ↗</a> | <a href="https://github.com/neelesh1303/Crackd-Placement-Assistance-Platform/" target="_blank" style="color:#a1a1aa;text-decoration:underline;">GitHub ↗</a>
+  const commands = {
+    help: () =>
+      print(`Available commands:
+  <span class="term-accent">about</span>      who I am
+  <span class="term-accent">projects</span>   production systems &amp; links
+  <span class="term-accent">skills</span>     languages, AI, backend, data, devops
+  <span class="term-accent">metrics</span>    DSA &amp; academic numbers
+  <span class="term-accent">contact</span>    email, phone &amp; socials
+  <span class="term-accent">resume</span>     download CV (PDF)
+  <span class="term-accent">goto</span> <span class="term-muted">&lt;work|capabilities|about|journey|contact&gt;</span>
+  <span class="term-accent">clear</span>      clean the screen
+  <span class="term-accent">exit</span>       close terminal`),
 
-[02] LLM Cost Optimizer &mdash; Multi-Tier Gateway (FastAPI, Sentence-Transformers, Groq)
-     <a href="https://github.com/neelesh1303/LLM_COST_AND_LATENCY_OPTIMIZER" target="_blank" style="color:#ef233c;text-decoration:underline;">GitHub Repo ↗</a> (~4ms cache latency, $0 token cost)
+    about: () =>
+      print(`Neelesh Kumar Tripathi — Aspiring Software Developer &amp; AI Engineer
+B.E. Information Science @ NIE Mysore (CGPA 8.60) · Mysuru, India
+Builds distributed backends, LLM gateways and algorithmic systems.
+Looking for Remote · Onsite · Hybrid roles in India.`),
 
-[03] SignBridge &mdash; Bidirectional Sign &harr; Speech AI (DevJams VIT 4th Winner)
-     <a href="https://github.com/neelesh1303" target="_blank" style="color:#ef233c;text-decoration:underline;">GitHub Repo ↗</a> (OpenCV, MediaPipe, Whisper ASR)
+    whoami: () => commands.about(),
 
-[04] FinNIE &mdash; Campus Lost &amp; Found Tracker (Flask, MySQL, ~10ms query latency)
-     <a href="https://github.com/neelesh1303/FinNIE-lost-and-found-item-tracker" target="_blank" style="color:#ef233c;text-decoration:underline;">GitHub Repo ↗</a>
-        `);
-        break;
+    projects: () =>
+      print(`[01] Crackd — AI placement &amp; roadmap platform (MERN, Gemini RAG, Redis)
+     ${link("https://crackd-placement-assistance-platfor.vercel.app/", "live ↗")}  ${link("https://github.com/neelesh1303/Crackd-Placement-Assistance-Platform/", "github ↗")}
+[02] LLM Cost &amp; Latency Optimizer — FastAPI gateway, ~4ms cache hits at $0
+     ${link("https://github.com/neelesh1303/LLM_COST_AND_LATENCY_OPTIMIZER", "github ↗")}
+[03] SignBridge — Sign ↔ speech AI, 4th at DevJams VIT (100+ teams)
+     ${link("https://github.com/neelesh1303", "github ↗")}
+[04] FinNIE — Campus lost &amp; found (Flask, MySQL, ~10ms queries)
+     ${link("https://github.com/neelesh1303/FinNIE-lost-and-found-item-tracker", "github ↗")}`),
 
-      case "skills":
-        printLine(`
-Engineering Capabilities:
-  &bull; Core: C++ (STL), Python 3.x, JavaScript (ES6+), SQL, Java, C
-  &bull; AI / LLM: Gemini API, Sentence-Transformers, Groq LPUs, RAG, Semantic Caching
-  &bull; Backend: FastAPI, Express.js, Node.js, Flask, REST APIs, JWT Auth
-  &bull; Databases: Redis (Cache-Aside), MongoDB, MySQL (~10ms), SQLite Vector Store
-  &bull; DevOps: Git, GitHub Actions (CI/CD), Docker, Jest, Supertest, Postman
-        `);
-        break;
+    skills: () =>
+      print(`Languages  C++ (STL), Python, JavaScript, SQL, Java, C, NumPy, Pydantic
+AI / LLM   Gemini API, Groq, OpenRouter, RAG, Embeddings, Semantic Caching
+Backend    Node.js, Express.js, FastAPI, Flask, REST APIs, JWT Auth
+Data       Redis, MongoDB, MySQL, SQLite
+Tooling    Git, GitHub Actions, Jest, Supertest, Postman, Vercel, Render`),
 
-      case "metrics":
-        printLine(`
-Algorithmic &amp; Academic Metrics:
-  &bull; 500+ DSA Problems Solved (LeetCode, GeeksforGeeks, Codolio)
-  &bull; ~1533 LeetCode Global Contest Rating
-  &bull; 4th Place at DevJams VIT National Hackathon (100+ teams)
-  &bull; 8.60 / 10 CGPA @ The National Institute of Engineering, Mysuru
-        `);
-        break;
+    metrics: () =>
+      print(`500+    DSA problems solved (LeetCode, GeeksforGeeks, Codolio)
+~1533   LeetCode contest rating
+4th     DevJams VIT national hackathon (100+ teams)
+8.60    CGPA @ The National Institute of Engineering, Mysuru`),
 
-      case "resume":
-      case "cv":
-        printLine(`[SUCCESS] Initiating resume PDF download: <span class="term-accent">Neelesh_Kumar_Tripathi_Resume.pdf</span>`);
-        const dlLink = document.createElement("a");
-        dlLink.href = "assets/Neelesh_Kumar_Tripathi_Resume.pdf";
-        dlLink.download = "Neelesh_Kumar_Tripathi_Resume.pdf";
-        dlLink.target = "_blank";
-        document.body.appendChild(dlLink);
-        dlLink.click();
-        document.body.removeChild(dlLink);
-        break;
+    contact: () =>
+      print(`email     ${link("mailto:neeleshtripathi36@gmail.com", "neeleshtripathi36@gmail.com", false)}
+phone     ${link("tel:+916387974286", "+91 6387974286", false)}
+linkedin  ${link("https://linkedin.com/in/neelesh-kumar-tripathi", "linkedin.com/in/neelesh-kumar-tripathi")}
+github    ${link("https://github.com/neelesh1303", "github.com/neelesh1303")}
+codolio   ${link("https://codolio.com/profile/neelesh1303", "codolio.com/profile/neelesh1303")}`),
 
-      case "contact":
-        printLine(`
-Direct Channels:
-  &bull; Email: <a href="mailto:neeleshtripathi36@gmail.com" style="color:#ef233c;">neeleshtripathi36@gmail.com</a>
-  &bull; Phone: <a href="tel:+916387974286" style="color:#ef233c;">+91 6387974286</a>
-  &bull; LinkedIn: <a href="https://linkedin.com/in/neelesh-kumar-tripathi" target="_blank" style="color:#ef233c;">linkedin.com/in/neelesh-kumar-tripathi</a>
-  &bull; GitHub: <a href="https://github.com/neelesh1303" target="_blank" style="color:#ef233c;">github.com/neelesh1303</a>
-  &bull; Codolio: <a href="https://codolio.com/profile/neelesh1303" target="_blank" style="color:#ef233c;">codolio.com/profile/neelesh1303</a>
-        `);
-        break;
+    resume: () => {
+      print(`Downloading <span class="term-accent">Neelesh_Kumar_Tripathi_Resume.pdf</span> …`);
+      const a = document.createElement("a");
+      a.href = "assets/Neelesh_Kumar_Tripathi_Resume.pdf";
+      a.download = "Neelesh_Kumar_Tripathi_Resume.pdf";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    },
+    cv: () => commands.resume(),
 
-      case "clear":
-      case "cls":
-        output.innerHTML = "";
-        break;
+    github: () => window.open("https://github.com/neelesh1303", "_blank", "noopener"),
+    linkedin: () => window.open("https://linkedin.com/in/neelesh-kumar-tripathi", "_blank", "noopener"),
 
-      case "exit":
-      case "quit":
-        closeTerminal();
-        break;
+    "sudo hire-me": () =>
+      print(`[sudo] permission granted ✓
+Opening a direct line… ${link("mailto:neeleshtripathi36@gmail.com", "neeleshtripathi36@gmail.com", false)}`),
 
-      case "":
-        break;
+    clear: () => output.replaceChildren(),
+    cls: () => commands.clear(),
+    exit: () => close(),
+    quit: () => close(),
+  };
 
-      default:
-        printLine(`Command not recognized: <span style="color:#ef233c;">${escapeHTML(raw)}</span>. Type <span class="term-accent">help</span> for commands.`);
-        break;
+  const run = (raw) => {
+    const cmd = raw.trim().toLowerCase().replace(/\s+/g, " ");
+    if (!cmd) return;
+    history.push(raw);
+    histIdx = history.length;
+    print(`<span class="terminal-prompt">~$</span> ${escapeHTML(raw)}`);
+
+    if (cmd.startsWith("goto ")) {
+      if (!goto(cmd.slice(5))) print(`No section named "${escapeHTML(cmd.slice(5))}".`);
+      return;
     }
-  }
+    if (commands[cmd]) commands[cmd]();
+    else print(`command not found: ${escapeHTML(raw)} — type <span class="term-accent">help</span>`);
+  };
 
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
-      const val = input.value;
+      run(input.value);
       input.value = "";
-      executeCommand(val);
+    } else if (e.key === "ArrowUp" && history.length) {
+      e.preventDefault();
+      histIdx = Math.max(0, histIdx - 1);
+      input.value = history[histIdx];
+    } else if (e.key === "ArrowDown" && history.length) {
+      e.preventDefault();
+      histIdx = Math.min(history.length, histIdx + 1);
+      input.value = history[histIdx] || "";
     }
   });
 
-  function escapeHTML(str) {
-    return str.replace(/[&<>'"]/g, 
-      tag => ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        "'": '&#39;',
-        '"': '&quot;'
-      }[tag] || tag)
-    );
-  }
+  $$("#terminalChips button").forEach((b) => b.addEventListener("click", () => run(b.dataset.cmd)));
 }
 
-/* ==========================================================================
-   6. MOBILE MENU & SMOOTH SCROLLING
-   ========================================================================== */
-function initMobileMenu() {
-  const btn = document.getElementById("mobileMenuBtn");
-  const drawer = document.getElementById("mobileDrawer");
-  const closeBtn = document.getElementById("mobileCloseBtn");
-  const links = document.querySelectorAll(".mobile-nav-link");
-
-  if (!btn || !drawer) return;
-
-  function open() {
-    drawer.classList.add("open");
-    drawer.setAttribute("aria-hidden", "false");
-    btn.setAttribute("aria-expanded", "true");
-  }
-
-  function close() {
-    drawer.classList.remove("open");
-    drawer.setAttribute("aria-hidden", "true");
-    btn.setAttribute("aria-expanded", "false");
-  }
-
-  btn.addEventListener("click", open);
-  if (closeBtn) closeBtn.addEventListener("click", close);
-
-  links.forEach(l => l.addEventListener("click", close));
-}
-
-function initSmoothScroll() {
-  const links = document.querySelectorAll('a[href^="#"]');
-  links.forEach(link => {
-    link.addEventListener("click", (e) => {
-      const href = link.getAttribute("href");
-      if (href === "#") return;
-      const target = document.querySelector(href);
-      if (target) {
-        e.preventDefault();
-        const headerOffset = 70;
-        const elementPosition = target.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth"
-        });
-      }
-    });
-  });
+function escapeHTML(str) {
+  return str.replace(/[&<>'"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[c]));
 }
 
 function initYear() {
-  const yearEl = document.getElementById("year");
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
+  const y = $("#year");
+  if (y) y.textContent = new Date().getFullYear();
 }
