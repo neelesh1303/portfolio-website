@@ -325,7 +325,8 @@ svg {
 .intro-meta-tl { top: 26px; left: 28px; }
 .intro-meta-tr { top: 26px; right: 28px; font-variant-numeric: tabular-nums; }
 .intro-caption-l { bottom: 30px; left: 28px; }
-.intro-caption-r { bottom: 30px; right: 28px; flex-direction: column; align-items: flex-end; gap: 2px; }
+.intro-caption-r { bottom: 30px; right: 28px; gap: 8px; }
+.intro-caption svg { font-size: 14px; color: var(--text); }
 
 .intro-meta .dot {
   background: #fff;
@@ -689,19 +690,21 @@ svg {
   gap: 12px;
 }
 
-.header-date {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+.header-loc {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   margin-right: calc(40 * var(--u));
-  font-size: max(11px, calc(13 * var(--u)));
-  line-height: 1.35;
+  font-size: max(12px, calc(14 * var(--u)));
   color: var(--text);
-  font-variant-numeric: tabular-nums;
   transition: color 0.4s;
 }
 
-.site-header.on-paper .header-date {
+.header-loc svg {
+  font-size: 1.15em;
+}
+
+.site-header.on-paper .header-loc {
   color: var(--ink);
 }
 
@@ -812,17 +815,6 @@ svg {
 .js .hero .t-inner,
 .js .contact .t-inner {
   transform: translateY(110%);
-}
-
-.hero-year {
-  position: absolute;
-  top: 0.12em;
-  left: calc(100% + 10 * var(--u));
-  font-family: var(--f-ui);
-  font-size: max(12px, calc(15 * var(--u)));
-  font-weight: 500;
-  letter-spacing: 0;
-  white-space: nowrap;
 }
 
 .hero-about {
@@ -2592,7 +2584,7 @@ svg {
     padding-top: 10px;
   }
 
-  .header-date {
+  .header-loc {
     display: none;
   }
 

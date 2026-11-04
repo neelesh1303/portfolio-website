@@ -15,7 +15,6 @@ const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
 document.addEventListener("DOMContentLoaded", () => {
   initYear();
-  initClock();
   initCursor();
   initScrollProgress();
   initHeader();
@@ -67,9 +66,11 @@ function initIntro(onEnter) {
   let zooming = false;
 
   buildKeyboard(keyboard);
+  // the dive starts as soon as the install command is entered;
+  // the install output keeps streaming on the screen while it zooms
   runBootScript($("#screenBody"), keyboard, pct, () => {
     intro.classList.add("is-ready");
-    setTimeout(zoom, 650);
+    zoom();
   });
 
   const measure = () => {
@@ -180,7 +181,7 @@ function pressKey(keyboard, ch) {
   setTimeout(() => key.classList.remove("is-down"), 110);
 }
 
-async function runBootScript(body, keyboard, pct, done) {
+async function runBootScript(body, keyboard, pct, onEntered) {
   const PROMPT = '<span class="t-user">neelesh@portfolio</span> <span class="t-path">~ %</span> ';
 
   const line = (html = "", cls = "") => {
@@ -212,6 +213,7 @@ async function runBootScript(body, keyboard, pct, done) {
 
   line('<span class="t-dim">Last login: ' + new Date().toDateString() + " on ttys001</span>");
   await type("npm install portfolio");
+  onEntered();
 
   line('<span class="t-dim">npm</span> <span class="t-tag">http</span> <span class="t-dim">fetch GET 200 registry.npmjs.org/@neelesh/portfolio</span>');
 
@@ -243,7 +245,6 @@ async function runBootScript(body, keyboard, pct, done) {
   line('<span class="t-dim">&gt; portfolio@2027.0.0 start</span>');
   await sleep(200);
   line('<span class="t-ok">✓ ready</span> <span class="t-dim">— launching portfolio…</span><span class="caret"></span>');
-  done();
 }
 
 /* ==========================================================================
@@ -385,24 +386,6 @@ function initHeader() {
   });
 
   $("#brandPlate").addEventListener("click", () => window.dispatchEvent(new CustomEvent("terminal:open")));
-}
-
-function initClock() {
-  const els = [$("#headerClock"), $("#introClock")].filter(Boolean);
-  const fmt = () => {
-    try {
-      const t = new Date().toLocaleTimeString("en-GB", {
-        timeZone: "Asia/Kolkata",
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-      els.forEach((el) => (el.textContent = `IST ${t}`));
-    } catch {
-      /* time zone unsupported: keep placeholder */
-    }
-  };
-  fmt();
-  setInterval(fmt, 15000);
 }
 
 function initScrollProgress() {
