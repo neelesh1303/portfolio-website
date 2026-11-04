@@ -8,22 +8,24 @@
   <meta name="description"
     content="Portfolio of Neelesh Kumar Tripathi — Software Engineer specializing in AI Systems, LLM Semantic Routing, Distributed Backends, and Algorithmic Problem Solving. B.E. Information Science @ NIE Mysore (CGPA: 8.60).">
   <meta name="author" content="Neelesh Kumar Tripathi">
-  <meta name="theme-color" content="#0b0c0f">
+  <meta name="theme-color" content="#000000">
   <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230b0c0f'/><text x='50' y='68' font-family='Arial Black,Arial' font-weight='900' font-size='46' text-anchor='middle' fill='%23e6e7ea'>NT</text></svg>">
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23111'/><text x='50' y='67' font-family='Arial Black,Arial' font-weight='900' font-size='44' text-anchor='middle' fill='%23dadada'>NT</text></svg>">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Inter+Tight:wght@100..900&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <script>document.documentElement.classList.add("js");</script>
+  <script>
+    document.documentElement.classList.add("js");
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("reduced");
+  </script>
 </head>
 
-<body class="is-loading">
+<body>
 
-  <!-- ICON SPRITE -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v12m-5-5 5 5 5-5M5 20h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -46,199 +48,197 @@
     <symbol id="i-layers" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2.5 2 7.5l10 5 10-5z"/><path d="m2 12.5 10 5 10-5M2 17l10 5 10-5"/></g></symbol>
     <symbol id="i-terminal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="19" height="16" rx="2"/><path d="m7 9 3 3-3 3M12.5 15H17"/></g></symbol>
     <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="8.5" y="8.5" width="12" height="12" rx="2"/><path d="M15.5 8.5V5.5a2 2 0 0 0-2-2h-8a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h3"/></g></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-asterisk" viewBox="0 0 24 24"><path d="M12 3v18M4.2 7.5l15.6 9M4.2 16.5l15.6-9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-dots" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><circle cx="7" cy="17" r="3"/><circle cx="17" cy="17" r="3"/></g></symbol>
   </svg>
 
-  <!-- PRELOADER -->
-  <div class="preloader" id="preloader" aria-hidden="true">
-    <div class="preloader-inner">
-      <div class="preloader-mark">NT</div>
-      <div class="preloader-bar"><span id="preloaderBar"></span></div>
-      <div class="preloader-meta"><span>BOOTING PORTFOLIO</span><span id="preloaderCount">000</span></div>
-    </div>
-  </div>
-
-  <!-- AMBIENT LAYERS -->
-  <div class="ambient" aria-hidden="true">
-    <div class="ambient-spot"></div>
-    <div class="ambient-grid"></div>
-    <div class="ambient-grain"></div>
-  </div>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
-  <div class="cursor-ring" id="cursorRing" aria-hidden="true"><span id="cursorLabel"></span></div>
+  <div class="cursor" id="cursor" aria-hidden="true"><span id="cursorLabel"></span></div>
 
-  <!-- HEADER -->
+  <!-- ============ INTRO: the computer that installs the portfolio ============ -->
+  <section class="intro" id="intro" aria-label="Intro animation">
+    <div class="intro-stage" id="introStage">
+      <div class="intro-grid" aria-hidden="true"></div>
+
+      <div class="intro-meta intro-meta-tl"><span class="dot"></span>NEELESH.OS — BOOT SEQUENCE</div>
+      <div class="intro-meta intro-meta-tr"><span id="introPct">000</span>% INSTALLED</div>
+
+      <div class="computer" id="computer" aria-hidden="true">
+        <div class="monitor">
+          <div class="bezel">
+            <div class="screen" id="screen">
+              <div class="screen-bar">
+                <span class="screen-dots"><i></i><i></i><i></i></span>
+                <span>zsh — neelesh@portfolio: ~</span>
+                <span class="screen-bar-r">80×24</span>
+              </div>
+              <div class="screen-body" id="screenBody"></div>
+              <div class="screen-scan"></div>
+              <div class="screen-glare"></div>
+              <div class="screen-paper" id="screenPaper"></div>
+            </div>
+          </div>
+          <div class="monitor-chin"><span class="chin-mark">NT</span><span class="chin-led"></span></div>
+        </div>
+        <div class="stand-neck"></div>
+        <div class="stand-base"></div>
+        <div class="desk-shadow"></div>
+        <div class="keyboard" id="keyboard"></div>
+      </div>
+
+      <div class="intro-caption intro-caption-l">
+        <span class="mono-muted">(01)</span>
+        <span>npm install portfolio</span>
+      </div>
+      <button type="button" class="intro-skip" id="introSkip">
+        <span class="intro-skip-ring"><svg><use href="#i-down" /></svg></span>
+        <span>Scroll to enter</span>
+      </button>
+      <div class="intro-caption intro-caption-r">
+        <span>Mysuru, India</span>
+        <span class="mono-muted" id="introClock">IST --:--</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HEADER ============ -->
   <header class="site-header" id="siteHeader">
-    <a href="#hero" class="logo" aria-label="Neelesh Kumar Tripathi — home">
-      <span class="logo-mark">NT</span>
-      <span class="logo-text">Neelesh<br>Tripathi</span>
-    </a>
-
-    <nav class="nav" aria-label="Main navigation">
-      <a href="#work" class="nav-link" data-nav="work">Work</a>
-      <a href="#capabilities" class="nav-link" data-nav="capabilities">Capabilities</a>
-      <a href="#about" class="nav-link" data-nav="about">About</a>
-      <a href="#journey" class="nav-link" data-nav="journey">Journey</a>
-      <a href="#contact" class="nav-link" data-nav="contact">Contact</a>
+    <nav class="seg-nav" id="segNav" aria-label="Main navigation">
+      <span class="seg-pill" id="segPill" aria-hidden="true"></span>
+      <a href="#hero" class="seg-link is-active" data-nav="hero">Home</a>
+      <a href="#work" class="seg-link" data-nav="work">Work</a>
+      <a href="#stack" class="seg-link" data-nav="stack">Stack</a>
+      <a href="#journey" class="seg-link" data-nav="journey">Journey</a>
     </nav>
 
-    <div class="header-actions">
-      <button type="button" class="cli-btn" id="terminalTriggerBtn" title="Open terminal (Ctrl+K)" data-cursor="CLI">
-        <svg><use href="#i-terminal" /></svg><span class="cli-kbd">Ctrl K</span>
+    <div class="header-right">
+      <div class="header-date"><span>Mysuru, India</span><span id="headerClock">IST --:--</span></div>
+      <button type="button" class="icon-btn" id="terminalTriggerBtn" title="Open terminal (Ctrl+K)" aria-label="Open terminal">
+        <svg><use href="#i-terminal" /></svg>
       </button>
-      <a href="#contact" class="btn-pill magnetic">Let's talk <svg><use href="#i-arrow" /></svg></a>
-      <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span>
-      </button>
+      <a href="#contact" class="btn-black btn-contact">
+        <span class="btn-contact-label">Let's talk</span><svg><use href="#i-arrow" /></svg>
+      </a>
     </div>
   </header>
 
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <nav class="mobile-menu-links">
-      <a href="#work"><span>01</span>Work</a>
-      <a href="#capabilities"><span>02</span>Capabilities</a>
-      <a href="#about"><span>03</span>About</a>
-      <a href="#journey"><span>04</span>Journey</a>
-      <a href="#contact"><span>05</span>Contact</a>
-    </nav>
-    <div class="mobile-menu-foot">
-      <a href="assets/Neelesh_Kumar_Tripathi_Resume.pdf" download="Neelesh_Kumar_Tripathi_Resume.pdf" class="btn-chrome">
-        Download resume <svg><use href="#i-down" /></svg>
-      </a>
-      <button type="button" class="btn-ghost" id="mobileTerminalBtn"><svg><use href="#i-terminal" /></svg> Open terminal</button>
-      <div class="mobile-menu-socials">
-        <a href="https://github.com/neelesh1303" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://linkedin.com/in/neelesh-kumar-tripathi" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://codolio.com/profile/neelesh1303" target="_blank" rel="noopener">Codolio</a>
-      </div>
-    </div>
-  </div>
-
   <main>
 
-    <!-- ============ HERO ============ -->
+    <!-- ============ HERO (paper) ============ -->
     <section class="hero" id="hero">
-      <canvas class="hero-field" id="heroField" aria-hidden="true"></canvas>
-      <div class="hero-inner">
-        <div class="hero-copy">
-          <p class="eyebrow reveal">Hello, I'm Neelesh Kumar Tripathi</p>
-          <h1 class="hero-title" aria-label="Software Developer">
-            <span class="hero-line"><span class="chrome-text" data-scramble-load>SOFTWARE</span></span>
-            <span class="hero-line"><span class="chrome-text" data-scramble-load>DEVELOPER</span></span>
-          </h1>
-          <p class="hero-role reveal">
-            <span class="hero-role-prefix">&gt;</span>
-            <span id="roleRotator">AI Systems Engineer</span><span class="caret"></span>
-          </p>
-          <p class="hero-bio reveal">
-            I design and build high-performance distributed backends, intelligent LLM gateways, and robust algorithmic
-            architectures, with 500+ DSA problems solved.
-          </p>
-          <div class="hero-ctas reveal">
-            <a href="#work" class="btn-chrome magnetic">View my work <svg><use href="#i-arrow" /></svg></a>
-            <a href="assets/Neelesh_Kumar_Tripathi_Resume.pdf" download="Neelesh_Kumar_Tripathi_Resume.pdf"
-              class="btn-link">Download resume <svg><use href="#i-down" /></svg></a>
-          </div>
+      <div class="hero-photo" id="heroPhoto">
+        <div class="portrait" id="portrait">
+          <img src="assets/images/neelesh_portrait.webp" alt="Neelesh Kumar Tripathi" class="portrait-mono"
+            fetchpriority="high">
+          <img src="assets/images/neelesh_portrait.webp" alt="" aria-hidden="true" class="portrait-color">
         </div>
+        <button type="button" class="brand-plate h-in" id="brandPlate" aria-label="Open terminal">
+          <span class="plate-mark" aria-hidden="true"><i></i><i></i></span>
+          <span class="plate-name">NEELESH</span>
+          <span class="plate-menu" aria-hidden="true"><i></i><i></i></span>
+        </button>
+      </div>
 
-        <div class="hero-visual" id="heroVisual">
-          <div class="hero-orbit" aria-hidden="true">
-            <svg viewBox="0 0 400 400">
-              <circle cx="200" cy="200" r="196" class="orbit-ring" />
-              <circle cx="200" cy="4" r="3.2" class="orbit-node" />
-            </svg>
+      <h1 class="hero-title" aria-label="Neelesh Tripathi">
+        <span class="t-line"><span class="t-inner">NEELESH</span></span>
+        <span class="t-line"><span class="t-inner">TRIPATHI</span></span>
+        <span class="hero-year h-in">(&rsquo;27)</span>
+      </h1>
+
+      <div class="hero-about">
+        <p class="label h-in"><span class="dot"></span>(ABOUT)</p>
+        <p class="hero-about-copy h-in">Software developer &amp; AI engineer building distributed backends,
+          LLM gateways and algorithmic systems.</p>
+        <div class="hero-ctas h-in">
+          <a href="#work" class="btn-black">View work <svg><use href="#i-arrow" /></svg></a>
+          <a href="assets/Neelesh_Kumar_Tripathi_Resume.pdf" download="Neelesh_Kumar_Tripathi_Resume.pdf"
+            class="btn-ghost-dark">Resume <svg><use href="#i-down" /></svg></a>
+        </div>
+      </div>
+
+      <div class="hero-stats h-in">
+        <div class="hs-card hs-dark">
+          <div class="hs-num"><span data-count="500">0</span>+</div>
+          <div class="hs-label">DSA problems solved</div>
+          <div class="hs-marks">
+            <span><b>LC</b>LeetCode</span>
+            <span><b>GFG</b>GeeksforGeeks</span>
+            <span><b>CD</b>Codolio</span>
           </div>
-          <svg class="hero-spark" aria-hidden="true"><use href="#i-spark" /></svg>
-          <div class="hero-aura" aria-hidden="true"></div>
-          <div class="portrait" id="portrait">
-            <img src="assets/images/neelesh_portrait.webp" alt="Neelesh Kumar Tripathi" class="portrait-mono" loading="eager"
-              fetchpriority="high">
-            <img src="assets/images/neelesh_portrait.webp" alt="" aria-hidden="true" class="portrait-color">
-          </div>
-          <div class="hero-chip hero-chip-loc">
-            <span class="pulse"></span> Mysuru, India
-          </div>
-          <a href="#contact" class="hero-available">
-            <span class="hero-available-top">Available for</span>
-            <span class="hero-available-big">FULL-TIME</span>
-            <span class="hero-available-sub">Remote · Onsite · Hybrid <svg><use href="#i-arrow" /></svg></span>
+          <a href="https://codolio.com/profile/neelesh1303" target="_blank" rel="noopener" class="hs-bar">
+            Codolio profile <svg><use href="#i-arrow" /></svg>
           </a>
         </div>
+        <div class="hs-card hs-photo">
+          <img src="assets/images/llm-gateway.jpg" alt="" loading="lazy">
+          <div class="hs-photo-top"><span>Contest</span><span>LeetCode</span></div>
+          <div class="hs-photo-bottom">
+            <div class="hs-num">~<span data-count="1533">0</span></div>
+            <div class="hs-label">Global contest rating</div>
+          </div>
+        </div>
       </div>
 
-      <div class="scroll-cue" aria-hidden="true"><span></span>Scroll</div>
+      <div class="hero-right">
+        <div class="glass-pill h-in"><span class="check-disc"><svg><use href="#i-check" /></svg></span>Open to work</div>
+
+        <p class="hero-available h-in">Remote · Onsite<br><span class="dot"></span> Hybrid in India</p>
+
+        <button type="button" class="feature h-in" data-open="0" aria-label="Open Crackd case study">
+          <span class="feature-head">
+            <span class="label">Featured</span>
+            <span class="feature-name">Crackd</span>
+            <span class="label">[Live]</span>
+          </span>
+          <span class="feature-img">
+            <img src="assets/images/crackd.jpg" alt="" loading="lazy">
+            <span class="feature-arrow"><svg><use href="#i-arrow" /></svg></span>
+          </span>
+          <span class="feature-progress"><span id="featureProgress"></span></span>
+        </button>
+      </div>
+
+
+      <div class="hero-logos h-in" aria-label="Core stack">
+        <span>C++</span><span>Python</span><span>FastAPI</span><span>Redis</span>
+      </div>
     </section>
 
-    <!-- ============ STATS ============ -->
-    <section class="stats-wrap" aria-label="Key metrics">
-      <div class="stats glass reveal">
-        <div class="stat">
-          <svg class="stat-icon"><use href="#i-code" /></svg>
-          <div class="stat-num"><span data-count="500">0</span>+</div>
-          <div class="stat-label">DSA problems solved</div>
-        </div>
-        <div class="stat">
-          <svg class="stat-icon"><use href="#i-graph" /></svg>
-          <div class="stat-num">~<span data-count="1533">0</span></div>
-          <div class="stat-label">LeetCode rating</div>
-        </div>
-        <div class="stat">
-          <svg class="stat-icon"><use href="#i-users" /></svg>
-          <div class="stat-num stat-num-text">Ex&#8209;Management Core</div>
-          <div class="stat-label">The BYTE Club (GDSC), NIE</div>
-        </div>
-        <div class="stat">
-          <svg class="stat-icon"><use href="#i-cap" /></svg>
-          <div class="stat-num"><span data-count="8.60" data-decimals="2">0</span></div>
-          <div class="stat-label">CGPA @ NIE Mysuru</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ MARQUEE ============ -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        <span>AI Systems</span><svg><use href="#i-spark" /></svg>
-        <span class="outline">Distributed Backends</span><svg><use href="#i-spark" /></svg>
-        <span>LLM Gateways</span><svg><use href="#i-spark" /></svg>
-        <span class="outline">Competitive Programming</span><svg><use href="#i-spark" /></svg>
-        <span>AI Systems</span><svg><use href="#i-spark" /></svg>
-        <span class="outline">Distributed Backends</span><svg><use href="#i-spark" /></svg>
-        <span>LLM Gateways</span><svg><use href="#i-spark" /></svg>
-        <span class="outline">Competitive Programming</span><svg><use href="#i-spark" /></svg>
-      </div>
+    <!-- ============ BAR ============ -->
+    <div class="bar">
+      <span>B.E. ISE <em>2023—27</em></span>
+      <a href="#statement" class="bar-mid"><span class="bar-ring"><svg><use href="#i-down" /></svg></span>SCROLL DOWN</a>
+      <span><em>CGPA</em> 8.60</span>
     </div>
 
+    <!-- ============ STATEMENT ============ -->
+    <section class="statement" id="statement">
+      <p class="statement-text" id="statementText">I build the parts of software most people never see — the
+        caches, the routers, the indexes and the algorithms that make a product feel instant.</p>
+      <p class="statement-sub reveal">From data structures to deployment.<br><em>Open to remote, onsite &amp; hybrid
+          roles across India.</em></p>
+    </section>
+
     <!-- ============ WORK ============ -->
-    <section class="section" id="work">
-      <div class="section-head">
-        <h2 class="section-label reveal" data-scramble>Featured work</h2>
-        <a href="https://github.com/neelesh1303" target="_blank" rel="noopener" class="section-link reveal">
-          All on GitHub <svg><use href="#i-arrow" /></svg>
-        </a>
+    <section class="work" id="work">
+      <div class="sec-head">
+        <p class="label reveal"><span class="dot"></span>(SELECTED WORK)</p>
+        <h2 class="sec-title reveal">PROJECTS <sup>04</sup></h2>
+        <a href="https://github.com/neelesh1303" target="_blank" rel="noopener" class="sec-link reveal">All on GitHub
+          <svg><use href="#i-arrow" /></svg></a>
       </div>
 
-      <div class="work-grid">
-
-        <!-- 01 CRACKD -->
-        <article class="work-card reveal" data-project tabindex="0" role="button" aria-label="Open Crackd case study" data-cursor="OPEN">
-          <div class="work-media">
-            <img src="assets/images/crackd.jpg" alt="" class="work-img-mono" loading="lazy">
-            <img src="assets/images/crackd.jpg" alt="" class="work-img-color" loading="lazy" aria-hidden="true">
-          </div>
-          <div class="work-shade"></div>
-          <div class="work-top">
-            <span class="work-num">01</span>
-            <span class="badge"><span class="pulse"></span> Live</span>
-          </div>
-          <div class="work-body">
-            <h3 class="work-title">Crackd</h3>
-            <p class="work-type">AI placement &amp; roadmap platform</p>
-            <p class="work-tags">Gemini RAG · Redis · MERN</p>
-          </div>
-          <span class="work-go"><svg><use href="#i-arrow" /></svg></span>
-
+      <div class="work-list" id="workList">
+        <article class="work-row reveal" data-project data-img="assets/images/crackd.jpg" tabindex="0" role="button"
+          aria-label="Open Crackd case study" data-cursor="VIEW">
+          <span class="wr-num">01</span>
+          <h3 class="wr-title">Crackd</h3>
+          <span class="wr-type">AI placement &amp; roadmap platform</span>
+          <span class="wr-tags">Gemini RAG · Redis · MERN</span>
+          <span class="wr-badge"><span class="dot"></span>Live</span>
+          <span class="wr-go"><svg><use href="#i-arrow" /></svg></span>
+          <img class="wr-thumb" src="assets/images/crackd.jpg" alt="" loading="lazy">
           <template class="work-details">
             <p class="modal-type">01 — AI placement &amp; roadmap platform</p>
             <h3 class="modal-title">Crackd</h3>
@@ -275,25 +275,15 @@
             </div>
           </template>
         </article>
-
-        <!-- 02 LLM OPTIMIZER -->
-        <article class="work-card reveal" data-project tabindex="0" role="button" aria-label="Open LLM Cost and Latency Optimizer case study" data-cursor="OPEN">
-          <div class="work-media">
-            <img src="assets/images/llm-gateway.jpg" alt="" class="work-img-mono" loading="lazy">
-            <img src="assets/images/llm-gateway.jpg" alt="" class="work-img-color" loading="lazy" aria-hidden="true">
-          </div>
-          <div class="work-shade"></div>
-          <div class="work-top">
-            <span class="work-num">02</span>
-            <span class="badge">Semantic cache</span>
-          </div>
-          <div class="work-body">
-            <h3 class="work-title">LLM Cost &amp;<br>Latency Optimizer</h3>
-            <p class="work-type">Multi-tier gateway &amp; semantic cache</p>
-            <p class="work-tags">FastAPI · Groq · Gemini · OpenRouter</p>
-          </div>
-          <span class="work-go"><svg><use href="#i-arrow" /></svg></span>
-
+        <article class="work-row reveal" data-project data-img="assets/images/llm-gateway.jpg" tabindex="0"
+          role="button" aria-label="Open LLM Cost and Latency Optimizer case study" data-cursor="VIEW">
+          <span class="wr-num">02</span>
+          <h3 class="wr-title">LLM Optimizer</h3>
+          <span class="wr-type">Multi-tier gateway &amp; semantic cache</span>
+          <span class="wr-tags">FastAPI · Groq · Gemini · OpenRouter</span>
+          <span class="wr-badge">Semantic cache</span>
+          <span class="wr-go"><svg><use href="#i-arrow" /></svg></span>
+          <img class="wr-thumb" src="assets/images/llm-gateway.jpg" alt="" loading="lazy">
           <template class="work-details">
             <p class="modal-type">02 — Multi-tier gateway &amp; semantic cache</p>
             <h3 class="modal-title">LLM Cost &amp; Latency Optimizer</h3>
@@ -327,25 +317,15 @@
             </div>
           </template>
         </article>
-
-        <!-- 03 SIGNBRIDGE -->
-        <article class="work-card reveal" data-project tabindex="0" role="button" aria-label="Open SignBridge case study" data-cursor="OPEN">
-          <div class="work-media">
-            <img src="assets/images/signbridge.jpg" alt="" class="work-img-mono" loading="lazy">
-            <img src="assets/images/signbridge.jpg" alt="" class="work-img-color" loading="lazy" aria-hidden="true">
-          </div>
-          <div class="work-shade"></div>
-          <div class="work-top">
-            <span class="work-num">03</span>
-            <span class="badge"><svg><use href="#i-trophy" /></svg> DevJams 4th</span>
-          </div>
-          <div class="work-body">
-            <h3 class="work-title">SignBridge</h3>
-            <p class="work-type">Indian Sign Language classroom</p>
-            <p class="work-tags">React · FastAPI · MediaPipe</p>
-          </div>
-          <span class="work-go"><svg><use href="#i-arrow" /></svg></span>
-
+        <article class="work-row reveal" data-project data-img="assets/images/signbridge.jpg" tabindex="0"
+          role="button" aria-label="Open SignBridge case study" data-cursor="VIEW">
+          <span class="wr-num">03</span>
+          <h3 class="wr-title">SignBridge</h3>
+          <span class="wr-type">Indian Sign Language classroom</span>
+          <span class="wr-tags">React · FastAPI · MediaPipe</span>
+          <span class="wr-badge">DevJams 4th</span>
+          <span class="wr-go"><svg><use href="#i-arrow" /></svg></span>
+          <img class="wr-thumb" src="assets/images/signbridge.jpg" alt="" loading="lazy">
           <template class="work-details">
             <p class="modal-type">03 — Indian Sign Language classroom · DevJams 4th</p>
             <h3 class="modal-title">SignBridge</h3>
@@ -376,25 +356,15 @@
             </div>
           </template>
         </article>
-
-        <!-- 04 FINNIE -->
-        <article class="work-card reveal" data-project tabindex="0" role="button" aria-label="Open FinNIE case study" data-cursor="OPEN">
-          <div class="work-media">
-            <img src="assets/images/finnie.jpg" alt="" class="work-img-mono" loading="lazy">
-            <img src="assets/images/finnie.jpg" alt="" class="work-img-color" loading="lazy" aria-hidden="true">
-          </div>
-          <div class="work-shade"></div>
-          <div class="work-top">
-            <span class="work-num">04</span>
-            <span class="badge">Flask · MySQL</span>
-          </div>
-          <div class="work-body">
-            <h3 class="work-title">FinNIE</h3>
-            <p class="work-type">Campus lost &amp; found platform</p>
-            <p class="work-tags">Flask · MySQL · Flask-Limiter</p>
-          </div>
-          <span class="work-go"><svg><use href="#i-arrow" /></svg></span>
-
+        <article class="work-row reveal" data-project data-img="assets/images/finnie.jpg" tabindex="0" role="button"
+          aria-label="Open FinNIE case study" data-cursor="VIEW">
+          <span class="wr-num">04</span>
+          <h3 class="wr-title">FinNIE</h3>
+          <span class="wr-type">Campus lost &amp; found platform</span>
+          <span class="wr-tags">Flask · MySQL · Flask-Limiter</span>
+          <span class="wr-badge">Flask · MySQL</span>
+          <span class="wr-go"><svg><use href="#i-arrow" /></svg></span>
+          <img class="wr-thumb" src="assets/images/finnie.jpg" alt="" loading="lazy">
           <template class="work-details">
             <p class="modal-type">04 — Campus lost &amp; found platform</p>
             <h3 class="modal-title">FinNIE</h3>
@@ -424,60 +394,111 @@
             </div>
           </template>
         </article>
+      </div>
+      <div class="work-preview" id="workPreview" aria-hidden="true"><img alt=""></div>
+    </section>
 
+    <!-- ============ PROOF PANEL ============ -->
+    <section class="proof" id="proof">
+      <div class="proof-panel reveal" id="proofPanel">
+        <div class="proof-left">
+          <h2 class="proof-title">Numbers<br>Behind<br>The<br>Work</h2>
+          <span class="glass-tile glass-tile-1" aria-hidden="true"><svg><use href="#i-asterisk" /></svg></span>
+          <span class="glass-tile glass-tile-2" aria-hidden="true"><svg><use href="#i-dots" /></svg></span>
+          <p class="proof-copy">Competitive programming, academics and community leadership — the habits behind
+            every system I build.</p>
+        </div>
+
+        <div class="proof-cards">
+          <div class="p-card p-light">
+            <div class="p-discs">
+              <span class="p-disc">LC</span><span class="p-disc">GFG</span><span class="p-disc">CD</span>
+              <span class="p-disc">C++</span>
+            </div>
+            <div class="p-bottom">
+              <div class="p-num"><span data-count-on-view="500">0</span>+</div>
+              <div class="p-label">DSA problems solved</div>
+            </div>
+          </div>
+
+          <div class="p-card p-dark">
+            <div class="p-num"><span data-count-on-view="4">0</span><sup>th</sup></div>
+            <div class="p-label">DevJams VIT · 100+ teams</div>
+            <svg class="laurel" viewBox="0 0 200 120" aria-hidden="true">
+              <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <path d="M62 104C38 90 28 64 34 34" />
+                <path d="M138 104c24-14 34-40 28-70" />
+              </g>
+              <g fill="currentColor">
+                <ellipse cx="34" cy="44" rx="4" ry="9" transform="rotate(-20 34 44)" />
+                <ellipse cx="36" cy="62" rx="4" ry="9" transform="rotate(-40 36 62)" />
+                <ellipse cx="44" cy="79" rx="4" ry="9" transform="rotate(-58 44 79)" />
+                <ellipse cx="56" cy="93" rx="4" ry="9" transform="rotate(-72 56 93)" />
+                <ellipse cx="166" cy="44" rx="4" ry="9" transform="rotate(20 166 44)" />
+                <ellipse cx="164" cy="62" rx="4" ry="9" transform="rotate(40 164 62)" />
+                <ellipse cx="156" cy="79" rx="4" ry="9" transform="rotate(58 156 79)" />
+                <ellipse cx="144" cy="93" rx="4" ry="9" transform="rotate(72 144 93)" />
+              </g>
+              <text x="100" y="58" text-anchor="middle" class="laurel-t1">HACKATHON</text>
+              <text x="100" y="78" text-anchor="middle" class="laurel-t2">TOP 4 · VIT</text>
+            </svg>
+            <p class="p-note">SignBridge placed 4th among 100+ national teams at DevJams VIT.</p>
+          </div>
+
+          <div class="p-card p-paper">
+            <div class="p-num"><span data-count-on-view="8.60" data-decimals="2">0</span></div>
+            <div class="p-label">CGPA · B.E. Information Science</div>
+            <div class="p-meter"><span style="--v:.86"></span></div>
+            <p class="p-note">The National Institute of Engineering, Mysore · 2023 — 2027</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ============ CAPABILITIES ============ -->
-    <section class="section" id="capabilities">
-      <div class="cap-layout">
-        <div class="cap-col">
-          <h2 class="section-label reveal" data-scramble>Core capabilities</h2>
-          <p class="cap-hint reveal">Hover or tap a capability to light up its stack →</p>
-          <div class="cap-grid">
-            <button type="button" class="cap reveal" data-domain="lang">
-              <svg class="cap-icon"><use href="#i-code" /></svg>
-              <span class="cap-title">Core languages</span>
-              <span class="cap-desc">C++ for competitive programming and performance-critical algorithms; Python for async
-                microservices, vector math and CV pipelines.</span>
-            </button>
-            <button type="button" class="cap reveal" data-domain="ai">
-              <svg class="cap-icon"><use href="#i-ai" /></svg>
-              <span class="cap-title">AI &amp; LLM systems</span>
-              <span class="cap-desc">Semantic caching, RAG over real interview data, and multi-provider routing across Groq,
-                Gemini and OpenRouter.</span>
-            </button>
-            <button type="button" class="cap reveal" data-domain="backend">
-              <svg class="cap-icon"><use href="#i-server" /></svg>
-              <span class="cap-title">Backend &amp; APIs</span>
-              <span class="cap-desc">Async FastAPI microservices and modular Express REST APIs with JWT auth and
-                token-bucket rate limiting.</span>
-            </button>
-            <button type="button" class="cap reveal" data-domain="db">
-              <svg class="cap-icon"><use href="#i-db" /></svg>
-              <span class="cap-title">Databases &amp; caching</span>
-              <span class="cap-desc">Redis caching, MySQL relational storage, SQLite request logs, and MongoDB document
-                modeling.</span>
-            </button>
-            <button type="button" class="cap reveal" data-domain="devops">
-              <svg class="cap-icon"><use href="#i-loop" /></svg>
-              <span class="cap-title">DevOps &amp; testing</span>
-              <span class="cap-desc">GitHub Actions CI/CD running Jest and Supertest on every pull request; Postman API
-                verification across environments.</span>
-            </button>
-            <button type="button" class="cap reveal" data-domain="cs">
-              <svg class="cap-icon"><use href="#i-graph" /></svg>
-              <span class="cap-title">CS fundamentals</span>
-              <span class="cap-desc">Data structures &amp; algorithms, graph theory and dynamic programming, OOP, operating
-                systems and computer networks.</span>
-            </button>
-          </div>
+    <!-- ============ STACK (paper) ============ -->
+    <section class="stack" id="stack">
+      <div class="sec-head sec-head-dark">
+        <p class="label reveal"><span class="dot"></span>(CAPABILITIES)</p>
+        <h2 class="sec-title reveal">STACK <sup>06</sup></h2>
+        <p class="sec-hint reveal">Hover or tap a capability to light up its tools</p>
+      </div>
+
+      <div class="stack-layout">
+        <div class="cap-list">
+          <button type="button" class="cap reveal" data-domain="lang">
+            <span class="cap-num">01</span><span class="cap-title">Core languages</span>
+            <span class="cap-desc">C++ for competitive programming and performance-critical algorithms; Python for async
+              microservices, vector math and CV pipelines.</span>
+          </button>
+          <button type="button" class="cap reveal" data-domain="ai">
+            <span class="cap-num">02</span><span class="cap-title">AI &amp; LLM systems</span>
+            <span class="cap-desc">Semantic caching, RAG over real interview data, and multi-provider routing across
+              Groq, Gemini and OpenRouter.</span>
+          </button>
+          <button type="button" class="cap reveal" data-domain="backend">
+            <span class="cap-num">03</span><span class="cap-title">Backend &amp; APIs</span>
+            <span class="cap-desc">Async FastAPI microservices and modular Express REST APIs with JWT auth and rate
+              limiting.</span>
+          </button>
+          <button type="button" class="cap reveal" data-domain="db">
+            <span class="cap-num">04</span><span class="cap-title">Databases &amp; caching</span>
+            <span class="cap-desc">Redis caching, MySQL relational storage, SQLite request logs, and MongoDB document
+              modeling.</span>
+          </button>
+          <button type="button" class="cap reveal" data-domain="devops">
+            <span class="cap-num">05</span><span class="cap-title">DevOps &amp; testing</span>
+            <span class="cap-desc">GitHub Actions CI/CD running Jest and Supertest on every pull request; Postman API
+              verification across environments.</span>
+          </button>
+          <button type="button" class="cap reveal" data-domain="cs">
+            <span class="cap-num">06</span><span class="cap-title">CS fundamentals</span>
+            <span class="cap-desc">Data structures &amp; algorithms, graph theory and dynamic programming, OOP,
+              operating systems and computer networks.</span>
+          </button>
         </div>
 
-        <div class="tools-col">
-          <h2 class="section-label reveal" data-scramble>Tools &amp; technologies</h2>
-          <div class="tools glass reveal" id="toolsPanel">
-            <div class="tool" data-d="lang cs"><b>C++</b>C++ (STL)</div>
+        <div class="tools reveal" id="toolsPanel">
+          <div class="tool" data-d="lang cs"><b>C++</b>C++ (STL)</div>
             <div class="tool" data-d="lang ai backend"><b>Py</b>Python</div>
             <div class="tool" data-d="lang backend"><b>JS</b>JavaScript</div>
             <div class="tool" data-d="lang db"><b>SQL</b>SQL</div>
@@ -507,151 +528,121 @@
             <div class="tool" data-d="devops"><b>Vc</b>Vercel</div>
             <div class="tool" data-d="devops"><b>Rn</b>Render</div>
             <div class="tool" data-d="cs"><b>DSA</b>Algorithms</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ ABOUT ============ -->
-    <section class="section" id="about">
-      <h2 class="section-label reveal" data-scramble>About</h2>
-      <div class="about-layout">
-        <p class="about-quote reveal">
-          <svg class="about-spark"><use href="#i-spark" /></svg>
-          Turning ideas into <em>powerful</em>, high-performance digital experiences.
-        </p>
-        <div class="about-copy">
-          <p class="about-text reveal">
-            I'm an Information Science engineer at The National Institute of Engineering, Mysuru, who loves the part of
-            software most people never see: the caches, the routers, the indexes and the algorithms that make a product
-            feel instant. I've built an LLM gateway with a semantic cache and multi-provider fallback, a placement platform backed by RAG, and an
-            assistive sign-language system that placed 4th among 100+ national teams at DevJams VIT.
-          </p>
-          <p class="about-text reveal">
-            I'm actively looking for Software Developer &amp; AI Systems roles across India — remote, onsite or hybrid.
-          </p>
-          <div class="about-links reveal">
-            <a href="https://github.com/neelesh1303" target="_blank" rel="noopener" class="btn-ghost"><svg><use href="#i-github" /></svg> GitHub</a>
-            <a href="https://linkedin.com/in/neelesh-kumar-tripathi" target="_blank" rel="noopener" class="btn-ghost"><svg><use href="#i-linkedin" /></svg> LinkedIn</a>
-            <a href="https://codolio.com/profile/neelesh1303" target="_blank" rel="noopener" class="btn-ghost"><svg><use href="#i-layers" /></svg> Codolio</a>
-          </div>
         </div>
       </div>
     </section>
 
     <!-- ============ JOURNEY ============ -->
-    <section class="section" id="journey">
-      <div class="section-head">
-        <h2 class="section-label reveal" data-scramble>My journey</h2>
+    <section class="journey-sec" id="journey">
+      <div class="sec-head">
+        <p class="label reveal"><span class="dot"></span>(JOURNEY)</p>
+        <h2 class="sec-title reveal">2022 — 2027</h2>
       </div>
 
-      <div class="journey glass reveal" id="journey-track">
-        <div class="journey-line"><span id="journeyFill"></span></div>
+      <div class="journey" id="journeyTrack">
+        <div class="journey-line"><span></span></div>
         <div class="step">
-          <div class="step-head"><span class="step-num">01</span><span class="step-year">2022</span></div>
+          <span class="step-year">2022</span>
           <h3 class="step-title">Foundations</h3>
           <p class="step-text">Class XII at Little Flower School, Gorakhpur — 91%.</p>
-          <svg class="step-icon"><use href="#i-cube" /></svg>
         </div>
         <div class="step">
-          <div class="step-head"><span class="step-num">02</span><span class="step-year">2023</span></div>
+          <span class="step-year">2023</span>
           <h3 class="step-title">Engineering</h3>
           <p class="step-text">Started B.E. in Information Science at NIE Mysore.</p>
-          <svg class="step-icon"><use href="#i-cap" /></svg>
         </div>
         <div class="step">
-          <div class="step-head"><span class="step-num">03</span><span class="step-year">2024</span></div>
+          <span class="step-year">2024</span>
           <h3 class="step-title">Leadership</h3>
           <p class="step-text">Joined The BYTE Club (GDSC), NIE as a Management Core Member.</p>
-          <svg class="step-icon"><use href="#i-users" /></svg>
         </div>
         <div class="step">
-          <div class="step-head"><span class="step-num">04</span><span class="step-year">2025</span></div>
+          <span class="step-year">2025</span>
           <h3 class="step-title">HackForge</h3>
           <p class="step-text">Led HackForge 2025, the club's intercollegiate flagship tech event.</p>
-          <svg class="step-icon"><use href="#i-trophy" /></svg>
         </div>
         <div class="step">
-          <div class="step-head"><span class="step-num">05</span><span class="step-year">2027</span></div>
+          <span class="step-year">2027</span>
           <h3 class="step-title">Graduation</h3>
           <p class="step-text">B.E. completes May 2027 — open to full-time roles.</p>
-          <svg class="step-icon"><use href="#i-spark" /></svg>
         </div>
       </div>
 
       <div class="journey-cards">
-        <div class="glass info-card reveal">
-          <h3 class="info-label">Education</h3>
-          <div class="info-row">
-            <svg class="info-icon"><use href="#i-cap" /></svg>
+        <div class="j-card reveal">
+          <p class="label"><span class="dot"></span>Education</p>
+          <div class="j-row">
             <div>
-              <p class="info-title">Bachelor of Engineering in Information Science</p>
-              <p class="info-meta">The National Institute of Engineering, Mysore · Sep 2023 — May 2027</p>
+              <p class="j-title">Bachelor of Engineering in Information Science</p>
+              <p class="j-meta">The National Institute of Engineering, Mysore · Sep 2023 — May 2027</p>
             </div>
-            <span class="info-score">8.60<small>/10</small></span>
+            <span class="j-score">8.60<small>/10</small></span>
           </div>
-          <div class="info-row">
-            <svg class="info-icon"><use href="#i-layers" /></svg>
+          <div class="j-row">
             <div>
-              <p class="info-title">Senior Secondary Education (Class XII)</p>
-              <p class="info-meta">Little Flower School, Gorakhpur, Uttar Pradesh · July 2022</p>
+              <p class="j-title">Senior Secondary Education (Class XII)</p>
+              <p class="j-meta">Little Flower School, Gorakhpur, Uttar Pradesh · July 2022</p>
             </div>
-            <span class="info-score">91<small>%</small></span>
+            <span class="j-score">91<small>%</small></span>
           </div>
         </div>
 
-        <div class="glass info-card reveal">
-          <h3 class="info-label">Leadership &amp; impact</h3>
-          <div class="info-row">
-            <svg class="info-icon"><use href="#i-users" /></svg>
+        <div class="j-card reveal">
+          <p class="label"><span class="dot"></span>Leadership &amp; impact</p>
+          <div class="j-row">
             <div>
-              <p class="info-title">Management Core Member — The BYTE Club (GDSC), NIE</p>
-              <p class="info-meta">Aug 2024 — Jan 2026</p>
+              <p class="j-title">Management Core Member — The BYTE Club (GDSC), NIE</p>
+              <p class="j-meta">Aug 2024 — Jan 2026</p>
             </div>
           </div>
-          <ul class="info-list">
-            <li><strong>HackForge 2025 event lead</strong> — coordinated participant and judging teams across the state.</li>
+          <ul class="j-list">
+            <li><strong>HackForge 2025 event lead</strong> — coordinated participant and judging teams across the state.
+            </li>
             <li><strong>10+ workshops &amp; coding events</strong> organized for 200+ students.</li>
-            <li><strong>Club operations &amp; strategy</strong> — event logistics, industry sponsorships and planning.</li>
+            <li><strong>Club operations &amp; strategy</strong> — event logistics, industry sponsorships and planning.
+            </li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- ============ CTA ============ -->
-    <section class="section" id="contact">
-      <div class="cta reveal" id="cta">
-        <div class="cta-shine" aria-hidden="true"></div>
-        <h2 class="cta-title">LET'S WORK<br>TOGETHER <svg class="cta-spark"><use href="#i-spark" /></svg></h2>
-        <div class="cta-mid">
-          <p>I'm currently looking for full-time Software Developer &amp; AI Systems roles — remote, onsite or hybrid
-            across India — and high-impact engineering projects.</p>
-          <a href="mailto:neeleshtripathi36@gmail.com" class="btn-dark magnetic">Let's work together <svg><use href="#i-arrow" /></svg></a>
-        </div>
-        <ul class="cta-contacts">
+    <!-- ============ CONTACT (paper) ============ -->
+    <section class="contact" id="contact">
+      <div class="contact-top">
+        <p class="label reveal"><span class="dot"></span>(CONTACT)</p>
+        <p class="label reveal">Open to remote · onsite · hybrid</p>
+      </div>
+      <h2 class="contact-title" id="contactTitle">
+        <span class="t-line"><span class="t-inner">LET'S</span></span>
+        <span class="t-line"><span class="t-inner">BUILD <span class="contact-arrow"><svg><use href="#i-arrow" /></svg></span></span></span>
+      </h2>
+
+      <div class="contact-grid">
+        <p class="contact-lead reveal">I'm currently looking for full-time Software Developer &amp; AI Systems roles —
+          remote, onsite or hybrid across India — and high-impact engineering projects.</p>
+        <ul class="contact-list reveal">
           <li>
-            <svg><use href="#i-mail" /></svg>
+            <span class="label">Email</span>
             <a href="mailto:neeleshtripathi36@gmail.com">neeleshtripathi36@gmail.com</a>
             <button type="button" class="copy-btn" data-copy="neeleshtripathi36@gmail.com" aria-label="Copy email address"><svg><use href="#i-copy" /></svg></button>
           </li>
-          <li><svg><use href="#i-phone" /></svg><a href="tel:+916387974286">+91 6387974286</a></li>
-          <li><svg><use href="#i-pin" /></svg><span>Mysuru, India</span></li>
-          <li><svg><use href="#i-github" /></svg><a href="https://github.com/neelesh1303" target="_blank" rel="noopener">github.com/neelesh1303</a></li>
+          <li><span class="label">Phone</span><a href="tel:+916387974286">+91 6387974286</a></li>
+          <li><span class="label">GitHub</span><a href="https://github.com/neelesh1303" target="_blank" rel="noopener">github.com/neelesh1303</a></li>
+          <li><span class="label">LinkedIn</span><a href="https://linkedin.com/in/neelesh-kumar-tripathi" target="_blank" rel="noopener">in/neelesh-kumar-tripathi</a></li>
+          <li><span class="label">Codolio</span><a href="https://codolio.com/profile/neelesh1303" target="_blank" rel="noopener">codolio.com/profile/neelesh1303</a></li>
         </ul>
+        <div class="contact-ctas reveal">
+          <a href="mailto:neeleshtripathi36@gmail.com" class="btn-black">Send an email <svg><use href="#i-arrow" /></svg></a>
+          <a href="assets/Neelesh_Kumar_Tripathi_Resume.pdf" download="Neelesh_Kumar_Tripathi_Resume.pdf" class="btn-ghost-dark">Download resume <svg><use href="#i-down" /></svg></a>
+        </div>
       </div>
     </section>
-
   </main>
 
   <footer class="footer">
-    <p>&copy; <span id="year"></span> Neelesh Kumar Tripathi. All rights reserved.</p>
-    <div class="footer-social">
-      <span>Let's connect</span>
-      <a href="https://linkedin.com/in/neelesh-kumar-tripathi" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#i-linkedin" /></svg></a>
-      <a href="https://github.com/neelesh1303" target="_blank" rel="noopener" aria-label="GitHub"><svg><use href="#i-github" /></svg></a>
-      <a href="https://codolio.com/profile/neelesh1303" target="_blank" rel="noopener" aria-label="Codolio"><svg><use href="#i-layers" /></svg></a>
-      <a href="mailto:neeleshtripathi36@gmail.com" aria-label="Email"><svg><use href="#i-mail" /></svg></a>
-    </div>
+    <span>&copy; <span id="year"></span> Neelesh Kumar Tripathi</span>
+    <span class="footer-mid">Press <kbd>Ctrl</kbd> <kbd>K</kbd> for the terminal</span>
+    <a href="#hero" class="footer-top">Back to top <svg><use href="#i-arrow" /></svg></a>
   </footer>
 
   <!-- PROJECT MODAL -->
@@ -673,7 +664,7 @@
         <button class="terminal-close" id="terminalClose" type="button" aria-label="Close terminal">&times;</button>
       </div>
       <div class="terminal-body" id="terminalOutput">
-        <div class="term-line">NEELESH.OS v4.0 — interactive shell<br>Type <span class="term-accent">help</span> to see commands. Try <span class="term-accent">projects</span>, <span class="term-accent">skills</span> or <span class="term-accent">resume</span>.</div>
+        <div class="term-line">NEELESH.OS v5.0 — interactive shell<br>Type <span class="term-accent">help</span> to see commands. Try <span class="term-accent">projects</span>, <span class="term-accent">skills</span> or <span class="term-accent">resume</span>.</div>
       </div>
       <div class="terminal-chips" id="terminalChips">
         <button type="button" data-cmd="help">help</button>
