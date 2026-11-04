@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initWorkCards();
   initProjectModal();
   initCapabilities();
-  initGallery();
+  initCodeCard();
+  initHeroField();
   initJourney();
   initCta();
   initCopy();
@@ -345,7 +346,7 @@ function initMagnetic() {
 }
 
 /* ==========================================================================
-   HERO PORTRAIT — mono photo with colour spotlight + parallax
+   HERO PORTRAIT — studio light that follows the pointer + parallax
    ========================================================================== */
 function initPortrait() {
   const visual = $("#heroVisual");
@@ -513,14 +514,112 @@ function initCapabilities() {
 }
 
 /* ==========================================================================
-   GALLERY ACCORDION
+   CODE CARD — wrap each line so they type in one after another on reveal
    ========================================================================== */
-function initGallery() {
-  const shots = $$("#gallery .shot");
-  const activate = (shot) => shots.forEach((s) => s.classList.toggle("is-active", s === shot));
-  shots.forEach((shot) => {
-    if (finePointer) shot.addEventListener("pointerenter", () => activate(shot));
-    shot.addEventListener("click", () => activate(shot));
+function initCodeCard() {
+  const code = $("#codeCard code");
+  if (!code) return;
+  code.innerHTML = code.innerHTML
+    .split("\n")
+    .map((line, i) => `<span class="code-line" style="transition-delay:${0.25 + i * 0.07}s">${line || " "}</span>`)
+    .join("\n");
+}
+
+/* ==========================================================================
+   HERO PARTICLE FIELD — drifting ice motes that link up near the cursor
+   ========================================================================== */
+function initHeroField() {
+  const canvas = $("#heroField");
+  if (!canvas || reducedMotion) return;
+  const ctx = canvas.getContext("2d");
+  const hero = $("#hero");
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  let w = 0;
+  let h = 0;
+  let points = [];
+  let visible = true;
+  const mouse = { x: -9999, y: -9999 };
+
+  const resize = () => {
+    w = hero.clientWidth;
+    h = hero.clientHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const count = Math.round(clamp((w * h) / 16000, 30, 90));
+    points = Array.from({ length: count }, () => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.25,
+      vy: (Math.random() - 0.5) * 0.25,
+      r: Math.random() * 1.4 + 0.4,
+    }));
+  };
+
+  hero.addEventListener("pointermove", (e) => {
+    const r = hero.getBoundingClientRect();
+    mouse.x = e.clientX - r.left;
+    mouse.y = e.clientY - r.top;
+  });
+  hero.addEventListener("pointerleave", () => {
+    mouse.x = mouse.y = -9999;
+  });
+
+  new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    if (visible) requestAnimationFrame(frame);
+  }).observe(hero);
+
+  function frame() {
+    if (!visible) return;
+    ctx.clearRect(0, 0, w, h);
+    for (const p of points) {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+
+      // gentle push away from the cursor
+      const dx = p.x - mouse.x;
+      const dy = p.y - mouse.y;
+      const d2 = dx * dx + dy * dy;
+      if (d2 < 14000) {
+        p.x += dx * 0.012;
+        p.y += dy * 0.012;
+      }
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(170, 215, 255, 0.55)";
+      ctx.fill();
+    }
+
+    // link points that are close to each other and to the cursor
+    for (let i = 0; i < points.length; i++) {
+      const a = points[i];
+      const am = Math.hypot(a.x - mouse.x, a.y - mouse.y);
+      if (am > 220) continue;
+      for (let j = i + 1; j < points.length; j++) {
+        const b = points[j];
+        const d = Math.hypot(a.x - b.x, a.y - b.y);
+        if (d < 120) {
+          ctx.strokeStyle = `rgba(143, 208, 255, ${(1 - d / 120) * (1 - am / 220) * 0.5})`;
+          ctx.lineWidth = 0.7;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  resize();
+  let rt = 0;
+  window.addEventListener("resize", () => {
+    clearTimeout(rt);
+    rt = setTimeout(resize, 150);
   });
 }
 

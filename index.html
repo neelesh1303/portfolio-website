@@ -119,6 +119,7 @@
 
     <!-- ============ HERO ============ -->
     <section class="hero" id="hero">
+      <canvas class="hero-field" id="heroField" aria-hidden="true"></canvas>
       <div class="hero-inner">
         <div class="hero-copy">
           <p class="eyebrow reveal">Hello, I'm Neelesh Kumar Tripathi</p>
@@ -151,8 +152,9 @@
           <svg class="hero-spark" aria-hidden="true"><use href="#i-spark" /></svg>
           <div class="hero-aura" aria-hidden="true"></div>
           <div class="portrait" id="portrait">
-            <img src="assets/images/neelesh_cutout.png" alt="Neelesh Kumar Tripathi" class="portrait-mono" loading="eager">
-            <img src="assets/images/neelesh_cutout.png" alt="" aria-hidden="true" class="portrait-color">
+            <img src="assets/images/neelesh_portrait.webp" alt="Neelesh Kumar Tripathi" class="portrait-img" loading="eager"
+              fetchpriority="high">
+            <div class="portrait-light" aria-hidden="true"></div>
           </div>
           <div class="hero-chip hero-chip-loc">
             <span class="pulse"></span> Mysuru, India
@@ -182,9 +184,9 @@
           <div class="stat-label">LeetCode rating</div>
         </div>
         <div class="stat">
-          <svg class="stat-icon"><use href="#i-trophy" /></svg>
-          <div class="stat-num"><span data-count="4">0</span><small>th</small></div>
-          <div class="stat-label">DevJams VIT · 100+ teams</div>
+          <svg class="stat-icon"><use href="#i-users" /></svg>
+          <div class="stat-num stat-num-text">Ex&#8209;Management Core</div>
+          <div class="stat-label">The BYTE Club (GDSC), NIE</div>
         </div>
         <div class="stat">
           <svg class="stat-icon"><use href="#i-cap" /></svg>
@@ -523,27 +525,29 @@
           </div>
         </div>
 
-        <div class="gallery reveal" id="gallery" aria-label="Photos of Neelesh">
-          <figure class="shot is-active">
-            <img src="assets/images/neelesh_laptop.jpg" alt="Neelesh coding on a laptop in a large hall" loading="lazy">
-            <figcaption><span>01</span>Heads down, shipping</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="assets/images/neelesh_stairs.jpg" alt="Neelesh standing by a staircase" loading="lazy">
-            <figcaption><span>02</span>Between commits</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="assets/images/neelesh_bike.jpg" alt="Neelesh with a motorbike" loading="lazy">
-            <figcaption><span>03</span>On the road</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="assets/images/neelesh_cafe.jpg" alt="Neelesh smiling with a coffee" loading="lazy">
-            <figcaption><span>04</span>Coffee &amp; ideas</figcaption>
-          </figure>
-          <figure class="shot">
-            <img src="assets/images/neelesh_pov_laptop.jpg" alt="Laptop with code open in a busy hall" loading="lazy">
-            <figcaption><span>05</span>In the zone</figcaption>
-          </figure>
+        <div class="code-card reveal" id="codeCard">
+          <div class="code-bar">
+            <span class="code-dots"><i></i><i></i><i></i></span>
+            <span class="code-file">neelesh.ts</span>
+            <span class="code-status"><span class="pulse"></span> compiled</span>
+          </div>
+<pre class="code-body" aria-label="Profile summary"><code><span class="ln">01</span><span class="k">const</span> <span class="v">neelesh</span> <span class="p">=</span> <span class="p">{</span>
+<span class="ln">02</span>  <span class="pr">role</span><span class="p">:</span>      <span class="s">"Software Developer · AI Engineer"</span><span class="p">,</span>
+<span class="ln">03</span>  <span class="pr">based</span><span class="p">:</span>     <span class="s">"Mysuru, India"</span><span class="p">,</span>
+<span class="ln">04</span>  <span class="pr">education</span><span class="p">:</span> <span class="s">"B.E. Information Science @ NIE"</span><span class="p">,</span>
+<span class="ln">05</span>  <span class="pr">cgpa</span><span class="p">:</span>      <span class="n">8.60</span><span class="p">,</span>
+<span class="ln">06</span>  <span class="pr">dsaSolved</span><span class="p">:</span> <span class="s">"500+"</span><span class="p">,</span>
+<span class="ln">07</span>  <span class="pr">leetcode</span><span class="p">:</span>  <span class="n">1533</span><span class="p">,</span>
+<span class="ln">08</span>  <span class="pr">builds</span><span class="p">:</span>    <span class="p">[</span><span class="s">"LLM gateways"</span><span class="p">,</span> <span class="s">"RAG platforms"</span><span class="p">,</span> <span class="s">"distributed backends"</span><span class="p">],</span>
+<span class="ln">09</span>  <span class="pr">stack</span><span class="p">:</span>     <span class="p">[</span><span class="s">"C++"</span><span class="p">,</span> <span class="s">"Python"</span><span class="p">,</span> <span class="s">"FastAPI"</span><span class="p">,</span> <span class="s">"Node.js"</span><span class="p">,</span> <span class="s">"Redis"</span><span class="p">],</span>
+<span class="ln">10</span>  <span class="pr">leadership</span><span class="p">:</span> <span class="s">"Ex-Management Core, The BYTE Club (GDSC)"</span><span class="p">,</span>
+<span class="ln">11</span>  <span class="pr">openTo</span><span class="p">:</span>    <span class="p">[</span><span class="s">"Remote"</span><span class="p">,</span> <span class="s">"Onsite"</span><span class="p">,</span> <span class="s">"Hybrid"</span><span class="p">],</span>
+<span class="ln">12</span><span class="p">};</span>
+<span class="ln">13</span>
+<span class="ln">14</span><span class="v">neelesh</span><span class="p">.</span><span class="f">hire</span><span class="p">();</span> <span class="c">// → returns impact, ships fast</span><span class="code-caret"></span></code></pre>
+          <div class="code-foot">
+            <span>TypeScript</span><span>UTF-8</span><span>Ln 14, Col 42</span>
+          </div>
         </div>
       </div>
     </section>
