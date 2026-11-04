@@ -791,12 +791,12 @@ svg {
 .hero-title {
   position: absolute;
   left: var(--gx);
-  top: calc(246 * var(--u));
+  top: calc(168 * var(--u));
   z-index: 3;
   font-family: var(--f-wide);
   font-variation-settings: "wdth" 104;
   font-weight: 640;
-  font-size: calc(104 * var(--u));
+  font-size: calc(98 * var(--u));
   line-height: 0.86;
   letter-spacing: -0.06em;
   color: var(--ink);
