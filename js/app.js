@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initWorkCards();
   initProjectModal();
   initCapabilities();
-  initCodeCard();
   initHeroField();
   initJourney();
   initCta();
@@ -160,7 +159,6 @@ function initRoleRotator() {
   const roles = [
     "AI Systems Engineer",
     "Distributed Backend Developer",
-    "LLM Gateway Builder",
     "Competitive Programmer",
     "Open to Remote · Onsite · Hybrid",
   ];
@@ -346,7 +344,7 @@ function initMagnetic() {
 }
 
 /* ==========================================================================
-   HERO PORTRAIT — studio light that follows the pointer + parallax
+   HERO PORTRAIT — mono photo that brightens to colour on hover + parallax
    ========================================================================== */
 function initPortrait() {
   const visual = $("#heroVisual");
@@ -514,19 +512,7 @@ function initCapabilities() {
 }
 
 /* ==========================================================================
-   CODE CARD — wrap each line so they type in one after another on reveal
-   ========================================================================== */
-function initCodeCard() {
-  const code = $("#codeCard code");
-  if (!code) return;
-  code.innerHTML = code.innerHTML
-    .split("\n")
-    .map((line, i) => `<span class="code-line" style="transition-delay:${0.25 + i * 0.07}s">${line || " "}</span>`)
-    .join("\n");
-}
-
-/* ==========================================================================
-   HERO PARTICLE FIELD — drifting ice motes that link up near the cursor
+   HERO PARTICLE FIELD — drifting silver motes that link up near the cursor
    ========================================================================== */
 function initHeroField() {
   const canvas = $("#heroField");
@@ -590,7 +576,7 @@ function initHeroField() {
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = "rgba(170, 215, 255, 0.55)";
+      ctx.fillStyle = "rgba(225, 228, 235, 0.5)";
       ctx.fill();
     }
 
@@ -603,7 +589,7 @@ function initHeroField() {
         const b = points[j];
         const d = Math.hypot(a.x - b.x, a.y - b.y);
         if (d < 120) {
-          ctx.strokeStyle = `rgba(143, 208, 255, ${(1 - d / 120) * (1 - am / 220) * 0.5})`;
+          ctx.strokeStyle = `rgba(220, 224, 232, ${(1 - d / 120) * (1 - am / 220) * 0.5})`;
           ctx.lineWidth = 0.7;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
