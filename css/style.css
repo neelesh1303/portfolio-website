@@ -745,9 +745,9 @@ svg {
 .hero-photo {
   position: absolute;
   left: calc(307 * var(--u));
-  top: calc(84 * var(--u));
+  top: calc(-118 * var(--u));
   width: calc(825 * var(--u));
-  height: calc(900 * var(--u));
+  height: calc(1080 * var(--u));
   transform: translate3d(0, var(--drift, 0px), 0);
   will-change: transform;
 }
@@ -1103,7 +1103,7 @@ svg {
 .brand-plate {
   position: absolute;
   left: 50%;
-  top: 60%;
+  top: 56%;
   z-index: 4;
   width: calc(364 * var(--u));
   min-width: 260px;
@@ -2648,13 +2648,13 @@ svg {
   .hero-photo {
     order: 3;
     width: calc(100% + 2 * var(--gx));
-    height: calc(560 * var(--u));
+    height: calc(470 * var(--u));
     margin: 18px calc(-1 * var(--gx)) 0;
   }
 
   .brand-plate {
     top: auto;
-    bottom: 24%;
+    bottom: 28%;
     width: calc(300 * var(--u));
     margin-left: calc(-150 * var(--u));
   }
