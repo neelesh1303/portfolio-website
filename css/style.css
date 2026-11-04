@@ -966,14 +966,19 @@ main {
   -webkit-user-drag: none;
 }
 
-.portrait-img {
+.portrait-mono {
   filter: grayscale(1) contrast(1.08) brightness(0.72);
-  transition: filter 0.9s var(--ease), transform 0.9s var(--ease);
 }
 
-.portrait.is-lit .portrait-img {
-  filter: grayscale(0) contrast(1.04) brightness(1.08);
-  transform: scale(1.015);
+/* only the area around the pointer brightens into full colour */
+.portrait-color {
+  filter: contrast(1.04) brightness(1.12);
+  mask-image: radial-gradient(circle var(--r) at var(--mx) var(--my), #000 35%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle var(--r) at var(--mx) var(--my), #000 35%, transparent 100%);
+}
+
+.portrait.is-lit {
+  --r: 150px;
 }
 
 .hero-chip {
@@ -2116,6 +2121,16 @@ main {
   height: 7px;
   transform: rotate(45deg);
   background: var(--silver);
+}
+
+.modal-list code {
+  font-family: var(--f-mono);
+  font-size: 0.85em;
+  padding: 1px 6px;
+  border-radius: 5px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  color: var(--text);
 }
 
 .modal-list strong {

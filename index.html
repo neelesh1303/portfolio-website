@@ -152,8 +152,9 @@
           <svg class="hero-spark" aria-hidden="true"><use href="#i-spark" /></svg>
           <div class="hero-aura" aria-hidden="true"></div>
           <div class="portrait" id="portrait">
-            <img src="assets/images/neelesh_portrait.webp" alt="Neelesh Kumar Tripathi" class="portrait-img" loading="eager"
+            <img src="assets/images/neelesh_portrait.webp" alt="Neelesh Kumar Tripathi" class="portrait-mono" loading="eager"
               fetchpriority="high">
+            <img src="assets/images/neelesh_portrait.webp" alt="" aria-hidden="true" class="portrait-color">
           </div>
           <div class="hero-chip hero-chip-loc">
             <span class="pulse"></span> Mysuru, India
@@ -185,7 +186,7 @@
         <div class="stat">
           <svg class="stat-icon"><use href="#i-users" /></svg>
           <div class="stat-num stat-num-text">Ex&#8209;Management Core</div>
-          <div class="stat-label">The BYTE Club (GDSC), NIE</div>
+          <div class="stat-label">The BYTE Club(GDSC)), NIE</div>
         </div>
         <div class="stat">
           <svg class="stat-icon"><use href="#i-cap" /></svg>
@@ -241,25 +242,31 @@
           <template class="work-details">
             <p class="modal-type">01 — AI placement &amp; roadmap platform</p>
             <h3 class="modal-title">Crackd</h3>
-            <p class="modal-lead">A production-grade career preparation ecosystem tailored for engineering undergraduates.
-              Resolves fragmented interview prep by synthesizing verified company archives into personalized weekly study
-              tracks and contextual question simulations.</p>
+            <p class="modal-lead">A MERN platform for placement preparation. Students explore companies, share interview
+              experiences, generate and track weekly study roadmaps, and ask an AI assistant questions grounded in real
+              interview data from their seniors.</p>
             <div class="modal-metrics">
-              <div><strong>~65%</strong><span>DB load reduced</span></div>
-              <div><strong>&lt;10ms</strong><span>Cached delivery</span></div>
-              <div><strong>CI/CD</strong><span>Jest + Supertest</span></div>
+              <div><strong>18</strong><span>REST API endpoints</span></div>
+              <div><strong>10 min</strong><span>Redis cache TTL</span></div>
+              <div><strong>CI</strong><span>Lint, build &amp; tests per PR</span></div>
             </div>
             <h4 class="modal-sub">Key architectural highlights</h4>
             <ul class="modal-list">
-              <li><strong>Gemini API &amp; cosine RAG:</strong> Embedded past senior interview transcripts with Google Gemini,
-                retrieving contextual interview questions via MongoDB vector similarity.</li>
-              <li><strong>Redis in-memory caching:</strong> Cache-aside architecture for high-frequency company archives and
-                role syllabi, reducing primary database load by ~65% with sub-10ms delivery.</li>
-              <li><strong>Secure auth &amp; CI/CD:</strong> JWT authentication with custom institutional email verification,
-                validated by automated GitHub Actions workflows running Jest and Supertest suites.</li>
+              <li><strong>RAG preparation assistant:</strong> Interview experiences are embedded with Gemini
+                (<code>gemini-embedding-001</code>) and retrieved by cosine similarity, so answers cite real experiences —
+                and the assistant says so when it has no matching data.</li>
+              <li><strong>AI roadmaps with a safe fallback:</strong> Gemini generates a week-by-week plan from the target
+                role, company, timeline, hours per day and strong/weak topics; if generation fails, the API returns a
+                template roadmap instead.</li>
+              <li><strong>Progress tracking:</strong> One active roadmap per user with checklist updates, a readiness score
+                and study streaks.</li>
+              <li><strong>Auth &amp; caching:</strong> Registration limited to <code>@nie.ac.in</code> addresses, bcrypt
+                password hashing and JWT-protected routes; the company list is cached in Redis for 10 minutes, and the app
+                keeps running if Redis is unavailable.</li>
+              <li><strong>Tested &amp; automated:</strong> <code>node:test</code> unit tests for the auth and college-email
+                middleware plus Jest + Supertest API tests, run by GitHub Actions on every push and pull request.</li>
             </ul>
-            <div class="modal-tags"><span>Gemini RAG</span><span>Redis Cache-Aside</span><span>MERN Stack</span><span>JWT
-                Auth</span><span>GitHub Actions CI/CD</span><span>Jest &amp; Supertest</span></div>
+            <div class="modal-tags"><span>React 19</span><span>Express 5</span><span>MongoDB</span><span>Gemini API</span><span>RAG</span><span>Redis</span><span>JWT</span><span>Jest &amp; Supertest</span><span>GitHub Actions</span></div>
             <div class="modal-links">
               <a href="https://crackd-placement-assistance-platfor.vercel.app/" target="_blank" rel="noopener"
                 class="btn-chrome">Live app <svg><use href="#i-arrow" /></svg></a>
@@ -278,40 +285,42 @@
           <div class="work-shade"></div>
           <div class="work-top">
             <span class="work-num">02</span>
-            <span class="badge">~4ms · $0</span>
+            <span class="badge">Semantic cache</span>
           </div>
           <div class="work-body">
             <h3 class="work-title">LLM Cost &amp;<br>Latency Optimizer</h3>
-            <p class="work-type">Multi-tier gateway &amp; vector cache</p>
-            <p class="work-tags">FastAPI · Groq · Gemini</p>
+            <p class="work-type">Multi-tier gateway &amp; semantic cache</p>
+            <p class="work-tags">FastAPI · Groq · Gemini · OpenRouter</p>
           </div>
           <span class="work-go"><svg><use href="#i-arrow" /></svg></span>
 
           <template class="work-details">
-            <p class="modal-type">02 — Multi-tier gateway &amp; vector cache</p>
+            <p class="modal-type">02 — Multi-tier gateway &amp; semantic cache</p>
             <h3 class="modal-title">LLM Cost &amp; Latency Optimizer</h3>
-            <p class="modal-lead">High-throughput API proxy gateway built with Python and FastAPI that dramatically curbs
-              inference expenses and latency by serving semantically identical prompts from memory and intelligently
-              routing queries.</p>
+            <p class="modal-lead">A FastAPI gateway that answers repeated and near-duplicate prompts from a semantic cache,
+              sends simple tasks to a cheaper model tier, falls back across providers, and logs every request so its
+              savings can be measured.</p>
             <div class="modal-metrics">
-              <div><strong>~4ms</strong><span>Cache hit</span></div>
-              <div><strong>$0</strong><span>Repeat prompt cost</span></div>
-              <div><strong>~14ms</strong><span>Groq TTFT</span></div>
+              <div><strong>0.85</strong><span>Similarity threshold</span></div>
+              <div><strong>500 · 24h</strong><span>LRU entries · TTL</span></div>
+              <div><strong>3</strong><span>Providers with fallback</span></div>
             </div>
             <h4 class="modal-sub">Key architectural highlights</h4>
             <ul class="modal-list">
-              <li><strong>Dense semantic caching:</strong> Converts incoming queries into 384-dimensional dense vectors using
-                Sentence-Transformers and computes NumPy cosine similarity. Prompts exceeding a 0.85 threshold return in
-                ~4ms at $0 cost.</li>
-              <li><strong>Intelligent tier routing:</strong> Cache misses are categorized by token size and reasoning
-                complexity: simple tasks dispatch to ultra-low-latency Groq LPUs (~14ms TTFT), while complex queries fall
-                back to Gemini 1.5 Flash.</li>
-              <li><strong>Asynchronous microservice:</strong> Fully asynchronous, leveraging Pydantic validation schemas,
-                dependency injection, and SQLite vector record persistence.</li>
+              <li><strong>Two-stage semantic cache:</strong> An exact match on the normalized prompt is tried first;
+                otherwise <code>all-MiniLM-L6-v2</code> embeddings find saved prompts with cosine similarity of at least
+                0.85. A cache hit makes no provider call.</li>
+              <li><strong>Guards against false hits:</strong> A candidate is reused only if both prompts share the same
+                numbers, negations and quoted text and contain no opposite word pairs (enable/disable); time-sensitive
+                prompts such as "today" or "latest" are never cached.</li>
+              <li><strong>Tiered routing:</strong> Short translate, summarize, classify, define and grammar-fix prompts go to
+                a cheap tier; everything else goes to a powerful tier.</li>
+              <li><strong>Resilient providers:</strong> Groq, Gemini and OpenRouter are tried in tier order with a 30-second
+                timeout each; if all fail, <code>/chat</code> returns HTTP 503 instead of inventing an answer.</li>
+              <li><strong>Measurable savings:</strong> Requests are logged to SQLite, and <code>/stats</code> reports tokens,
+                failures, average latency and notional savings against the most expensive model.</li>
             </ul>
-            <div class="modal-tags"><span>Python 3.10</span><span>FastAPI</span><span>Sentence-Transformers
-                (384-dim)</span><span>NumPy Cosine Math</span><span>Groq LPUs</span><span>Gemini 1.5
-                Flash</span><span>SQLite Vector Store</span></div>
+            <div class="modal-tags"><span>Python</span><span>FastAPI</span><span>Sentence-Transformers</span><span>NumPy</span><span>Groq</span><span>Gemini</span><span>OpenRouter</span><span>SQLite</span></div>
             <div class="modal-links">
               <a href="https://github.com/neelesh1303/LLM_COST_AND_LATENCY_OPTIMIZER" target="_blank" rel="noopener"
                 class="btn-chrome"><svg><use href="#i-github" /></svg> GitHub repo</a>
@@ -332,35 +341,38 @@
           </div>
           <div class="work-body">
             <h3 class="work-title">SignBridge</h3>
-            <p class="work-type">Bidirectional sign &harr; speech AI</p>
-            <p class="work-tags">OpenCV · MediaPipe · Whisper</p>
+            <p class="work-type">Indian Sign Language classroom</p>
+            <p class="work-tags">React · FastAPI · MediaPipe</p>
           </div>
           <span class="work-go"><svg><use href="#i-arrow" /></svg></span>
 
           <template class="work-details">
-            <p class="modal-type">03 — Bidirectional sign &harr; speech AI · DevJams 4th</p>
+            <p class="modal-type">03 — Indian Sign Language classroom · DevJams 4th</p>
             <h3 class="modal-title">SignBridge</h3>
-            <p class="modal-lead">Award-winning assistive communication system built in a 24-hour sprint at DevJams VIT
-              (ranking 4th out of 100+ national teams). Bridges communication gaps between the deaf/mute community and
-              verbal speakers without human interpreters.</p>
+            <p class="modal-lead">An inclusive classroom platform that bridges communication between hearing, Deaf,
+              hard-of-hearing and non-speaking students — turning a teacher&rsquo;s speech into Indian Sign Language and a
+              student&rsquo;s signs into spoken text. Placed 4th among 100+ teams at DevJams VIT.</p>
             <div class="modal-metrics">
-              <div><strong>4th</strong><span>of 100+ teams</span></div>
-              <div><strong>30+ FPS</strong><span>On CPU hardware</span></div>
-              <div><strong>80%+</strong><span>Gesture accuracy</span></div>
+              <div><strong>115</strong><span>ISL signs in vocabulary</span></div>
+              <div><strong>2 hands</strong><span>Tracked per frame</span></div>
+              <div><strong>A–Z</strong><span>Alphabet + daily words</span></div>
             </div>
             <h4 class="modal-sub">Key architectural highlights</h4>
             <ul class="modal-list">
-              <li><strong>Real-time skeleton tracking:</strong> Ingests live webcam feeds via OpenCV and extracts 21 hand
-                landmarks and 33 upper-body pose coordinates using MediaPipe at 30+ FPS on standard CPU hardware.</li>
-              <li><strong>Gesture classification:</strong> Normalized spatial coordinates feed into custom machine learning
-                models, achieving 80%+ accuracy across 180+ recorded training sign samples.</li>
-              <li><strong>Bidirectional voice pipeline:</strong> OpenAI Whisper for speech-to-text sign animation prompts,
-                alongside native speech synthesis for instant sign-to-voice articulation.</li>
+              <li><strong>Teacher panel — speech to sign:</strong> Spoken English is transcribed with the Web Speech API and
+                mapped to Indian Sign Language GIFs.</li>
+              <li><strong>Student panel — sign to speech:</strong> Webcam frames go to a FastAPI <code>/predict</code>
+                endpoint; MediaPipe extracts hand landmarks for up to two hands and scikit-learn classifiers predict the
+                sign, which is spoken aloud with speech synthesis.</li>
+              <li><strong>Robust features:</strong> Landmarks are normalized for rotation, scale and translation before
+                classification, with separate single-hand and two-hand models.</li>
+              <li><strong>Learn &amp; play:</strong> An interactive ISL dictionary plus a quiz and a caption-scramble game to
+                practise signs.</li>
             </ul>
-            <div class="modal-tags"><span>Python</span><span>OpenCV</span><span>MediaPipe Hands &amp; Pose</span><span>OpenAI
-                Whisper ASR</span><span>Scikit-Learn</span><span>Web Speech API</span></div>
+            <div class="modal-tags"><span>React 19</span><span>Vite</span><span>FastAPI</span><span>MediaPipe</span><span>OpenCV</span><span>scikit-learn</span><span>Web Speech API</span></div>
             <div class="modal-links">
-              <a href="https://github.com/neelesh1303" target="_blank" rel="noopener" class="btn-chrome"><svg><use href="#i-github" /></svg> GitHub</a>
+              <a href="https://github.com/neelesh1303/MAJOR_PROJECT_SignBridge" target="_blank" rel="noopener"
+                class="btn-chrome"><svg><use href="#i-github" /></svg> GitHub repo</a>
             </div>
           </template>
         </article>
@@ -374,37 +386,38 @@
           <div class="work-shade"></div>
           <div class="work-top">
             <span class="work-num">04</span>
-            <span class="badge">~10ms queries</span>
+            <span class="badge">Flask · MySQL</span>
           </div>
           <div class="work-body">
             <h3 class="work-title">FinNIE</h3>
             <p class="work-type">Campus lost &amp; found platform</p>
-            <p class="work-tags">Flask · MySQL · REST</p>
+            <p class="work-tags">Flask · MySQL · Flask-Limiter</p>
           </div>
           <span class="work-go"><svg><use href="#i-arrow" /></svg></span>
 
           <template class="work-details">
             <p class="modal-type">04 — Campus lost &amp; found platform</p>
             <h3 class="modal-title">FinNIE</h3>
-            <p class="modal-lead">Full-stack campus item locator platform built with Flask and MySQL. Replaces chaotic
-              social media lost-and-found posts with a centralized, searchable database featuring verified student
-              identity matching.</p>
+            <p class="modal-lead">A full-stack lost &amp; found platform for the NIE campus. Instead of email spam and word
+              of mouth, students report lost or found items with details and a photo, browse found items, and contact the
+              finder directly.</p>
             <div class="modal-metrics">
-              <div><strong>~10ms</strong><span>Avg. query latency</span></div>
-              <div><strong>B-Tree</strong><span>Composite indexes</span></div>
-              <div><strong>Token bucket</strong><span>Rate limiting</span></div>
+              <div><strong>10 / min</strong><span>Submission rate limit</span></div>
+              <div><strong>@nie.ac.in</strong><span>Campus-only access</span></div>
+              <div><strong>3</strong><span>Lost · Found · Resolved</span></div>
             </div>
             <h4 class="modal-sub">Key architectural highlights</h4>
             <ul class="modal-list">
-              <li><strong>Indexed MySQL relational schema:</strong> Normalized relational tables with composite B-tree
-                indexes across item categories, status flags, and timestamps, sustaining ~10ms average query latency.</li>
-              <li><strong>Abuse prevention &amp; rate limiting:</strong> Token-bucket rate limiting via Flask-Limiter to
-                defend public endpoints against scraper bots and brute-force spam.</li>
-              <li><strong>Search &amp; claim lifecycle:</strong> Multi-field fuzzy search, category filters, image
-                attachments, and verified institutional email verification for secure item claims.</li>
+              <li><strong>Report lifecycle:</strong> Items move through Lost, Found and Resolved; resolved reports are
+                removed from the active database automatically.</li>
+              <li><strong>Campus-only access:</strong> Session-based login that accepts only <code>@nie.ac.in</code> email
+                addresses.</li>
+              <li><strong>Abuse protection:</strong> Flask-Limiter caps report submissions at 10 per minute per client, and
+                uploaded image names are sanitized with <code>secure_filename</code>.</li>
+              <li><strong>MySQL-backed:</strong> Reports and contact details are stored in MySQL, configured through
+                environment variables and served with Gunicorn.</li>
             </ul>
-            <div class="modal-tags"><span>Python</span><span>Flask</span><span>MySQL</span><span>Flask-Limiter</span><span>RESTful
-                APIs</span><span>B-Tree Indexes</span></div>
+            <div class="modal-tags"><span>Python</span><span>Flask</span><span>MySQL</span><span>Flask-Limiter</span><span>Jinja templates</span><span>Gunicorn</span></div>
             <div class="modal-links">
               <a href="https://github.com/neelesh1303/FinNIE-lost-and-found-item-tracker" target="_blank" rel="noopener"
                 class="btn-chrome"><svg><use href="#i-github" /></svg> GitHub repo</a>
@@ -431,8 +444,8 @@
             <button type="button" class="cap reveal" data-domain="ai">
               <svg class="cap-icon"><use href="#i-ai" /></svg>
               <span class="cap-title">AI &amp; LLM systems</span>
-              <span class="cap-desc">Semantic vector caching, RAG over verified archives, and multi-provider routing across
-                Groq LPUs and Gemini.</span>
+              <span class="cap-desc">Semantic caching, RAG over real interview data, and multi-provider routing across Groq,
+                Gemini and OpenRouter.</span>
             </button>
             <button type="button" class="cap reveal" data-domain="backend">
               <svg class="cap-icon"><use href="#i-server" /></svg>
@@ -443,7 +456,7 @@
             <button type="button" class="cap reveal" data-domain="db">
               <svg class="cap-icon"><use href="#i-db" /></svg>
               <span class="cap-title">Databases &amp; caching</span>
-              <span class="cap-desc">Redis cache-aside, normalized MySQL with B-tree indexing (~10ms), and MongoDB document
+              <span class="cap-desc">Redis caching, MySQL relational storage, SQLite request logs, and MongoDB document
                 modeling.</span>
             </button>
             <button type="button" class="cap reveal" data-domain="devops">
@@ -474,7 +487,7 @@
             <div class="tool" data-d="lang backend"><b>Pd</b>Pydantic</div>
             <div class="tool" data-d="ai"><b>Gm</b>Gemini API</div>
             <div class="tool" data-d="ai"><b>ST</b>Sentence-Transformers</div>
-            <div class="tool" data-d="ai"><b>Gq</b>Groq LPUs</div>
+            <div class="tool" data-d="ai"><b>Gq</b>Groq</div>
             <div class="tool" data-d="ai"><b>OR</b>OpenRouter</div>
             <div class="tool" data-d="ai db"><b>RAG</b>RAG &amp; Embeddings</div>
             <div class="tool" data-d="backend"><b>Nd</b>Node.js</div>
@@ -511,7 +524,7 @@
           <p class="about-text reveal">
             I'm an Information Science engineer at The National Institute of Engineering, Mysuru, who loves the part of
             software most people never see: the caches, the routers, the indexes and the algorithms that make a product
-            feel instant. I've built LLM gateways that answer in ~4ms, placement platforms backed by RAG, and an
+            feel instant. I've built an LLM gateway with a semantic cache and multi-provider fallback, a placement platform backed by RAG, and an
             assistive sign-language system that placed 4th among 100+ national teams at DevJams VIT.
           </p>
           <p class="about-text reveal">
@@ -549,7 +562,7 @@
         <div class="step">
           <div class="step-head"><span class="step-num">03</span><span class="step-year">2024</span></div>
           <h3 class="step-title">Leadership</h3>
-          <p class="step-text">Joined The BYTE Club, NIE as a Management Core Member.</p>
+          <p class="step-text">Joined The BYTE Club(GDSC), NIE as a Management Core Member.</p>
           <svg class="step-icon"><use href="#i-users" /></svg>
         </div>
         <div class="step">
@@ -592,7 +605,7 @@
           <div class="info-row">
             <svg class="info-icon"><use href="#i-users" /></svg>
             <div>
-              <p class="info-title">Management Core Member — The BYTE Club, NIE Mysuru</p>
+              <p class="info-title">Management Core Member — The BYTE Club(GDSC)Mysuru</p>
               <p class="info-meta">Aug 2024 — Jan 2026</p>
             </div>
           </div>

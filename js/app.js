@@ -344,7 +344,7 @@ function initMagnetic() {
 }
 
 /* ==========================================================================
-   HERO PORTRAIT — mono photo that brightens to colour on hover + parallax
+   HERO PORTRAIT — mono photo with a bright colour spotlight at the pointer + parallax
    ========================================================================== */
 function initPortrait() {
   const visual = $("#heroVisual");
@@ -763,11 +763,11 @@ Looking for Remote · Onsite · Hybrid roles in India.`),
     projects: () =>
       print(`[01] Crackd — AI placement &amp; roadmap platform (MERN, Gemini RAG, Redis)
      ${link("https://crackd-placement-assistance-platfor.vercel.app/", "live ↗")}  ${link("https://github.com/neelesh1303/Crackd-Placement-Assistance-Platform/", "github ↗")}
-[02] LLM Cost &amp; Latency Optimizer — FastAPI gateway, ~4ms cache hits at $0
+[02] LLM Cost &amp; Latency Optimizer — FastAPI gateway, semantic cache + provider fallback
      ${link("https://github.com/neelesh1303/LLM_COST_AND_LATENCY_OPTIMIZER", "github ↗")}
 [03] SignBridge — Sign ↔ speech AI, 4th at DevJams VIT (100+ teams)
-     ${link("https://github.com/neelesh1303", "github ↗")}
-[04] FinNIE — Campus lost &amp; found (Flask, MySQL, ~10ms queries)
+     ${link("https://github.com/neelesh1303/MAJOR_PROJECT_SignBridge", "github ↗")}
+[04] FinNIE — Campus lost &amp; found (Flask, MySQL, rate limiting)
      ${link("https://github.com/neelesh1303/FinNIE-lost-and-found-item-tracker", "github ↗")}`),
 
     skills: () =>
