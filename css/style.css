@@ -1173,24 +1173,6 @@ svg {
   margin-left: auto;
 }
 
-.hero-logos {
-  position: absolute;
-  left: 50%;
-  bottom: calc(28 * var(--u));
-  z-index: 3;
-  transform: translateX(-50%);
-  display: flex;
-  gap: calc(40 * var(--u));
-  font-family: var(--f-wide);
-  font-variation-settings: "wdth" 125;
-  font-weight: 700;
-  font-size: max(12px, calc(15 * var(--u)));
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--ink);
-  white-space: nowrap;
-}
-
 /* entrance initial states (animated in by JS) */
 .js .h-in,
 .js .hero-photo {
@@ -2649,7 +2631,7 @@ svg {
     order: 3;
     width: calc(100% + 2 * var(--gx));
     height: calc(400 * var(--u));
-    margin: 18px calc(-1 * var(--gx)) 0;
+    margin: 18px calc(-1 * var(--gx)) 26px;
     /* stacked layout: drifting would push the photo into the stack row */
     --drift: 0px !important;
   }
@@ -2663,16 +2645,6 @@ svg {
     bottom: 40%;
     width: calc(300 * var(--u));
     margin-left: calc(-150 * var(--u));
-  }
-
-  .hero-logos {
-    order: 4;
-    transform: none;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 8px 18px;
-    margin: 6px 0 26px;
-    white-space: normal;
   }
 
   .hero-right {
