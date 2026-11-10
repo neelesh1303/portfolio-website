@@ -40,66 +40,63 @@
 <circle cx="24" cy="22" r="6" fill="#d9d6d0"/>
 <circle cx="44" cy="22" r="6" fill="#d9d6d0"/>
 <circle cx="64" cy="22" r="6" fill="#d9d6d0"/>
-<rect x="325.0" y="11" width="360" height="22" rx="11" fill="#f3f2ee"/>
-<text x="505.0" y="27" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="middle" >finnie · lost &amp; found</text>
-<text x="32" y="98" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#1f1e1c" text-anchor="start" >Lost &amp; Found</text>
-<text x="32" y="124" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >NIE campus · sign in with @nie.ac.in</text>
-<rect x="420" y="80" width="118" height="38" rx="19" fill="#efede8"/>
-<text x="479" y="104" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="middle" >Lost  12</text>
-<rect x="550" y="80" width="118" height="38" rx="19" fill="#2a2826"/>
-<text x="609" y="104" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#fff" text-anchor="middle" >Found  9</text>
-<rect x="680" y="80" width="118" height="38" rx="19" fill="#efede8"/>
-<text x="739" y="104" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="middle" >Resolved  31</text>
-<rect x="826" y="80" width="160" height="38" rx="19" fill="#b0532c"/>
-<text x="906" y="104" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#fff" text-anchor="middle" >+ Report item</text>
-<rect x="24" y="146" width="308" height="262" rx="14" fill="#fff" stroke="#dedbd5"/>
-<rect x="34" y="156" width="288" height="150" rx="10" fill="#efede8"/>
-<g fill="none" stroke="#1f1e1c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="160" y="201" width="36" height="74" rx="10"/><rect x="168" y="185" width="20" height="16" rx="3"/><line x1="160" y1="225" x2="196" y2="225"/></g>
-<text x="44" y="338" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#1f1e1c" text-anchor="start" >Steel water bottle</text>
-<text x="44" y="364" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >Library · 2nd floor</text>
-<circle cx="48" cy="387" r="5" fill="#b0532c"/>
-<text x="60" y="392" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >Found · 2h ago</text>
-<text x="310" y="392" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#b0532c" text-anchor="end" >Contact finder →</text>
-<rect x="348" y="146" width="308" height="262" rx="14" fill="#fff" stroke="#dedbd5"/>
-<rect x="358" y="156" width="288" height="150" rx="10" fill="#efede8"/>
-<g fill="none" stroke="#1f1e1c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="480" cy="221" r="16"/><path d="M496 221 L540 221 M528 221 L528 233 M536 221 L536 235"/><circle cx="480" cy="221" r="5"/></g>
-<text x="368" y="338" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#1f1e1c" text-anchor="start" >Hostel room keys</text>
-<text x="368" y="364" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >Canteen</text>
-<circle cx="372" cy="387" r="5" fill="#b0532c"/>
-<text x="384" y="392" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >Found · 5h ago</text>
-<text x="634" y="392" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#b0532c" text-anchor="end" >Contact finder →</text>
-<rect x="672" y="146" width="308" height="262" rx="14" fill="#fff" stroke="#dedbd5"/>
-<rect x="682" y="156" width="288" height="150" rx="10" fill="#efede8"/>
-<g fill="none" stroke="#1f1e1c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M782 231 Q 826 169 870 231 Q 856 221 841 231 Q 826 221 811 231 Q 796 221 782 231"/><path d="M826 227 L826 267 Q 826 277 816 271"/></g>
-<text x="692" y="338" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#1f1e1c" text-anchor="start" >Black umbrella</text>
-<text x="692" y="364" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >Main block · Room 204</text>
-<circle cx="696" cy="387" r="5" fill="#b0532c"/>
-<text x="708" y="392" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >Found · yesterday</text>
-<text x="958" y="392" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#b0532c" text-anchor="end" >Contact finder →</text>
-<rect x="24" y="424" width="308" height="262" rx="14" fill="#fff" stroke="#dedbd5"/>
-<rect x="34" y="434" width="288" height="150" rx="10" fill="#efede8"/>
-<g fill="none" stroke="#1f1e1c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="134" y="481" width="88" height="58" rx="6"/><circle cx="158" cy="507" r="11"/><line x1="180" y1="501" x2="210" y2="501"/><line x1="180" y1="515" x2="202" y2="515"/></g>
-<text x="44" y="616" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#1f1e1c" text-anchor="start" >Student ID card</text>
-<text x="44" y="642" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >Ground</text>
-<circle cx="48" cy="665" r="5" fill="#b0532c"/>
-<text x="60" y="670" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >Found · yesterday</text>
-<text x="310" y="670" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#b0532c" text-anchor="end" >Contact finder →</text>
-<rect x="348" y="424" width="308" height="262" rx="14" fill="#fff" stroke="#dedbd5"/>
-<rect x="358" y="434" width="288" height="150" rx="10" fill="#efede8"/>
-<g fill="none" stroke="#1f1e1c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="480" cy="529" r="9"/><circle cx="524" cy="529" r="9"/><path d="M480 520 Q 480 479 502 479 Q 524 479 524 520"/></g>
-<text x="368" y="616" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#1f1e1c" text-anchor="start" >Wired earphones</text>
-<text x="368" y="642" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >Bus stop</text>
-<circle cx="372" cy="665" r="5" fill="#b0532c"/>
-<text x="384" y="670" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >Found · 2 days ago</text>
-<text x="634" y="670" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#b0532c" text-anchor="end" >Contact finder →</text>
-<rect x="672" y="424" width="308" height="262" rx="14" fill="#fff" stroke="#dedbd5"/>
-<rect x="682" y="434" width="288" height="150" rx="10" fill="#efede8"/>
-<g fill="none" stroke="#1f1e1c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="800" y="473" width="52" height="74" rx="6"/><rect x="808" y="481" width="36" height="14" rx="2"/><circle cx="812" cy="509" r="2.5"/><circle cx="826" cy="509" r="2.5"/><circle cx="840" cy="509" r="2.5"/><circle cx="812" cy="521" r="2.5"/><circle cx="826" cy="521" r="2.5"/><circle cx="840" cy="521" r="2.5"/><circle cx="812" cy="533" r="2.5"/><circle cx="826" cy="533" r="2.5"/><circle cx="840" cy="533" r="2.5"/></g>
-<text x="692" y="616" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#1f1e1c" text-anchor="start" >Calculator fx-991</text>
-<text x="692" y="642" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >Exam hall 3</text>
-<circle cx="696" cy="665" r="5" fill="#b0532c"/>
-<text x="708" y="670" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >Found · 3 days ago</text>
-<text x="958" y="670" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#b0532c" text-anchor="end" >Contact finder →</text>
+<text x="505.0" y="27" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="middle" >FinNIE-lost-and-found-item-tracker</text>
+<rect x="0" y="44" width="200" height="700" fill="#ecebe7"/>
+<text x="20" y="74" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#8a8780" text-anchor="start" letter-spacing="1.5">EXPLORER</text>
+<rect x="8" y="86" width="184" height="26" rx="6" fill="#fff"/>
+<text x="22" y="104" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="600" fill="#1f1e1c" text-anchor="start" >app.py</text>
+<text x="22" y="131" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >db.py</text>
+<text x="22" y="158" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#1f1e1c" text-anchor="start" >▾ templates/</text>
+<text x="38" y="185" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >report.html</text>
+<text x="38" y="212" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >found.html</text>
+<text x="22" y="239" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#1f1e1c" text-anchor="start" >▾ static/uploads/</text>
+<text x="22" y="266" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >schema.sql</text>
+<text x="22" y="293" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >Procfile</text>
+<rect x="200" y="44" width="810" height="36" fill="#efede8"/>
+<rect x="200" y="44" width="94" height="36" fill="#f6f5f2"/>
+<line x1="200" y1="79" x2="294" y2="79" stroke="#b0532c" stroke-width="2"/>
+<text x="222" y="67" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#1f1e1c" text-anchor="start" >app.py</text>
+<text x="232" y="114" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#b9b5ad" text-anchor="end" >1</text>
+<text x="244" y="114" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14.5" xml:space="preserve"><tspan fill="#1f1e1c">limiter</tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c">=</tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#2f5d86">Limiter</tspan><tspan fill="#1f1e1c">(</tspan><tspan fill="#1f1e1c">get_remote_address</tspan><tspan fill="#1f1e1c">,</tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c">app</tspan><tspan fill="#1f1e1c">=</tspan><tspan fill="#1f1e1c">app</tspan><tspan fill="#1f1e1c">)</tspan></text>
+<text x="232" y="138" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#b9b5ad" text-anchor="end" >2</text>
+<text x="244" y="138" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14.5" xml:space="preserve"></text>
+<text x="232" y="162" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#b9b5ad" text-anchor="end" >3</text>
+<text x="244" y="162" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14.5" xml:space="preserve"><tspan fill="#2f5d86">@app.post</tspan><tspan fill="#1f1e1c">(</tspan><tspan fill="#5b7343">"/report"</tspan><tspan fill="#1f1e1c">)</tspan></text>
+<text x="232" y="186" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#b9b5ad" text-anchor="end" >4</text>
+<text x="244" y="186" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14.5" xml:space="preserve"><tspan fill="#2f5d86">@login_required</tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#9a968e" font-style="italic"># @nie.ac.in sessions only</tspan></text>
+<rect x="200" y="193" width="810" height="24" fill="#b0532c" opacity="0.09"/>
+<rect x="200" y="193" width="3" height="24" fill="#b0532c"/>
+<text x="232" y="210" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#b9b5ad" text-anchor="end" >5</text>
+<text x="244" y="210" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14.5" xml:space="preserve"><tspan fill="#2f5d86">@limiter.limit</tspan><tspan fill="#1f1e1c">(</tspan><tspan fill="#5b7343">"10 per minute"</tspan><tspan fill="#1f1e1c">)</tspan></text>
+<text x="232" y="234" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#b9b5ad" text-anchor="end" >6</text>
+<text x="244" y="234" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14.5" xml:space="preserve"><tspan fill="#a3462a">def</tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#2f5d86">report</tspan><tspan fill="#1f1e1c">(</tspan><tspan fill="#1f1e1c">)</tspan><tspan fill="#1f1e1c">:</tspan></text>
+<text x="232" y="258" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#b9b5ad" text-anchor="end" >7</text>
+<text x="244" y="258" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14.5" xml:space="preserve"><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c">photo</tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c">=</tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c">request</tspan><tspan fill="#1f1e1c">.</tspan><tspan fill="#1f1e1c">files</tspan><tspan fill="#1f1e1c">.</tspan><tspan fill="#2f5d86">get</tspan><tspan fill="#1f1e1c">(</tspan><tspan fill="#5b7343">"photo"</tspan><tspan fill="#1f1e1c">)</tspan></text>
+<text x="232" y="282" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#b9b5ad" text-anchor="end" >8</text>
+<text x="244" y="282" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14.5" xml:space="preserve"><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c">name</tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c">=</tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#2f5d86">secure_filename</tspan><tspan fill="#1f1e1c">(</tspan><tspan fill="#1f1e1c">photo</tspan><tspan fill="#1f1e1c">.</tspan><tspan fill="#1f1e1c">filename</tspan><tspan fill="#1f1e1c">)</tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#a3462a">if</tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c">photo</tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#a3462a">else</tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#a3462a">None</tspan></text>
+<text x="232" y="306" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#b9b5ad" text-anchor="end" >9</text>
+<text x="244" y="306" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14.5" xml:space="preserve"><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c">db</tspan><tspan fill="#1f1e1c">.</tspan><tspan fill="#2f5d86">execute</tspan><tspan fill="#1f1e1c">(</tspan></text>
+<text x="232" y="330" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#b9b5ad" text-anchor="end" >10</text>
+<text x="244" y="330" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14.5" xml:space="preserve"><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#5b7343">"INSERT INTO items (title, place, status, photo, contact) "</tspan></text>
+<text x="232" y="354" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#b9b5ad" text-anchor="end" >11</text>
+<text x="244" y="354" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14.5" xml:space="preserve"><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#5b7343">"VALUES (%s, %s, %s, %s, %s)"</tspan><tspan fill="#1f1e1c">,</tspan></text>
+<text x="232" y="378" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#b9b5ad" text-anchor="end" >12</text>
+<text x="244" y="378" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14.5" xml:space="preserve"><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c">(</tspan><tspan fill="#1f1e1c">f</tspan><tspan fill="#1f1e1c">[</tspan><tspan fill="#5b7343">"title"</tspan><tspan fill="#1f1e1c">]</tspan><tspan fill="#1f1e1c">,</tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c">f</tspan><tspan fill="#1f1e1c">[</tspan><tspan fill="#5b7343">"place"</tspan><tspan fill="#1f1e1c">]</tspan><tspan fill="#1f1e1c">,</tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c">f</tspan><tspan fill="#1f1e1c">[</tspan><tspan fill="#5b7343">"status"</tspan><tspan fill="#1f1e1c">]</tspan><tspan fill="#1f1e1c">,</tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c">name</tspan><tspan fill="#1f1e1c">,</tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c">session</tspan><tspan fill="#1f1e1c">[</tspan><tspan fill="#5b7343">"email"</tspan><tspan fill="#1f1e1c">]</tspan><tspan fill="#1f1e1c">)</tspan><tspan fill="#1f1e1c">,</tspan></text>
+<text x="232" y="402" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#b9b5ad" text-anchor="end" >13</text>
+<text x="244" y="402" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14.5" xml:space="preserve"><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c">)</tspan></text>
+<text x="232" y="426" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#b9b5ad" text-anchor="end" >14</text>
+<text x="244" y="426" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14.5" xml:space="preserve"><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#a3462a">return</tspan><tspan fill="#1f1e1c"> </tspan><tspan fill="#2f5d86">redirect</tspan><tspan fill="#1f1e1c">(</tspan><tspan fill="#2f5d86">url_for</tspan><tspan fill="#1f1e1c">(</tspan><tspan fill="#5b7343">"found"</tspan><tspan fill="#1f1e1c">)</tspan><tspan fill="#1f1e1c">)</tspan></text>
+<text x="232" y="450" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" font-weight="400" fill="#b9b5ad" text-anchor="end" >15</text>
+<text x="244" y="450" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14.5" xml:space="preserve"></text>
+<rect x="200" y="486" width="810" height="214" fill="#232220"/>
+<text x="222" y="510" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#8f8b83" text-anchor="start" letter-spacing="1.5">TERMINAL</text>
+<line x1="222" y1="517" x2="292" y2="517" stroke="#b0532c" stroke-width="2"/>
+<text x="222" y="546" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13.5" xml:space="preserve"><tspan fill="#d0794f">mysql&gt; </tspan><tspan fill="#f1efe9">SELECT status, COUNT(*) FROM items GROUP BY status;</tspan></text>
+<text x="222" y="568" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13.5" xml:space="preserve"><tspan fill="#bdb8ae">+--------+----------+</tspan></text>
+<text x="222" y="590" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13.5" xml:space="preserve"><tspan fill="#bdb8ae">| lost   |       12 |</tspan></text>
+<text x="222" y="612" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13.5" xml:space="preserve"><tspan fill="#bdb8ae">| found  |        9 |</tspan></text>
+<text x="222" y="634" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13.5" xml:space="preserve"><tspan fill="#bdb8ae">+--------+----------+</tspan></text>
+<text x="222" y="656" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13.5" xml:space="preserve"><tspan fill="#bdb8ae">2 rows in set (0.00 sec)</tspan></text>
 </g></g>
 <g transform="rotate(-4 265 470)">
 <g filter="url(#shadow2)"><rect x="80" y="250" width="370" height="440" rx="4" fill="#e6e2da"/></g>
@@ -122,7 +119,7 @@
 <text x="265" y="580" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#b0532c" text-anchor="middle" >found</text>
 <text x="265" y="640" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#232323" text-anchor="middle" >resolved</text>
 </g>
-<path d="M1225 92 Q 1400 90 1405 200" fill="none" stroke="#b0532c" stroke-width="2.4" stroke-linecap="round" marker-end="url(#ahr)" filter="url(#rough)"/>
-<text x="870" y="100" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-weight="400" fill="#b0532c" text-anchor="start" font-style="italic">10 reports / min · campus only</text>
+<path d="M1556 110 C 1592 190, 1590 285, 1512 335" fill="none" stroke="#b0532c" stroke-width="2.4" stroke-linecap="round" marker-end="url(#ahr)" filter="url(#rough)"/>
+<text x="1545" y="100" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-weight="400" fill="#b0532c" text-anchor="end" font-style="italic">rate limited per client</text>
 <rect width="1600" height="900" filter="url(#grain)"/>
 </svg>
