@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+<defs>
+  <filter id="grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/>
+    <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.22 0 0 0 0"/>
+  </filter>
+  <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="13" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <radialGradient id="vig" cx="50%" cy="45%" r="75%">
+    <stop offset="0.55" stop-color="#000" stop-opacity="0"/>
+    <stop offset="1" stop-color="#000" stop-opacity="0.2"/>
+  </radialGradient>
+  <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="1.2" fill="#000" opacity="0.13"/>
+  </pattern>
+  <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+    <path d="M1 1 L9 5 L1 9" fill="none" stroke="#232323" stroke-width="1.6" stroke-linecap="round"/>
+  </marker>
+  <marker id="ahr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+    <path d="M1 1 L9 5 L1 9" fill="none" stroke="#b0532c" stroke-width="1.6" stroke-linecap="round"/>
+  </marker>
+</defs>
+<rect width="1600" height="900" fill="#e2dfd9"/>
+<rect width="1600" height="900" fill="url(#dots)"/>
+<text x="150" y="168" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="19" letter-spacing="4" fill="#6d6a64">03 — SIGNBRIDGE</text>
+<text x="150" y="222" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="38" fill="#232323">speech to sign, and back again.</text>
+<g filter="url(#rough)" fill="none" stroke="#232323" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+<rect x="195" y="285" width="440" height="460" rx="10" stroke-dasharray="10 10" stroke="#6d6a64"/>
+<path d="M400 690 L340 640 L298 582 L272 528 L250 480"/>
+<path d="M400 690 L355 520 L342 445 L335 395 L330 352"/>
+<path d="M355 520 L410 505 L462 518 L508 552"/>
+<path d="M410 505 L410 420 L410 366 L410 318"/>
+<path d="M462 518 L472 440 L478 392 L484 352"/>
+<path d="M400 690 L508 552 L532 490 L548 450 L560 415"/>
+<line x1="655" y1="470" x2="745" y2="470" marker-end="url(#ah)"/>
+<rect x="760" y="438" width="170" height="64" rx="8" fill="#efece6"/>
+<line x1="932" y1="470" x2="1000" y2="470" marker-end="url(#ah)"/>
+<rect x="1015" y="438" width="170" height="64" rx="8" fill="#efece6"/>
+<line x1="1187" y1="470" x2="1240" y2="470" marker-end="url(#ah)"/>
+<path d="M1255 410 L1465 410 L1465 520 L1300 520 L1275 548 L1280 520 L1255 520 Z" fill="#efece6"/>
+<rect x="1340" y="620" width="40" height="66" rx="20" fill="#efece6"/>
+<path d="M1326 668 C 1326 712, 1394 712, 1394 668 M1360 708 L1360 728"/>
+<line x1="1315" y1="665" x2="1190" y2="665" marker-end="url(#ah)"/>
+<rect x="790" y="620" width="110" height="90" rx="6" fill="#efece6"/>
+<path d="M820 700 L820 660 M835 700 L835 650 M850 700 L850 655 M865 700 L865 668" />
+<rect x="920" y="620" width="110" height="90" rx="6" fill="#efece6"/>
+<path d="M950 700 L950 660 M965 700 L965 650 M980 700 L980 655 M995 700 L995 668" />
+<rect x="1050" y="620" width="110" height="90" rx="6" fill="#efece6"/>
+<path d="M1080 700 L1080 660 M1095 700 L1095 650 M1110 700 L1110 655 M1125 700 L1125 668" />
+<circle cx="400" cy="690" r="6.5" fill="#232323"/>
+<circle cx="340" cy="640" r="6.5" fill="#232323"/>
+<circle cx="298" cy="582" r="6.5" fill="#232323"/>
+<circle cx="272" cy="528" r="6.5" fill="#232323"/>
+<circle cx="250" cy="480" r="8" fill="#b0532c"/>
+<circle cx="355" cy="520" r="6.5" fill="#232323"/>
+<circle cx="342" cy="445" r="6.5" fill="#232323"/>
+<circle cx="335" cy="395" r="6.5" fill="#232323"/>
+<circle cx="330" cy="352" r="8" fill="#b0532c"/>
+<circle cx="410" cy="505" r="6.5" fill="#232323"/>
+<circle cx="410" cy="420" r="6.5" fill="#232323"/>
+<circle cx="410" cy="366" r="6.5" fill="#232323"/>
+<circle cx="410" cy="318" r="8" fill="#b0532c"/>
+<circle cx="462" cy="518" r="6.5" fill="#232323"/>
+<circle cx="472" cy="440" r="6.5" fill="#232323"/>
+<circle cx="478" cy="392" r="6.5" fill="#232323"/>
+<circle cx="484" cy="352" r="8" fill="#b0532c"/>
+<circle cx="508" cy="552" r="6.5" fill="#232323"/>
+<circle cx="532" cy="490" r="6.5" fill="#232323"/>
+<circle cx="548" cy="450" r="6.5" fill="#232323"/>
+<circle cx="560" cy="415" r="8" fill="#b0532c"/>
+</g>
+<text x="195" y="272" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="start">webcam · 21 landmarks per hand</text>
+<text x="845" y="477" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="19" fill="#232323" text-anchor="middle" >/predict</text>
+<text x="1100" y="477" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="19" fill="#232323" text-anchor="middle" >classifier</text>
+<text x="1360" y="474" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="30" fill="#232323" text-anchor="middle">“thank you”</text>
+<text x="1360" y="580" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">spoken aloud</text>
+<text x="985" y="750" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">ISL signs · 115 in vocabulary</text>
+<text x="1360" y="770" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">teacher speaks</text>
+<rect width="1600" height="900" filter="url(#grain)"/>
+<rect width="1600" height="900" fill="url(#vig)"/>
+</svg>

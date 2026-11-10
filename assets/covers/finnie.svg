@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+<defs>
+  <filter id="grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/>
+    <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.22 0 0 0 0"/>
+  </filter>
+  <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="21" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <radialGradient id="vig" cx="50%" cy="45%" r="75%">
+    <stop offset="0.55" stop-color="#000" stop-opacity="0"/>
+    <stop offset="1" stop-color="#000" stop-opacity="0.2"/>
+  </radialGradient>
+  <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="1.2" fill="#000" opacity="0.13"/>
+  </pattern>
+  <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+    <path d="M1 1 L9 5 L1 9" fill="none" stroke="#232323" stroke-width="1.6" stroke-linecap="round"/>
+  </marker>
+  <marker id="ahr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+    <path d="M1 1 L9 5 L1 9" fill="none" stroke="#b0532c" stroke-width="1.6" stroke-linecap="round"/>
+  </marker>
+</defs>
+<rect width="1600" height="900" fill="#e2dfd9"/>
+<rect width="1600" height="900" fill="url(#dots)"/>
+<text x="150" y="168" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="19" letter-spacing="4" fill="#6d6a64">04 — FINNIE</text>
+<text x="150" y="222" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="38" fill="#232323">a notice board for whatever gets left behind on campus.</text>
+<g filter="url(#rough)" fill="none" stroke="#232323" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+<path d="M150 560 C 300 540, 420 600, 560 560 S 740 520, 780 540" stroke="#6d6a64" stroke-width="14" opacity="0.35"/>
+<path d="M430 280 C 450 380, 400 460, 440 560 S 470 700, 450 760" stroke="#6d6a64" stroke-width="14" opacity="0.35"/>
+<rect x="190" y="300" width="190" height="110" rx="4" fill="#efece6"/>
+<rect x="520" y="290" width="200" height="130" rx="4" fill="#efece6"/>
+<rect x="200" y="620" width="150" height="100" rx="4" fill="#efece6"/>
+<rect x="560" y="610" width="170" height="110" rx="4" fill="#efece6"/>
+<ellipse cx="300" cy="480" rx="80" ry="38" fill="#efece6" stroke-dasharray="6 8"/>
+<path d="M285 360 L285 336" stroke="#b0532c"/>
+<circle cx="285" cy="330" r="12" fill="#e2dfd9" stroke="#b0532c"/>
+<path d="M620 355 L620 331" stroke="#b0532c"/>
+<circle cx="620" cy="325" r="12" fill="#b0532c" stroke="#b0532c"/>
+<path d="M345 482 L345 458" stroke="#b0532c"/>
+<circle cx="345" cy="452" r="12" fill="#b0532c" stroke="#b0532c"/>
+<path d="M645 668 L645 644" stroke="#b0532c"/>
+<circle cx="645" cy="638" r="12" fill="#e2dfd9" stroke="#b0532c"/>
+<path d="M275 670 L275 646" stroke="#b0532c"/>
+<circle cx="275" cy="640" r="12" fill="#b0532c" stroke="#b0532c"/>
+<line x1="870" y1="310" x2="1045" y2="310"/>
+<line x1="1020" y1="275" x2="1085" y2="275" marker-end="url(#ah)"/>
+<line x1="1075" y1="310" x2="1250" y2="310"/>
+<line x1="1225" y1="275" x2="1290" y2="275" marker-end="url(#ah)"/>
+<line x1="1280" y1="310" x2="1455" y2="310"/>
+<rect x="870" y="340" width="175" height="110" rx="6" fill="#efece6"/>
+<rect x="870" y="470" width="175" height="110" rx="6" fill="#efece6"/>
+<rect x="1075" y="340" width="175" height="110" rx="6" fill="#efece6"/>
+<rect x="1075" y="470" width="175" height="110" rx="6" fill="#efece6"/>
+<rect x="1280" y="340" width="175" height="110" rx="6" fill="#efece6"/>
+<path d="M1300 398 L1318 418 L1350 372" stroke="#b0532c" stroke-width="3"/>
+</g>
+<line x1="890" y1="372" x2="1025" y2="372" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="890" y1="396" x2="1001" y2="396" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="890" y1="420" x2="1016" y2="420" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="890" y1="502" x2="1025" y2="502" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="890" y1="526" x2="1001" y2="526" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="890" y1="550" x2="1016" y2="550" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="1095" y1="372" x2="1230" y2="372" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="1095" y1="396" x2="1206" y2="396" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="1095" y1="420" x2="1221" y2="420" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="1095" y1="502" x2="1230" y2="502" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="1095" y1="526" x2="1206" y2="526" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="1095" y1="550" x2="1221" y2="550" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<text x="1362" y="405" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1" fill="#b0532c" text-anchor="start">returned</text>
+<text x="285" y="393" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#232323" text-anchor="middle" letter-spacing="2">library</text>
+<text x="620" y="400" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#232323" text-anchor="middle" letter-spacing="2">main block</text>
+<text x="275" y="486" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" fill="#232323" text-anchor="middle" letter-spacing="2">ground</text>
+<text x="275" y="705" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#232323" text-anchor="middle" letter-spacing="2">hostel</text>
+<text x="645" y="705" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#232323" text-anchor="middle" letter-spacing="2">canteen</text>
+<text x="915" y="285" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="16" fill="#232323" text-anchor="middle" letter-spacing="2">LOST</text>
+<text x="1125" y="285" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="16" fill="#232323" text-anchor="middle" letter-spacing="2">FOUND</text>
+<text x="1345" y="285" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="16" fill="#232323" text-anchor="middle" letter-spacing="2">RESOLVED</text>
+<circle cx="880" cy="640" r="9" fill="none" stroke="#b0532c" stroke-width="2.2"/>
+<text x="900" y="646" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="start">lost</text>
+<circle cx="980" cy="640" r="9" fill="#b0532c"/>
+<text x="1000" y="646" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="start">found</text>
+<text x="870" y="700" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="start">@nie.ac.in only · 10 reports / min</text>
+<rect width="1600" height="900" filter="url(#grain)"/>
+<rect width="1600" height="900" fill="url(#vig)"/>
+</svg>

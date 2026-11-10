@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+<defs>
+  <filter id="grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/>
+    <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.22 0 0 0 0"/>
+  </filter>
+  <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="4" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <radialGradient id="vig" cx="50%" cy="45%" r="75%">
+    <stop offset="0.55" stop-color="#000" stop-opacity="0"/>
+    <stop offset="1" stop-color="#000" stop-opacity="0.2"/>
+  </radialGradient>
+  <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="1.2" fill="#000" opacity="0.13"/>
+  </pattern>
+  <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+    <path d="M1 1 L9 5 L1 9" fill="none" stroke="#232323" stroke-width="1.6" stroke-linecap="round"/>
+  </marker>
+  <marker id="ahr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+    <path d="M1 1 L9 5 L1 9" fill="none" stroke="#b0532c" stroke-width="1.6" stroke-linecap="round"/>
+  </marker>
+</defs>
+<rect width="1600" height="900" fill="#e2dfd9"/>
+<rect width="1600" height="900" fill="url(#dots)"/>
+<text x="150" y="168" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="19" letter-spacing="4" fill="#6d6a64">01 — CRACKD</text>
+<text x="150" y="222" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="38" fill="#232323">answers grounded in what seniors were actually asked.</text>
+<g filter="url(#rough)" fill="none" stroke="#232323" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+<g transform="rotate(-7 270 445) translate(-10 14)"><rect x="160" y="345" width="220" height="190" rx="6" fill="#efece6"/></g>
+<g transform="rotate(4 270 445) translate(8 6)"><rect x="160" y="345" width="220" height="190" rx="6" fill="#efece6"/></g>
+<g transform="rotate(-1 270 445) translate(0 0)"><rect x="160" y="345" width="220" height="190" rx="6" fill="#efece6"/><line x1="185" y1="385" x2="350" y2="385" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="185" y1="409" x2="320" y2="409" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="185" y1="433" x2="338" y2="433" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="185" y1="457" x2="284" y2="457" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="185" y1="481" x2="330" y2="481" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="185" y1="505" x2="300" y2="505" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+</g>
+<line x1="410" y1="445" x2="508" y2="445" marker-end="url(#ah)"/>
+<circle cx="585" cy="445" r="64" fill="#efece6"/>
+<line x1="663" y1="445" x2="770" y2="445" marker-end="url(#ah)"/>
+<path d="M790 600 L790 290 M790 600 L1090 600" />
+<circle cx="830" cy="340" r="5" fill="#6d6a64" stroke="none"/>
+<circle cx="860" cy="520" r="5" fill="#6d6a64" stroke="none"/>
+<circle cx="885" cy="300" r="5" fill="#6d6a64" stroke="none"/>
+<circle cx="910" cy="560" r="5" fill="#6d6a64" stroke="none"/>
+<circle cx="955" cy="330" r="5" fill="#6d6a64" stroke="none"/>
+<circle cx="990" cy="520" r="5" fill="#6d6a64" stroke="none"/>
+<circle cx="1010" cy="365" r="5" fill="#6d6a64" stroke="none"/>
+<circle cx="1050" cy="470" r="5" fill="#6d6a64" stroke="none"/>
+<circle cx="1060" cy="320" r="5" fill="#6d6a64" stroke="none"/>
+<circle cx="840" cy="450" r="5" fill="#6d6a64" stroke="none"/>
+<circle cx="880" cy="400" r="5" fill="#6d6a64" stroke="none"/>
+<circle cx="1035" cy="560" r="5" fill="#6d6a64" stroke="none"/>
+<circle cx="1070" cy="410" r="5" fill="#6d6a64" stroke="none"/>
+<circle cx="820" cy="560" r="5" fill="#6d6a64" stroke="none"/>
+<circle cx="905" cy="455" r="6.5" fill="#232323" stroke="none"/>
+<circle cx="965" cy="410" r="6.5" fill="#232323" stroke="none"/>
+<circle cx="950" cy="480" r="6.5" fill="#232323" stroke="none"/>
+<circle cx="935" cy="445" r="78" stroke="#b0532c" stroke-dasharray="7 9"/>
+<circle cx="935" cy="445" r="8" fill="#b0532c" stroke="none"/>
+<line x1="1105" y1="445" x2="1198" y2="445" marker-end="url(#ah)"/>
+<rect x="1215" y="335" width="250" height="215" rx="8" fill="#efece6"/>
+<path d="M1240 505 L1330 505" stroke="#b0532c" stroke-width="3"/>
+<line x1="200" y1="735" x2="1400" y2="735"/>
+<circle cx="200" cy="735" r="11" fill="#232323"/>
+<circle cx="320" cy="735" r="11" fill="#232323"/>
+<circle cx="440" cy="735" r="11" fill="#232323"/>
+<circle cx="560" cy="735" r="11" fill="#232323"/>
+<circle cx="680" cy="735" r="11" fill="#232323"/>
+<circle cx="800" cy="735" r="11" fill="#232323"/>
+<circle cx="920" cy="735" r="11" fill="#efece6"/>
+<circle cx="1040" cy="735" r="11" fill="#efece6"/>
+<circle cx="1160" cy="735" r="11" fill="#efece6"/>
+<circle cx="1280" cy="735" r="11" fill="#efece6"/>
+<circle cx="1400" cy="735" r="11" fill="#efece6"/>
+</g>
+<line x1="1240" y1="375" x2="1435" y2="375" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="1240" y1="399" x2="1400" y2="399" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="1240" y1="423" x2="1421" y2="423" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="1240" y1="447" x2="1357" y2="447" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<line x1="1240" y1="471" x2="1412" y2="471" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+<text x="270" y="612" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="18" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">interview experiences</text>
+<text x="585" y="452" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="20" fill="#232323" text-anchor="middle">embed</text>
+<text x="585" y="545" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">gemini-embedding-001</text>
+<text x="940" y="640" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="18" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">cosine similarity</text>
+<text x="1340" y="590" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="18" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">cites real experiences</text>
+<text x="1350" y="532" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" letter-spacing="1" fill="#b0532c" text-anchor="start">3 sources</text>
+<text x="200" y="778" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">W1</text>
+<text x="320" y="778" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">W2</text>
+<text x="440" y="778" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">W3</text>
+<text x="560" y="778" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">W4</text>
+<text x="680" y="778" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">W5</text>
+<text x="800" y="778" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">W6</text>
+<text x="920" y="778" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">W7</text>
+<text x="1040" y="778" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">W8</text>
+<text x="1160" y="778" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">W9</text>
+<text x="1280" y="778" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">W10</text>
+<text x="1400" y="778" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">W11</text>
+<text x="1400" y="700" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="end">weekly roadmap · readiness 62%</text>
+<rect width="1600" height="900" filter="url(#grain)"/>
+<rect width="1600" height="900" fill="url(#vig)"/>
+</svg>
