@@ -906,7 +906,7 @@ Looking for Remote · Onsite · Hybrid roles in India.`),
      ${link("https://github.com/neelesh1303/FinNIE-lost-and-found-item-tracker", "github ↗")}`),
 
     skills: () =>
-      print(`Languages  C++ (STL), Python, JavaScript, SQL, Java, C, NumPy, Pydantic
+      print(`Languages  C++ (STL), Python, JavaScript, SQL, C, NumPy, Pydantic
 AI / LLM   Gemini API, Groq, OpenRouter, RAG, Embeddings, Semantic Caching
 Backend    Node.js, Express.js, FastAPI, Flask, REST APIs, JWT Auth
 Data       Redis, MongoDB, MySQL, SQLite
