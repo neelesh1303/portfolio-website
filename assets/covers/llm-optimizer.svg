@@ -2,70 +2,137 @@
 <defs>
   <filter id="grain" x="0" y="0" width="100%" height="100%">
     <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/>
-    <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.22 0 0 0 0"/>
+    <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0.07 0 0 0 0"/>
+  </filter>
+  <filter id="pgrain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+    <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.18 0 0 0 0"/>
+    <feComposite in2="SourceGraphic" operator="in"/>
   </filter>
   <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="9" result="n"/>
-    <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="9" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/>
   </filter>
-  <radialGradient id="vig" cx="50%" cy="45%" r="75%">
-    <stop offset="0.55" stop-color="#000" stop-opacity="0"/>
-    <stop offset="1" stop-color="#000" stop-opacity="0.2"/>
+  <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+    <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#000" flood-opacity="0.55"/>
+  </filter>
+  <filter id="shadow2" x="-15%" y="-15%" width="130%" height="135%">
+    <feDropShadow dx="6" dy="16" stdDeviation="14" flood-color="#000" flood-opacity="0.45"/>
+  </filter>
+  <radialGradient id="desk" cx="62%" cy="40%" r="80%">
+    <stop offset="0" stop-color="#34322e"/>
+    <stop offset="1" stop-color="#151413"/>
   </radialGradient>
-  <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse">
-    <circle cx="2" cy="2" r="1.2" fill="#000" opacity="0.13"/>
-  </pattern>
+  <clipPath id="win"><rect x="0" y="0" width="1010" height="700" rx="14"/></clipPath>
   <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
     <path d="M1 1 L9 5 L1 9" fill="none" stroke="#232323" stroke-width="1.6" stroke-linecap="round"/>
   </marker>
-  <marker id="ahr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
-    <path d="M1 1 L9 5 L1 9" fill="none" stroke="#b0532c" stroke-width="1.6" stroke-linecap="round"/>
+  <marker id="ahr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="12" markerHeight="12" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+    <path d="M1 1 L9 5 L1 9" fill="none" stroke="#b0532c" stroke-width="1.8" stroke-linecap="round"/>
   </marker>
 </defs>
-<rect width="1600" height="900" fill="#e2dfd9"/>
-<rect width="1600" height="900" fill="url(#dots)"/>
-<text x="150" y="168" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="19" letter-spacing="4" fill="#6d6a64">02 — LLM OPTIMIZER</text>
-<text x="150" y="222" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="38" fill="#232323">the cheapest call is the one you never make.</text>
-<g filter="url(#rough)" fill="none" stroke="#232323" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-<rect x="150" y="420" width="170" height="60" rx="30" fill="#efece6"/>
-<line x1="322" y1="450" x2="395" y2="450" marker-end="url(#ah)"/>
-<path d="M480 368 L562 450 L480 532 L398 450 Z" fill="#efece6"/>
-<path d="M480 366 L480 300 L600 300" stroke="#b0532c" marker-end="url(#ahr)"/>
-<rect x="615" y="268" width="300" height="64" rx="8" fill="#efece6" stroke="#b0532c"/>
-<line x1="566" y1="450" x2="660" y2="450" marker-end="url(#ah)"/>
-<rect x="675" y="418" width="160" height="64" rx="8" fill="#efece6"/>
-<path d="M837 440 C 880 440, 880 400, 930 400" marker-end="url(#ah)"/>
-<path d="M837 460 C 880 460, 880 560, 930 560" marker-end="url(#ah)"/>
-<rect x="945" y="370" width="190" height="60" rx="8" fill="#efece6"/>
-<rect x="945" y="530" width="190" height="60" rx="8" fill="#efece6"/>
-<line x1="1137" y1="400" x2="1225" y2="430" marker-end="url(#ah)"/>
-<line x1="1137" y1="560" x2="1225" y2="470" marker-end="url(#ah)"/>
-<rect x="1240" y="330" width="210" height="56" rx="8" fill="#efece6"/>
-<line x1="1345" y1="388" x2="1345" y2="416" stroke-dasharray="4 6" marker-end="url(#ah)"/>
-<rect x="1240" y="420" width="210" height="56" rx="8" fill="#efece6"/>
-<line x1="1345" y1="478" x2="1345" y2="506" stroke-dasharray="4 6" marker-end="url(#ah)"/>
-<rect x="1240" y="510" width="210" height="56" rx="8" fill="#efece6"/>
-<line x1="1345" y1="568" x2="1345" y2="618" stroke-dasharray="4 6" marker-end="url(#ah)"/>
-<line x1="235" y1="482" x2="235" y2="630" stroke-dasharray="3 8"/>
-<path d="M170 650 L170 730 C 170 750, 300 750, 300 730 L300 650" fill="#efece6"/>
-<ellipse cx="235" cy="650" rx="65" ry="18" fill="#efece6"/>
+<rect width="1600" height="900" fill="url(#desk)"/>
+<g transform="translate(490 130)" filter="url(#shadow)">
+<rect width="1010" height="700" rx="14" fill="#f6f5f2"/>
+<g clip-path="url(#win)">
+<rect width="1010" height="44" fill="#e7e5e0"/>
+<line x1="0" y1="44" x2="1010" y2="44" stroke="#dedbd5"/>
+<circle cx="24" cy="22" r="6" fill="#d9d6d0"/>
+<circle cx="44" cy="22" r="6" fill="#d9d6d0"/>
+<circle cx="64" cy="22" r="6" fill="#d9d6d0"/>
+<rect x="325.0" y="11" width="360" height="22" rx="11" fill="#f3f2ee"/>
+<text x="505.0" y="27" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="middle" >localhost:8000/stats</text>
+<text x="32" y="98" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="22" font-weight="600" fill="#1f1e1c" text-anchor="start" >Gateway requests</text>
+<text x="32" y="124" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >POST /chat · logged to SQLite</text>
+<rect x="32" y="148" width="200" height="88" rx="12" fill="#fff" stroke="#b0532c"/>
+<text x="50" y="176" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >Cache hits</text>
+<text x="50" y="216" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#b0532c" text-anchor="start" >2 / 7</text>
+<rect x="252" y="148" width="200" height="88" rx="12" fill="#fff" stroke="#dedbd5"/>
+<text x="270" y="176" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >Fallbacks</text>
+<text x="270" y="216" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#1f1e1c" text-anchor="start" >1</text>
+<rect x="472" y="148" width="200" height="88" rx="12" fill="#fff" stroke="#dedbd5"/>
+<text x="490" y="176" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >Errors</text>
+<text x="490" y="216" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="28" font-weight="700" fill="#1f1e1c" text-anchor="start" >0</text>
+<rect x="20" y="262" width="970" height="420" rx="12" fill="#fff" stroke="#dedbd5"/>
+<text x="44" y="294" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#8a8780" text-anchor="start" letter-spacing="1.5">PROMPT</text>
+<text x="392" y="294" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#8a8780" text-anchor="start" letter-spacing="1.5">ROUTE</text>
+<text x="612" y="294" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#8a8780" text-anchor="start" letter-spacing="1.5">PROVIDER</text>
+<text x="752" y="294" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#8a8780" text-anchor="start" letter-spacing="1.5">LATENCY</text>
+<text x="872" y="294" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#8a8780" text-anchor="start" letter-spacing="1.5">TOKENS</text>
+<line x1="21" y1="312" x2="989" y2="312" stroke="#dedbd5"/>
+<text x="44" y="344" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="start" >translate 'good morning' to hindi</text>
+<rect x="392" y="326" width="48" height="24" rx="12" fill="#efede8" opacity="1"/>
+<text x="416.0" y="343" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#1f1e1c" text-anchor="middle" >cheap</text>
+<text x="612" y="344" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="start" >Groq</text>
+<text x="752" y="344" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="start" >410 ms</text>
+<text x="872" y="344" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >38</text>
+<line x1="21" y1="364" x2="989" y2="364" stroke="#dedbd5"/>
+<text x="44" y="396" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="start" >explain consistent hashing with an exa…</text>
+<rect x="392" y="378" width="71" height="24" rx="12" fill="#efede8" opacity="1"/>
+<text x="427.4" y="395" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#1f1e1c" text-anchor="middle" >powerful</text>
+<text x="612" y="396" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="start" >Gemini</text>
+<text x="752" y="396" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="start" >1.9 s</text>
+<text x="872" y="396" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >1,204</text>
+<rect x="21" y="416" width="968" height="52" fill="#b0532c" opacity="0.07"/>
+<line x1="21" y1="416" x2="989" y2="416" stroke="#dedbd5"/>
+<text x="44" y="448" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="start" >translate "good morning" into hindi</text>
+<rect x="392" y="430" width="132" height="24" rx="12" fill="#b0532c" opacity="0.15"/>
+<text x="457.8" y="447" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#b0532c" text-anchor="middle" >cache · semantic</text>
+<text x="612" y="448" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >—</text>
+<text x="752" y="448" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#b0532c" text-anchor="start" >9 ms</text>
+<text x="872" y="448" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >0</text>
+<line x1="21" y1="468" x2="989" y2="468" stroke="#dedbd5"/>
+<text x="44" y="500" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="start" >summarize this changelog in 3 bullets</text>
+<rect x="392" y="482" width="48" height="24" rx="12" fill="#efede8" opacity="1"/>
+<text x="416.0" y="499" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#1f1e1c" text-anchor="middle" >cheap</text>
+<text x="612" y="500" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="start" >Groq</text>
+<text x="752" y="500" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="start" >380 ms</text>
+<text x="872" y="500" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >312</text>
+<rect x="21" y="520" width="968" height="52" fill="#b0532c" opacity="0.07"/>
+<line x1="21" y1="520" x2="989" y2="520" stroke="#dedbd5"/>
+<text x="44" y="552" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="start" >translate 'good morning' to hindi</text>
+<rect x="392" y="534" width="109" height="24" rx="12" fill="#b0532c" opacity="0.15"/>
+<text x="446.4" y="551" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#b0532c" text-anchor="middle" >cache · exact</text>
+<text x="612" y="552" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >—</text>
+<text x="752" y="552" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#b0532c" text-anchor="start" >2 ms</text>
+<text x="872" y="552" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >0</text>
+<line x1="21" y1="572" x2="989" y2="572" stroke="#dedbd5"/>
+<text x="44" y="604" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="start" >design a rate limiter for a public API</text>
+<rect x="392" y="586" width="71" height="24" rx="12" fill="#efede8" opacity="1"/>
+<text x="427.4" y="603" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#1f1e1c" text-anchor="middle" >powerful</text>
+<text x="612" y="604" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="start" >OpenRouter ↺</text>
+<text x="752" y="604" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="start" >2.4 s</text>
+<text x="872" y="604" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >1,530</text>
+<line x1="21" y1="624" x2="989" y2="624" stroke="#dedbd5"/>
+<text x="44" y="656" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="start" >what's the latest stable node version</text>
+<rect x="392" y="638" width="147" height="24" rx="12" fill="#efede8" opacity="1"/>
+<text x="465.4" y="655" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#1f1e1c" text-anchor="middle" >cheap · not cached</text>
+<text x="612" y="656" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="start" >Groq</text>
+<text x="752" y="656" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="start" >350 ms</text>
+<text x="872" y="656" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >96</text>
+</g></g>
+<g transform="rotate(-4 265 470)">
+<g filter="url(#shadow2)"><rect x="80" y="250" width="370" height="440" rx="4" fill="#e6e2da"/></g>
+<rect x="80" y="250" width="370" height="440" rx="4" fill="#000" filter="url(#pgrain)"/>
+<rect x="225" y="236" width="80" height="28" fill="#d8d2c4" opacity="0.85" transform="rotate(3 265 250)"/>
+<text x="108" y="300" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" font-weight="400" fill="#77736c" text-anchor="start" letter-spacing="3">02 — LLM OPTIMIZER</text>
+<text x="108" y="345" font-family="Georgia, 'Times New Roman', serif" font-size="23" font-weight="400" fill="#232323" text-anchor="start" font-style="italic">the cheapest call is the</text>
+<text x="108" y="377" font-family="Georgia, 'Times New Roman', serif" font-size="23" font-weight="400" fill="#232323" text-anchor="start" font-style="italic">one you never make.</text>
+<g filter="url(#rough)" fill="none" stroke="#232323" stroke-width="2" stroke-linecap="round">
+<rect x="110" y="435" width="310" height="38" rx="6" fill="#efebe4" stroke="#232323"/>
+<line x1="265" y1="475" x2="265" y2="492" marker-end="url(#ah)"/>
+<rect x="110" y="495" width="310" height="38" rx="6" fill="#efebe4" stroke="#b0532c"/>
+<line x1="265" y1="535" x2="265" y2="552" marker-end="url(#ah)"/>
+<rect x="110" y="555" width="310" height="38" rx="6" fill="#efebe4" stroke="#232323"/>
+<line x1="265" y1="595" x2="265" y2="612" marker-end="url(#ah)"/>
+<rect x="110" y="615" width="310" height="38" rx="6" fill="#efebe4" stroke="#232323"/>
 </g>
-<text x="235" y="457" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="20" fill="#232323" text-anchor="middle">prompt</text>
-<text x="480" y="448" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="19" fill="#232323" text-anchor="middle">cache?</text>
-<text x="480" y="474" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#6d6a64" text-anchor="middle">≥ 0.85</text>
-<text x="765" y="291" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#b0532c" text-anchor="middle">hit</text>
-<text x="765" y="316" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="19" fill="#b0532c" text-anchor="middle">0 provider calls</text>
-<text x="755" y="457" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="20" fill="#232323" text-anchor="middle">router</text>
-<text x="1040" y="407" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="19" fill="#232323" text-anchor="middle">cheap tier</text>
-<text x="1040" y="567" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="19" fill="#232323" text-anchor="middle">powerful tier</text>
-<text x="1345" y="365" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="19" fill="#232323" text-anchor="middle">Groq</text>
-<text x="1345" y="455" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="19" fill="#232323" text-anchor="middle">Gemini</text>
-<text x="1345" y="545" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="19" fill="#232323" text-anchor="middle">OpenRouter</text>
-<text x="1345" y="648" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#6d6a64" text-anchor="middle">503, never a guess</text>
-<text x="235" y="708" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="18" fill="#232323" text-anchor="middle">sqlite</text>
-<text x="235" y="790" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">/stats · tokens · latency</text>
-<text x="1380" y="405" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" letter-spacing="1.5" fill="#6d6a64" text-anchor="start">30s</text>
-<text x="1380" y="495" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="13" letter-spacing="1.5" fill="#6d6a64" text-anchor="start">30s</text>
+<text x="265" y="460" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#232323" text-anchor="middle" >prompt</text>
+<text x="265" y="520" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#b0532c" text-anchor="middle" >cache · exact, then ≥ 0.85</text>
+<text x="265" y="580" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#232323" text-anchor="middle" >cheap / powerful tier</text>
+<text x="265" y="640" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#232323" text-anchor="middle" >groq → gemini → openrouter</text>
+</g>
+<path d="M880 92 Q 760 100 735 272" fill="none" stroke="#b0532c" stroke-width="2.4" stroke-linecap="round" marker-end="url(#ahr)" filter="url(#rough)"/>
+<text x="890" y="100" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-weight="400" fill="#b0532c" text-anchor="start" font-style="italic">no provider call</text>
 <rect width="1600" height="900" filter="url(#grain)"/>
-<rect width="1600" height="900" fill="url(#vig)"/>
 </svg>

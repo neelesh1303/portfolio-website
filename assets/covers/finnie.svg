@@ -2,86 +2,127 @@
 <defs>
   <filter id="grain" x="0" y="0" width="100%" height="100%">
     <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/>
-    <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.22 0 0 0 0"/>
+    <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0.07 0 0 0 0"/>
+  </filter>
+  <filter id="pgrain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+    <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.18 0 0 0 0"/>
+    <feComposite in2="SourceGraphic" operator="in"/>
   </filter>
   <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="21" result="n"/>
-    <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="21" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/>
   </filter>
-  <radialGradient id="vig" cx="50%" cy="45%" r="75%">
-    <stop offset="0.55" stop-color="#000" stop-opacity="0"/>
-    <stop offset="1" stop-color="#000" stop-opacity="0.2"/>
+  <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+    <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#000" flood-opacity="0.55"/>
+  </filter>
+  <filter id="shadow2" x="-15%" y="-15%" width="130%" height="135%">
+    <feDropShadow dx="6" dy="16" stdDeviation="14" flood-color="#000" flood-opacity="0.45"/>
+  </filter>
+  <radialGradient id="desk" cx="62%" cy="40%" r="80%">
+    <stop offset="0" stop-color="#34322e"/>
+    <stop offset="1" stop-color="#151413"/>
   </radialGradient>
-  <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse">
-    <circle cx="2" cy="2" r="1.2" fill="#000" opacity="0.13"/>
-  </pattern>
+  <clipPath id="win"><rect x="0" y="0" width="1010" height="700" rx="14"/></clipPath>
   <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
     <path d="M1 1 L9 5 L1 9" fill="none" stroke="#232323" stroke-width="1.6" stroke-linecap="round"/>
   </marker>
-  <marker id="ahr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
-    <path d="M1 1 L9 5 L1 9" fill="none" stroke="#b0532c" stroke-width="1.6" stroke-linecap="round"/>
+  <marker id="ahr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="12" markerHeight="12" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+    <path d="M1 1 L9 5 L1 9" fill="none" stroke="#b0532c" stroke-width="1.8" stroke-linecap="round"/>
   </marker>
 </defs>
-<rect width="1600" height="900" fill="#e2dfd9"/>
-<rect width="1600" height="900" fill="url(#dots)"/>
-<text x="150" y="168" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="19" letter-spacing="4" fill="#6d6a64">04 — FINNIE</text>
-<text x="150" y="222" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="38" fill="#232323">a notice board for whatever gets left behind on campus.</text>
-<g filter="url(#rough)" fill="none" stroke="#232323" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-<path d="M150 560 C 300 540, 420 600, 560 560 S 740 520, 780 540" stroke="#6d6a64" stroke-width="14" opacity="0.35"/>
-<path d="M430 280 C 450 380, 400 460, 440 560 S 470 700, 450 760" stroke="#6d6a64" stroke-width="14" opacity="0.35"/>
-<rect x="190" y="300" width="190" height="110" rx="4" fill="#efece6"/>
-<rect x="520" y="290" width="200" height="130" rx="4" fill="#efece6"/>
-<rect x="200" y="620" width="150" height="100" rx="4" fill="#efece6"/>
-<rect x="560" y="610" width="170" height="110" rx="4" fill="#efece6"/>
-<ellipse cx="300" cy="480" rx="80" ry="38" fill="#efece6" stroke-dasharray="6 8"/>
-<path d="M285 360 L285 336" stroke="#b0532c"/>
-<circle cx="285" cy="330" r="12" fill="#e2dfd9" stroke="#b0532c"/>
-<path d="M620 355 L620 331" stroke="#b0532c"/>
-<circle cx="620" cy="325" r="12" fill="#b0532c" stroke="#b0532c"/>
-<path d="M345 482 L345 458" stroke="#b0532c"/>
-<circle cx="345" cy="452" r="12" fill="#b0532c" stroke="#b0532c"/>
-<path d="M645 668 L645 644" stroke="#b0532c"/>
-<circle cx="645" cy="638" r="12" fill="#e2dfd9" stroke="#b0532c"/>
-<path d="M275 670 L275 646" stroke="#b0532c"/>
-<circle cx="275" cy="640" r="12" fill="#b0532c" stroke="#b0532c"/>
-<line x1="870" y1="310" x2="1045" y2="310"/>
-<line x1="1020" y1="275" x2="1085" y2="275" marker-end="url(#ah)"/>
-<line x1="1075" y1="310" x2="1250" y2="310"/>
-<line x1="1225" y1="275" x2="1290" y2="275" marker-end="url(#ah)"/>
-<line x1="1280" y1="310" x2="1455" y2="310"/>
-<rect x="870" y="340" width="175" height="110" rx="6" fill="#efece6"/>
-<rect x="870" y="470" width="175" height="110" rx="6" fill="#efece6"/>
-<rect x="1075" y="340" width="175" height="110" rx="6" fill="#efece6"/>
-<rect x="1075" y="470" width="175" height="110" rx="6" fill="#efece6"/>
-<rect x="1280" y="340" width="175" height="110" rx="6" fill="#efece6"/>
-<path d="M1300 398 L1318 418 L1350 372" stroke="#b0532c" stroke-width="3"/>
+<rect width="1600" height="900" fill="url(#desk)"/>
+<g transform="translate(490 130)" filter="url(#shadow)">
+<rect width="1010" height="700" rx="14" fill="#f6f5f2"/>
+<g clip-path="url(#win)">
+<rect width="1010" height="44" fill="#e7e5e0"/>
+<line x1="0" y1="44" x2="1010" y2="44" stroke="#dedbd5"/>
+<circle cx="24" cy="22" r="6" fill="#d9d6d0"/>
+<circle cx="44" cy="22" r="6" fill="#d9d6d0"/>
+<circle cx="64" cy="22" r="6" fill="#d9d6d0"/>
+<rect x="325.0" y="11" width="360" height="22" rx="11" fill="#f3f2ee"/>
+<text x="505.0" y="27" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="middle" >finnie · lost &amp; found</text>
+<text x="32" y="98" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#1f1e1c" text-anchor="start" >Lost &amp; Found</text>
+<text x="32" y="124" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >NIE campus · sign in with @nie.ac.in</text>
+<rect x="420" y="80" width="118" height="38" rx="19" fill="#efede8"/>
+<text x="479" y="104" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="middle" >Lost  12</text>
+<rect x="550" y="80" width="118" height="38" rx="19" fill="#2a2826"/>
+<text x="609" y="104" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#fff" text-anchor="middle" >Found  9</text>
+<rect x="680" y="80" width="118" height="38" rx="19" fill="#efede8"/>
+<text x="739" y="104" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f1e1c" text-anchor="middle" >Resolved  31</text>
+<rect x="826" y="80" width="160" height="38" rx="19" fill="#b0532c"/>
+<text x="906" y="104" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#fff" text-anchor="middle" >+ Report item</text>
+<rect x="24" y="146" width="308" height="262" rx="14" fill="#fff" stroke="#dedbd5"/>
+<rect x="34" y="156" width="288" height="150" rx="10" fill="#efede8"/>
+<g fill="none" stroke="#1f1e1c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="160" y="201" width="36" height="74" rx="10"/><rect x="168" y="185" width="20" height="16" rx="3"/><line x1="160" y1="225" x2="196" y2="225"/></g>
+<text x="44" y="338" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#1f1e1c" text-anchor="start" >Steel water bottle</text>
+<text x="44" y="364" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >Library · 2nd floor</text>
+<circle cx="48" cy="387" r="5" fill="#b0532c"/>
+<text x="60" y="392" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >Found · 2h ago</text>
+<text x="310" y="392" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#b0532c" text-anchor="end" >Contact finder →</text>
+<rect x="348" y="146" width="308" height="262" rx="14" fill="#fff" stroke="#dedbd5"/>
+<rect x="358" y="156" width="288" height="150" rx="10" fill="#efede8"/>
+<g fill="none" stroke="#1f1e1c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="480" cy="221" r="16"/><path d="M496 221 L540 221 M528 221 L528 233 M536 221 L536 235"/><circle cx="480" cy="221" r="5"/></g>
+<text x="368" y="338" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#1f1e1c" text-anchor="start" >Hostel room keys</text>
+<text x="368" y="364" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >Canteen</text>
+<circle cx="372" cy="387" r="5" fill="#b0532c"/>
+<text x="384" y="392" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >Found · 5h ago</text>
+<text x="634" y="392" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#b0532c" text-anchor="end" >Contact finder →</text>
+<rect x="672" y="146" width="308" height="262" rx="14" fill="#fff" stroke="#dedbd5"/>
+<rect x="682" y="156" width="288" height="150" rx="10" fill="#efede8"/>
+<g fill="none" stroke="#1f1e1c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M782 231 Q 826 169 870 231 Q 856 221 841 231 Q 826 221 811 231 Q 796 221 782 231"/><path d="M826 227 L826 267 Q 826 277 816 271"/></g>
+<text x="692" y="338" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#1f1e1c" text-anchor="start" >Black umbrella</text>
+<text x="692" y="364" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >Main block · Room 204</text>
+<circle cx="696" cy="387" r="5" fill="#b0532c"/>
+<text x="708" y="392" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >Found · yesterday</text>
+<text x="958" y="392" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#b0532c" text-anchor="end" >Contact finder →</text>
+<rect x="24" y="424" width="308" height="262" rx="14" fill="#fff" stroke="#dedbd5"/>
+<rect x="34" y="434" width="288" height="150" rx="10" fill="#efede8"/>
+<g fill="none" stroke="#1f1e1c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="134" y="481" width="88" height="58" rx="6"/><circle cx="158" cy="507" r="11"/><line x1="180" y1="501" x2="210" y2="501"/><line x1="180" y1="515" x2="202" y2="515"/></g>
+<text x="44" y="616" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#1f1e1c" text-anchor="start" >Student ID card</text>
+<text x="44" y="642" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >Ground</text>
+<circle cx="48" cy="665" r="5" fill="#b0532c"/>
+<text x="60" y="670" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >Found · yesterday</text>
+<text x="310" y="670" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#b0532c" text-anchor="end" >Contact finder →</text>
+<rect x="348" y="424" width="308" height="262" rx="14" fill="#fff" stroke="#dedbd5"/>
+<rect x="358" y="434" width="288" height="150" rx="10" fill="#efede8"/>
+<g fill="none" stroke="#1f1e1c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="480" cy="529" r="9"/><circle cx="524" cy="529" r="9"/><path d="M480 520 Q 480 479 502 479 Q 524 479 524 520"/></g>
+<text x="368" y="616" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#1f1e1c" text-anchor="start" >Wired earphones</text>
+<text x="368" y="642" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >Bus stop</text>
+<circle cx="372" cy="665" r="5" fill="#b0532c"/>
+<text x="384" y="670" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >Found · 2 days ago</text>
+<text x="634" y="670" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#b0532c" text-anchor="end" >Contact finder →</text>
+<rect x="672" y="424" width="308" height="262" rx="14" fill="#fff" stroke="#dedbd5"/>
+<rect x="682" y="434" width="288" height="150" rx="10" fill="#efede8"/>
+<g fill="none" stroke="#1f1e1c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="800" y="473" width="52" height="74" rx="6"/><rect x="808" y="481" width="36" height="14" rx="2"/><circle cx="812" cy="509" r="2.5"/><circle cx="826" cy="509" r="2.5"/><circle cx="840" cy="509" r="2.5"/><circle cx="812" cy="521" r="2.5"/><circle cx="826" cy="521" r="2.5"/><circle cx="840" cy="521" r="2.5"/><circle cx="812" cy="533" r="2.5"/><circle cx="826" cy="533" r="2.5"/><circle cx="840" cy="533" r="2.5"/></g>
+<text x="692" y="616" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" font-weight="600" fill="#1f1e1c" text-anchor="start" >Calculator fx-991</text>
+<text x="692" y="642" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >Exam hall 3</text>
+<circle cx="696" cy="665" r="5" fill="#b0532c"/>
+<text x="708" y="670" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >Found · 3 days ago</text>
+<text x="958" y="670" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#b0532c" text-anchor="end" >Contact finder →</text>
+</g></g>
+<g transform="rotate(-4 265 470)">
+<g filter="url(#shadow2)"><rect x="80" y="250" width="370" height="440" rx="4" fill="#e6e2da"/></g>
+<rect x="80" y="250" width="370" height="440" rx="4" fill="#000" filter="url(#pgrain)"/>
+<rect x="225" y="236" width="80" height="28" fill="#d8d2c4" opacity="0.85" transform="rotate(3 265 250)"/>
+<text x="108" y="300" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" font-weight="400" fill="#77736c" text-anchor="start" letter-spacing="3">04 — FINNIE</text>
+<text x="108" y="345" font-family="Georgia, 'Times New Roman', serif" font-size="23" font-weight="400" fill="#232323" text-anchor="start" font-style="italic">a notice board for whatever</text>
+<text x="108" y="377" font-family="Georgia, 'Times New Roman', serif" font-size="23" font-weight="400" fill="#232323" text-anchor="start" font-style="italic">gets left behind on campus.</text>
+<g filter="url(#rough)" fill="none" stroke="#232323" stroke-width="2" stroke-linecap="round">
+<rect x="110" y="435" width="310" height="38" rx="6" fill="#efebe4" stroke="#232323"/>
+<line x1="265" y1="475" x2="265" y2="492" marker-end="url(#ah)"/>
+<rect x="110" y="495" width="310" height="38" rx="6" fill="#efebe4" stroke="#232323"/>
+<line x1="265" y1="535" x2="265" y2="552" marker-end="url(#ah)"/>
+<rect x="110" y="555" width="310" height="38" rx="6" fill="#efebe4" stroke="#b0532c"/>
+<line x1="265" y1="595" x2="265" y2="612" marker-end="url(#ah)"/>
+<rect x="110" y="615" width="310" height="38" rx="6" fill="#efebe4" stroke="#232323"/>
 </g>
-<line x1="890" y1="372" x2="1025" y2="372" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
-<line x1="890" y1="396" x2="1001" y2="396" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
-<line x1="890" y1="420" x2="1016" y2="420" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
-<line x1="890" y1="502" x2="1025" y2="502" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
-<line x1="890" y1="526" x2="1001" y2="526" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
-<line x1="890" y1="550" x2="1016" y2="550" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
-<line x1="1095" y1="372" x2="1230" y2="372" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
-<line x1="1095" y1="396" x2="1206" y2="396" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
-<line x1="1095" y1="420" x2="1221" y2="420" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
-<line x1="1095" y1="502" x2="1230" y2="502" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
-<line x1="1095" y1="526" x2="1206" y2="526" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
-<line x1="1095" y1="550" x2="1221" y2="550" stroke="#6d6a64" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
-<text x="1362" y="405" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1" fill="#b0532c" text-anchor="start">returned</text>
-<text x="285" y="393" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#232323" text-anchor="middle" letter-spacing="2">library</text>
-<text x="620" y="400" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#232323" text-anchor="middle" letter-spacing="2">main block</text>
-<text x="275" y="486" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" fill="#232323" text-anchor="middle" letter-spacing="2">ground</text>
-<text x="275" y="705" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#232323" text-anchor="middle" letter-spacing="2">hostel</text>
-<text x="645" y="705" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" fill="#232323" text-anchor="middle" letter-spacing="2">canteen</text>
-<text x="915" y="285" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="16" fill="#232323" text-anchor="middle" letter-spacing="2">LOST</text>
-<text x="1125" y="285" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="16" fill="#232323" text-anchor="middle" letter-spacing="2">FOUND</text>
-<text x="1345" y="285" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="16" fill="#232323" text-anchor="middle" letter-spacing="2">RESOLVED</text>
-<circle cx="880" cy="640" r="9" fill="none" stroke="#b0532c" stroke-width="2.2"/>
-<text x="900" y="646" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="start">lost</text>
-<circle cx="980" cy="640" r="9" fill="#b0532c"/>
-<text x="1000" y="646" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="start">found</text>
-<text x="870" y="700" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="start">@nie.ac.in only · 10 reports / min</text>
+<text x="265" y="460" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#232323" text-anchor="middle" >report · photo + place</text>
+<text x="265" y="520" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#232323" text-anchor="middle" >lost</text>
+<text x="265" y="580" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#b0532c" text-anchor="middle" >found</text>
+<text x="265" y="640" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#232323" text-anchor="middle" >resolved</text>
+</g>
+<path d="M1225 92 Q 1400 90 1405 200" fill="none" stroke="#b0532c" stroke-width="2.4" stroke-linecap="round" marker-end="url(#ahr)" filter="url(#rough)"/>
+<text x="870" y="100" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-weight="400" fill="#b0532c" text-anchor="start" font-style="italic">10 reports / min · campus only</text>
 <rect width="1600" height="900" filter="url(#grain)"/>
-<rect width="1600" height="900" fill="url(#vig)"/>
 </svg>

@@ -2,82 +2,129 @@
 <defs>
   <filter id="grain" x="0" y="0" width="100%" height="100%">
     <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/>
-    <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.22 0 0 0 0"/>
+    <feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0.07 0 0 0 0"/>
+  </filter>
+  <filter id="pgrain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+    <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.18 0 0 0 0"/>
+    <feComposite in2="SourceGraphic" operator="in"/>
   </filter>
   <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="2" seed="13" result="n"/>
-    <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="13" result="n"/>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="4" xChannelSelector="R" yChannelSelector="G"/>
   </filter>
-  <radialGradient id="vig" cx="50%" cy="45%" r="75%">
-    <stop offset="0.55" stop-color="#000" stop-opacity="0"/>
-    <stop offset="1" stop-color="#000" stop-opacity="0.2"/>
+  <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+    <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#000" flood-opacity="0.55"/>
+  </filter>
+  <filter id="shadow2" x="-15%" y="-15%" width="130%" height="135%">
+    <feDropShadow dx="6" dy="16" stdDeviation="14" flood-color="#000" flood-opacity="0.45"/>
+  </filter>
+  <radialGradient id="desk" cx="62%" cy="40%" r="80%">
+    <stop offset="0" stop-color="#34322e"/>
+    <stop offset="1" stop-color="#151413"/>
   </radialGradient>
-  <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse">
-    <circle cx="2" cy="2" r="1.2" fill="#000" opacity="0.13"/>
-  </pattern>
+  <clipPath id="win"><rect x="0" y="0" width="1010" height="700" rx="14"/></clipPath>
   <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
     <path d="M1 1 L9 5 L1 9" fill="none" stroke="#232323" stroke-width="1.6" stroke-linecap="round"/>
   </marker>
-  <marker id="ahr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
-    <path d="M1 1 L9 5 L1 9" fill="none" stroke="#b0532c" stroke-width="1.6" stroke-linecap="round"/>
+  <marker id="ahr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="12" markerHeight="12" orient="auto-start-reverse" markerUnits="userSpaceOnUse">
+    <path d="M1 1 L9 5 L1 9" fill="none" stroke="#b0532c" stroke-width="1.8" stroke-linecap="round"/>
   </marker>
 </defs>
-<rect width="1600" height="900" fill="#e2dfd9"/>
-<rect width="1600" height="900" fill="url(#dots)"/>
-<text x="150" y="168" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="19" letter-spacing="4" fill="#6d6a64">03 — SIGNBRIDGE</text>
-<text x="150" y="222" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="38" fill="#232323">speech to sign, and back again.</text>
-<g filter="url(#rough)" fill="none" stroke="#232323" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-<rect x="195" y="285" width="440" height="460" rx="10" stroke-dasharray="10 10" stroke="#6d6a64"/>
-<path d="M400 690 L340 640 L298 582 L272 528 L250 480"/>
-<path d="M400 690 L355 520 L342 445 L335 395 L330 352"/>
-<path d="M355 520 L410 505 L462 518 L508 552"/>
-<path d="M410 505 L410 420 L410 366 L410 318"/>
-<path d="M462 518 L472 440 L478 392 L484 352"/>
-<path d="M400 690 L508 552 L532 490 L548 450 L560 415"/>
-<line x1="655" y1="470" x2="745" y2="470" marker-end="url(#ah)"/>
-<rect x="760" y="438" width="170" height="64" rx="8" fill="#efece6"/>
-<line x1="932" y1="470" x2="1000" y2="470" marker-end="url(#ah)"/>
-<rect x="1015" y="438" width="170" height="64" rx="8" fill="#efece6"/>
-<line x1="1187" y1="470" x2="1240" y2="470" marker-end="url(#ah)"/>
-<path d="M1255 410 L1465 410 L1465 520 L1300 520 L1275 548 L1280 520 L1255 520 Z" fill="#efece6"/>
-<rect x="1340" y="620" width="40" height="66" rx="20" fill="#efece6"/>
-<path d="M1326 668 C 1326 712, 1394 712, 1394 668 M1360 708 L1360 728"/>
-<line x1="1315" y1="665" x2="1190" y2="665" marker-end="url(#ah)"/>
-<rect x="790" y="620" width="110" height="90" rx="6" fill="#efece6"/>
-<path d="M820 700 L820 660 M835 700 L835 650 M850 700 L850 655 M865 700 L865 668" />
-<rect x="920" y="620" width="110" height="90" rx="6" fill="#efece6"/>
-<path d="M950 700 L950 660 M965 700 L965 650 M980 700 L980 655 M995 700 L995 668" />
-<rect x="1050" y="620" width="110" height="90" rx="6" fill="#efece6"/>
-<path d="M1080 700 L1080 660 M1095 700 L1095 650 M1110 700 L1110 655 M1125 700 L1125 668" />
-<circle cx="400" cy="690" r="6.5" fill="#232323"/>
-<circle cx="340" cy="640" r="6.5" fill="#232323"/>
-<circle cx="298" cy="582" r="6.5" fill="#232323"/>
-<circle cx="272" cy="528" r="6.5" fill="#232323"/>
-<circle cx="250" cy="480" r="8" fill="#b0532c"/>
-<circle cx="355" cy="520" r="6.5" fill="#232323"/>
-<circle cx="342" cy="445" r="6.5" fill="#232323"/>
-<circle cx="335" cy="395" r="6.5" fill="#232323"/>
-<circle cx="330" cy="352" r="8" fill="#b0532c"/>
-<circle cx="410" cy="505" r="6.5" fill="#232323"/>
-<circle cx="410" cy="420" r="6.5" fill="#232323"/>
-<circle cx="410" cy="366" r="6.5" fill="#232323"/>
-<circle cx="410" cy="318" r="8" fill="#b0532c"/>
-<circle cx="462" cy="518" r="6.5" fill="#232323"/>
-<circle cx="472" cy="440" r="6.5" fill="#232323"/>
-<circle cx="478" cy="392" r="6.5" fill="#232323"/>
-<circle cx="484" cy="352" r="8" fill="#b0532c"/>
-<circle cx="508" cy="552" r="6.5" fill="#232323"/>
-<circle cx="532" cy="490" r="6.5" fill="#232323"/>
-<circle cx="548" cy="450" r="6.5" fill="#232323"/>
-<circle cx="560" cy="415" r="8" fill="#b0532c"/>
+<rect width="1600" height="900" fill="url(#desk)"/>
+<g transform="translate(490 130)" filter="url(#shadow)">
+<rect width="1010" height="700" rx="14" fill="#f6f5f2"/>
+<g clip-path="url(#win)">
+<rect width="1010" height="44" fill="#e7e5e0"/>
+<line x1="0" y1="44" x2="1010" y2="44" stroke="#dedbd5"/>
+<circle cx="24" cy="22" r="6" fill="#d9d6d0"/>
+<circle cx="44" cy="22" r="6" fill="#d9d6d0"/>
+<circle cx="64" cy="22" r="6" fill="#d9d6d0"/>
+<rect x="325.0" y="11" width="360" height="22" rx="11" fill="#f3f2ee"/>
+<text x="505.0" y="27" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="middle" >signbridge · classroom</text>
+<text x="32" y="92" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="600" fill="#1f1e1c" text-anchor="start" >Classroom</text>
+<text x="700" y="92" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="600" fill="#1f1e1c" text-anchor="start" >Classroom</text>
+<text x="800" y="92" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >Dictionary</text>
+<text x="900" y="92" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >Quiz</text>
+<line x1="700" y1="102" x2="782" y2="102" stroke="#b0532c" stroke-width="2"/>
+<rect x="24" y="120" width="480" height="420" rx="14" fill="#2b2a28"/>
+<text x="44" y="150" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#a9a59d" text-anchor="start" letter-spacing="2">STUDENT · CAMERA</text>
+<circle cx="480" cy="146" r="6" fill="#b0532c"/>
+<path d="M264 470 L214 430 L180 382 L160 338 L142 298" fill="none" stroke="#e9e6df" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M264 470 L226 330 L216 268 L210 228 L206 194" fill="none" stroke="#e9e6df" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M226 330 L272 318 L316 328 L354 356" fill="none" stroke="#e9e6df" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M272 318 L272 248 L272 204 L272 166" fill="none" stroke="#e9e6df" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M316 328 L324 264 L329 226 L334 194" fill="none" stroke="#e9e6df" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M264 470 L354 356 L374 306 L387 274 L397 246" fill="none" stroke="#e9e6df" stroke-width="2.4" stroke-linejoin="round"/>
+<circle cx="264" cy="470" r="5" fill="#e9e6df"/>
+<circle cx="214" cy="430" r="5" fill="#e9e6df"/>
+<circle cx="180" cy="382" r="5" fill="#e9e6df"/>
+<circle cx="160" cy="338" r="5" fill="#e9e6df"/>
+<circle cx="142" cy="298" r="6.5" fill="#b0532c"/>
+<circle cx="226" cy="330" r="5" fill="#e9e6df"/>
+<circle cx="216" cy="268" r="5" fill="#e9e6df"/>
+<circle cx="210" cy="228" r="5" fill="#e9e6df"/>
+<circle cx="206" cy="194" r="6.5" fill="#b0532c"/>
+<circle cx="272" cy="318" r="5" fill="#e9e6df"/>
+<circle cx="272" cy="248" r="5" fill="#e9e6df"/>
+<circle cx="272" cy="204" r="5" fill="#e9e6df"/>
+<circle cx="272" cy="166" r="6.5" fill="#b0532c"/>
+<circle cx="316" cy="328" r="5" fill="#e9e6df"/>
+<circle cx="324" cy="264" r="5" fill="#e9e6df"/>
+<circle cx="329" cy="226" r="5" fill="#e9e6df"/>
+<circle cx="334" cy="194" r="6.5" fill="#b0532c"/>
+<circle cx="354" cy="356" r="5" fill="#e9e6df"/>
+<circle cx="374" cy="306" r="5" fill="#e9e6df"/>
+<circle cx="387" cy="274" r="5" fill="#e9e6df"/>
+<circle cx="397" cy="246" r="6.5" fill="#b0532c"/>
+<rect x="24" y="490" width="480" height="50" fill="#000" opacity="0.35"/>
+<text x="264" y="522" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="3">THANK YOU</text>
+<text x="44" y="574" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="400" fill="#8a8780" text-anchor="start" >Spoken aloud for the class</text>
+<path d="M262 568 l8 0 l8 -7 l0 18 l-8 -7 l-8 0 z" fill="#8a8780"/>
+<text x="536" y="150" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="12" font-weight="400" fill="#8a8780" text-anchor="start" letter-spacing="2">TEACHER · SPEECH TO SIGN</text>
+<rect x="536" y="166" width="450" height="96" rx="14" fill="#fff" stroke="#dedbd5"/>
+<text x="558" y="202" font-family="Georgia, 'Times New Roman', serif" font-size="18" font-weight="400" fill="#1f1e1c" text-anchor="start" >“Today we will learn about</text>
+<text x="558" y="232" font-family="Georgia, 'Times New Roman', serif" font-size="18" font-weight="400" fill="#1f1e1c" text-anchor="start" >the water cycle.”</text>
+<rect x="536" y="284" width="104" height="128" rx="10" fill="#fff" stroke="#dedbd5"/>
+<g fill="none" stroke="#1f1e1c" stroke-width="2" stroke-linecap="round"><path d="M574 380 L574 340 M584 380 L584 326 M594 380 L594 332 M603 380 L603 346 M574 380 Q 588 396 603 380"/></g>
+<text x="588" y="402" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#8a8780" text-anchor="middle" letter-spacing="1.5">TODAY</text>
+<rect x="650" y="284" width="104" height="128" rx="10" fill="#fff" stroke="#dedbd5"/>
+<g fill="none" stroke="#1f1e1c" stroke-width="2" stroke-linecap="round"><path d="M688 380 L688 340 M698 380 L698 330 M708 380 L708 329 M717 380 L717 356 M688 380 Q 702 396 717 380"/></g>
+<text x="702" y="402" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#8a8780" text-anchor="middle" letter-spacing="1.5">LEARN</text>
+<rect x="764" y="284" width="104" height="128" rx="10" fill="#fff" stroke="#dedbd5"/>
+<g fill="none" stroke="#1f1e1c" stroke-width="2" stroke-linecap="round"><path d="M802 380 L802 340 M812 380 L812 334 M822 380 L822 326 M831 380 L831 346 M802 380 Q 816 396 831 380"/></g>
+<text x="816" y="402" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#8a8780" text-anchor="middle" letter-spacing="1.5">WATER</text>
+<rect x="878" y="284" width="104" height="128" rx="10" fill="#fff" stroke="#dedbd5"/>
+<g fill="none" stroke="#1f1e1c" stroke-width="2" stroke-linecap="round"><path d="M916 380 L916 340 M926 380 L926 338 M936 380 L936 323 M945 380 L945 356 M916 380 Q 930 396 945 380"/></g>
+<text x="930" y="402" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="400" fill="#8a8780" text-anchor="middle" letter-spacing="1.5">CYCLE</text>
+<rect x="536" y="440" width="450" height="100" rx="14" fill="#efede8"/>
+<circle cx="590" cy="490" r="26" fill="#b0532c"/>
+<rect x="584" y="476" width="12" height="20" rx="6" fill="#fff"/><path d="M578 490 q12 16 24 0 M590 502 l0 6" stroke="#fff" stroke-width="2" fill="none"/>
+<text x="632" y="484" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="16" font-weight="600" fill="#1f1e1c" text-anchor="start" >Listening…</text>
+<text x="632" y="508" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" fill="#8a8780" text-anchor="start" >Web Speech API · 115 ISL signs</text>
+</g></g>
+<g transform="rotate(-4 265 470)">
+<g filter="url(#shadow2)"><rect x="80" y="250" width="370" height="440" rx="4" fill="#e6e2da"/></g>
+<rect x="80" y="250" width="370" height="440" rx="4" fill="#000" filter="url(#pgrain)"/>
+<rect x="225" y="236" width="80" height="28" fill="#d8d2c4" opacity="0.85" transform="rotate(3 265 250)"/>
+<text x="108" y="300" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" font-weight="400" fill="#77736c" text-anchor="start" letter-spacing="3">03 — SIGNBRIDGE</text>
+<text x="108" y="345" font-family="Georgia, 'Times New Roman', serif" font-size="23" font-weight="400" fill="#232323" text-anchor="start" font-style="italic">speech to sign,</text>
+<text x="108" y="377" font-family="Georgia, 'Times New Roman', serif" font-size="23" font-weight="400" fill="#232323" text-anchor="start" font-style="italic">and back again.</text>
+<g filter="url(#rough)" fill="none" stroke="#232323" stroke-width="2" stroke-linecap="round">
+<rect x="110" y="435" width="310" height="38" rx="6" fill="#efebe4" stroke="#232323"/>
+<line x1="265" y1="475" x2="265" y2="492" marker-end="url(#ah)"/>
+<rect x="110" y="495" width="310" height="38" rx="6" fill="#efebe4" stroke="#b0532c"/>
+<line x1="265" y1="535" x2="265" y2="552" marker-end="url(#ah)"/>
+<rect x="110" y="555" width="310" height="38" rx="6" fill="#efebe4" stroke="#232323"/>
+<line x1="265" y1="595" x2="265" y2="612" marker-end="url(#ah)"/>
+<rect x="110" y="615" width="310" height="38" rx="6" fill="#efebe4" stroke="#232323"/>
 </g>
-<text x="195" y="272" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="start">webcam · 21 landmarks per hand</text>
-<text x="845" y="477" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="19" fill="#232323" text-anchor="middle" >/predict</text>
-<text x="1100" y="477" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="19" fill="#232323" text-anchor="middle" >classifier</text>
-<text x="1360" y="474" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="30" fill="#232323" text-anchor="middle">“thank you”</text>
-<text x="1360" y="580" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">spoken aloud</text>
-<text x="985" y="750" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">ISL signs · 115 in vocabulary</text>
-<text x="1360" y="770" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="15" letter-spacing="1.5" fill="#6d6a64" text-anchor="middle">teacher speaks</text>
+<text x="265" y="460" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#232323" text-anchor="middle" >webcam frame</text>
+<text x="265" y="520" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#b0532c" text-anchor="middle" >mediapipe landmarks</text>
+<text x="265" y="580" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#232323" text-anchor="middle" >sklearn classifier</text>
+<text x="265" y="640" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, 'Courier New', monospace" font-size="14" font-weight="400" fill="#232323" text-anchor="middle" >speech out</text>
+</g>
+<path d="M540 92 Q 720 80 760 285" fill="none" stroke="#b0532c" stroke-width="2.4" stroke-linecap="round" marker-end="url(#ahr)" filter="url(#rough)"/>
+<text x="300" y="100" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-weight="400" fill="#b0532c" text-anchor="start" font-style="italic">21 points per hand</text>
 <rect width="1600" height="900" filter="url(#grain)"/>
-<rect width="1600" height="900" fill="url(#vig)"/>
 </svg>
