@@ -234,7 +234,7 @@ async function runBootScript(body, keyboard, pct, onEntered) {
     await sleep(85);
   }
 
-  line('added <span class="t-ok">5 projects</span> <span class="t-dim">· jobpilot · crackd · llm-optimizer · signbridge · athenaeum</span>');
+  line('added <span class="t-ok">4 projects</span> <span class="t-dim">· jobpilot · crackd · llm-optimizer · signbridge</span>');
   await sleep(120);
   line('added <span class="t-ok">500+</span> solved problems <span class="t-dim">· cgpa@8.60</span>');
   await sleep(120);
@@ -903,9 +903,7 @@ Looking for Remote · Onsite · Hybrid roles in India.`),
 [03] LLM Cost &amp; Latency Optimizer — FastAPI gateway, semantic cache + provider fallback
      ${link("https://github.com/neelesh1303/LLM_COST_AND_LATENCY_OPTIMIZER", "github ↗")}
 [04] SignBridge — Sign ↔ speech AI, 4th at DevJams VIT (100+ teams)
-     ${link("https://github.com/neelesh1303/MAJOR_PROJECT_SignBridge", "github ↗")}
-[05] Athenaeum — Library system with JWT/RBAC and a live 40-case QA lab (Express, SQLite)
-     ${link("https://github.com/neelesh1303/STQA_internals_project", "github ↗")}`),
+     ${link("https://github.com/neelesh1303/MAJOR_PROJECT_SignBridge", "github ↗")}`),
 
     skills: () =>
       print(`Languages  C++ (STL), Python, JavaScript, SQL, C, NumPy, Pydantic
