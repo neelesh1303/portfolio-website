@@ -237,15 +237,59 @@
     <section class="work" id="work">
       <div class="sec-head">
         <p class="label reveal"><span class="dot"></span>(SELECTED WORK)</p>
-        <h2 class="sec-title reveal">PROJECTS <sup>04</sup></h2>
+        <h2 class="sec-title reveal">PROJECTS <sup>05</sup></h2>
         <a href="https://github.com/neelesh1303" target="_blank" rel="noopener" class="sec-link reveal">All on GitHub
           <svg><use href="#i-arrow" /></svg></a>
       </div>
 
       <div class="work-list" id="workList">
+        <article class="work-row reveal" data-project data-img="assets/images/jobpilot.jpg" tabindex="0" role="button"
+          aria-label="Open JobPilot case study" data-cursor="VIEW">
+          <span class="wr-num">01</span>
+          <h3 class="wr-title">JobPilot</h3>
+          <span class="wr-type">AI job-search assistant &amp; agent</span>
+          <span class="wr-tags">Flask · Gemini · Claude Code · Capacitor</span>
+          <span class="wr-badge"><span class="dot"></span>Open source</span>
+          <span class="wr-go"><svg><use href="#i-arrow" /></svg></span>
+          <img class="wr-thumb" src="assets/images/jobpilot.jpg" alt="" loading="lazy">
+          <template class="work-details">
+            <p class="modal-type">01 — AI job-search assistant &amp; agent</p>
+            <h3 class="modal-title">JobPilot</h3>
+            <p class="modal-lead">An open-source job-search assistant. Every morning it finds and scores new roles, builds a
+              one-page resume tailored to each one and finds HR contacts; matches land in a phone inbox, and Claude Code
+              applies from the desktop — stopping for approval before every submit.</p>
+            <div class="modal-metrics">
+              <div><strong>5</strong><span>Job portals searched daily</span></div>
+              <div><strong>1 page</strong><span>Tailored resume per job</span></div>
+              <div><strong>0</strong><span>Submits without your OK</span></div>
+            </div>
+            <h4 class="modal-sub">Key architectural highlights</h4>
+            <ul class="modal-list">
+              <li><strong>Daily discovery pipeline:</strong> A GitHub Actions workflow pulls roles from LinkedIn, Naukri,
+                Foundit, Wellfound and Himalayas (via Apify and the Himalayas API) and stores leads and resume PDFs in
+                MongoDB Atlas.</li>
+              <li><strong>Cheap-first scoring:</strong> Rule-based filters run first, then Gemini scores the survivors
+                against the profile with a model fallback chain; rejected jobs are remembered so they are never scored
+                twice.</li>
+              <li><strong>Resumes that can&rsquo;t lie:</strong> The tailoring step only reorders, selects and bolds content
+                from a master resume — a verification pass rejects any line not in the master — and headless Chrome renders
+                a PDF that must fit on one page.</li>
+              <li><strong>Agentic apply, human in the loop:</strong> A Flask dashboard queues links and recruiter
+                screenshots; Claude Code with Claude in Chrome fills applications, drafts cold emails in Gmail, and waits
+                for a yes / edit / skip before submitting.</li>
+              <li><strong>Phone inbox &amp; Android app:</strong> A passcode-protected Flask inbox on Render with signed
+                resume links, wrapped as a Capacitor Android app whose APK is built and released by CI.</li>
+            </ul>
+            <div class="modal-tags"><span>Python</span><span>Flask</span><span>Gemini API</span><span>Claude Code</span><span>MongoDB Atlas</span><span>Apify</span><span>GitHub Actions</span><span>Capacitor</span><span>Render</span></div>
+            <div class="modal-links">
+              <a href="https://github.com/neelesh1303/JobPilot" target="_blank" rel="noopener"
+                class="btn-chrome"><svg><use href="#i-github" /></svg> GitHub repo</a>
+            </div>
+          </template>
+        </article>
         <article class="work-row reveal" data-project data-img="assets/images/crackd.jpg" tabindex="0" role="button"
           aria-label="Open Crackd case study" data-cursor="VIEW">
-          <span class="wr-num">01</span>
+          <span class="wr-num">02</span>
           <h3 class="wr-title">Crackd</h3>
           <span class="wr-type">AI placement &amp; roadmap platform</span>
           <span class="wr-tags">Gemini RAG · Redis · MERN</span>
@@ -253,7 +297,7 @@
           <span class="wr-go"><svg><use href="#i-arrow" /></svg></span>
           <img class="wr-thumb" src="assets/images/crackd.jpg" alt="" loading="lazy">
           <template class="work-details">
-            <p class="modal-type">01 — AI placement &amp; roadmap platform</p>
+            <p class="modal-type">02 — AI placement &amp; roadmap platform</p>
             <h3 class="modal-title">Crackd</h3>
             <p class="modal-lead">A MERN platform for placement preparation. Students explore companies, share interview
               experiences, generate and track weekly study roadmaps, and ask an AI assistant questions grounded in real
@@ -290,7 +334,7 @@
         </article>
         <article class="work-row reveal" data-project data-img="assets/images/llm-gateway.jpg" tabindex="0"
           role="button" aria-label="Open LLM Cost and Latency Optimizer case study" data-cursor="VIEW">
-          <span class="wr-num">02</span>
+          <span class="wr-num">03</span>
           <h3 class="wr-title">LLM Optimizer</h3>
           <span class="wr-type">Multi-tier gateway &amp; semantic cache</span>
           <span class="wr-tags">FastAPI · Groq · Gemini · OpenRouter</span>
@@ -298,7 +342,7 @@
           <span class="wr-go"><svg><use href="#i-arrow" /></svg></span>
           <img class="wr-thumb" src="assets/images/llm-gateway.jpg" alt="" loading="lazy">
           <template class="work-details">
-            <p class="modal-type">02 — Multi-tier gateway &amp; semantic cache</p>
+            <p class="modal-type">03 — Multi-tier gateway &amp; semantic cache</p>
             <h3 class="modal-title">LLM Cost &amp; Latency Optimizer</h3>
             <p class="modal-lead">A FastAPI gateway that answers repeated and near-duplicate prompts from a semantic cache,
               sends simple tasks to a cheaper model tier, falls back across providers, and logs every request so its
@@ -332,7 +376,7 @@
         </article>
         <article class="work-row reveal" data-project data-img="assets/images/signbridge.jpg" tabindex="0"
           role="button" aria-label="Open SignBridge case study" data-cursor="VIEW">
-          <span class="wr-num">03</span>
+          <span class="wr-num">04</span>
           <h3 class="wr-title">SignBridge</h3>
           <span class="wr-type">Indian Sign Language classroom</span>
           <span class="wr-tags">React · FastAPI · MediaPipe</span>
@@ -340,7 +384,7 @@
           <span class="wr-go"><svg><use href="#i-arrow" /></svg></span>
           <img class="wr-thumb" src="assets/images/signbridge.jpg" alt="" loading="lazy">
           <template class="work-details">
-            <p class="modal-type">03 — Indian Sign Language classroom · Award Winning</p>
+            <p class="modal-type">04 — Indian Sign Language classroom · Award Winning</p>
             <h3 class="modal-title">SignBridge</h3>
             <p class="modal-lead">An inclusive classroom platform that bridges communication between hearing, Deaf,
               hard-of-hearing and non-speaking students — turning a teacher&rsquo;s speech into Indian Sign Language and a
@@ -369,40 +413,42 @@
             </div>
           </template>
         </article>
-        <article class="work-row reveal" data-project data-img="assets/images/finnie.jpg" tabindex="0" role="button"
-          aria-label="Open FinNIE case study" data-cursor="VIEW">
-          <span class="wr-num">04</span>
-          <h3 class="wr-title">FinNIE</h3>
-          <span class="wr-type">Campus lost &amp; found platform</span>
-          <span class="wr-tags">Flask · MySQL · Flask-Limiter</span>
-          <span class="wr-badge">Flask · MySQL</span>
+        <article class="work-row reveal" data-project data-img="assets/images/athenaeum.jpg" tabindex="0" role="button"
+          aria-label="Open Athenaeum case study" data-cursor="VIEW">
+          <span class="wr-num">05</span>
+          <h3 class="wr-title">Athenaeum</h3>
+          <span class="wr-type">Library system with a live QA lab</span>
+          <span class="wr-tags">Node.js · Express · SQLite · JWT</span>
+          <span class="wr-badge">40 / 40 tests</span>
           <span class="wr-go"><svg><use href="#i-arrow" /></svg></span>
-          <img class="wr-thumb" src="assets/images/finnie.jpg" alt="" loading="lazy">
+          <img class="wr-thumb" src="assets/images/athenaeum.jpg" alt="" loading="lazy">
           <template class="work-details">
-            <p class="modal-type">04 — Campus lost &amp; found platform</p>
-            <h3 class="modal-title">FinNIE</h3>
-            <p class="modal-lead">A full-stack lost &amp; found platform for the NIE campus. Instead of email spam and word
-              of mouth, students report lost or found items with details and a photo, browse found items, and contact the
-              finder directly.</p>
+            <p class="modal-type">05 — Library system with a live QA lab</p>
+            <h3 class="modal-title">Athenaeum</h3>
+            <p class="modal-lead">A full-stack library management system built for Software Testing &amp; Quality
+              Assurance: an Express REST API on SQLite, a vanilla-JS single-page app, and a built-in QA Lab that runs 40
+              test cases live against the API.</p>
             <div class="modal-metrics">
-              <div><strong>10 / min</strong><span>Submission rate limit</span></div>
-              <div><strong>@nie.ac.in</strong><span>Campus-only access</span></div>
-              <div><strong>3</strong><span>Lost · Found · Resolved</span></div>
+              <div><strong>40</strong><span>STQA test cases, 12 sections</span></div>
+              <div><strong>4</strong><span>Roles with RBAC</span></div>
+              <div><strong>3 ways</strong><span>Browser · npm test · report</span></div>
             </div>
             <h4 class="modal-sub">Key architectural highlights</h4>
             <ul class="modal-list">
-              <li><strong>Report lifecycle:</strong> Items move through Lost, Found and Resolved; resolved reports are
-                removed from the active database automatically.</li>
-              <li><strong>Campus-only access:</strong> Session-based login that accepts only <code>@nie.ac.in</code> email
-                addresses.</li>
-              <li><strong>Abuse protection:</strong> Flask-Limiter caps report submissions at 10 per minute per client, and
-                uploaded image names are sanitized with <code>secure_filename</code>.</li>
-              <li><strong>MySQL-backed:</strong> Reports and contact details are stored in MySQL, configured through
-                environment variables and served with Gunicorn.</li>
+              <li><strong>Role-based workflows:</strong> Students and staff borrow (14 days, max 3), return, read, bookmark and
+                review; authors submit manuscripts; librarians approve requests and manage the catalog.</li>
+              <li><strong>Security by default:</strong> HS256 JWTs, scrypt password hashing and role checks on every
+                endpoint. The role is reloaded from the database on each request, so a forged role claim does nothing;
+                queries are parameterised and output is HTML-escaped.</li>
+              <li><strong>One test suite, three runners:</strong> The same 40 cases run in the in-app QA Lab, under
+                <code>node:test</code> against an isolated in-memory database, and as a generated Markdown/CSV execution
+                report.</li>
+              <li><strong>Re-runnable tests:</strong> Each case creates its own throwaway users and cleans up the books,
+                loans and bookmarks it creates.</li>
             </ul>
-            <div class="modal-tags"><span>Python</span><span>Flask</span><span>MySQL</span><span>Flask-Limiter</span><span>Jinja templates</span><span>Gunicorn</span></div>
+            <div class="modal-tags"><span>Node.js</span><span>Express</span><span>SQLite</span><span>JWT</span><span>RBAC</span><span>node:test</span><span>Vanilla JS SPA</span></div>
             <div class="modal-links">
-              <a href="https://github.com/neelesh1303/FinNIE-lost-and-found-item-tracker" target="_blank" rel="noopener"
+              <a href="https://github.com/neelesh1303/STQA_internals_project" target="_blank" rel="noopener"
                 class="btn-chrome"><svg><use href="#i-github" /></svg> GitHub repo</a>
             </div>
           </template>
@@ -485,23 +531,23 @@
           </button>
           <button type="button" class="cap reveal" data-domain="ai">
             <span class="cap-num">02</span><span class="cap-title">AI &amp; LLM systems</span>
-            <span class="cap-desc">Semantic caching, RAG over real interview data, and multi-provider routing across
-              Groq, Gemini and OpenRouter.</span>
+            <span class="cap-desc">Agentic workflows with Claude Code, RAG over real interview data, Gemini fit
+              scoring, semantic caching and multi-provider routing; MediaPipe + scikit-learn for computer vision.</span>
           </button>
           <button type="button" class="cap reveal" data-domain="backend">
-            <span class="cap-num">03</span><span class="cap-title">Backend &amp; APIs</span>
-            <span class="cap-desc">Async FastAPI microservices and modular Express REST APIs with JWT auth and rate
-              limiting.</span>
+            <span class="cap-num">03</span><span class="cap-title">Full-stack &amp; APIs</span>
+            <span class="cap-desc">FastAPI, Flask and Express REST APIs with JWT auth, RBAC and rate limiting; React +
+              Vite frontends and a Capacitor Android app.</span>
           </button>
           <button type="button" class="cap reveal" data-domain="db">
             <span class="cap-num">04</span><span class="cap-title">Databases &amp; caching</span>
-            <span class="cap-desc">Redis caching, MySQL relational storage, SQLite request logs, and MongoDB document
-              modeling.</span>
+            <span class="cap-desc">MongoDB Atlas document modeling, Redis caching, MySQL relational storage and SQLite
+              for logs and embedded apps.</span>
           </button>
           <button type="button" class="cap reveal" data-domain="devops">
             <span class="cap-num">05</span><span class="cap-title">DevOps &amp; testing</span>
-            <span class="cap-desc">GitHub Actions CI/CD running Jest and Supertest on every pull request; Postman API
-              verification across environments.</span>
+            <span class="cap-desc">GitHub Actions for CI, scheduled pipelines and APK releases; Jest, Supertest and
+              node:test suites; Docker, Render and Vercel deploys.</span>
           </button>
           <button type="button" class="cap reveal" data-domain="cs">
             <span class="cap-num">06</span><span class="cap-title">CS fundamentals</span>
@@ -522,11 +568,18 @@
             <div class="tool" data-d="ai"><b>ST</b>Sentence-Transformers</div>
             <div class="tool" data-d="ai"><b>Gq</b>Groq</div>
             <div class="tool" data-d="ai"><b>OR</b>OpenRouter</div>
+            <div class="tool" data-d="ai devops"><b>CC</b>Claude Code</div>
+            <div class="tool" data-d="ai"><b>MP</b>MediaPipe</div>
+            <div class="tool" data-d="ai"><b>CV</b>OpenCV</div>
+            <div class="tool" data-d="ai"><b>Sk</b>scikit-learn</div>
             <div class="tool" data-d="ai db"><b>RAG</b>RAG &amp; Embeddings</div>
             <div class="tool" data-d="backend"><b>Nd</b>Node.js</div>
             <div class="tool" data-d="backend"><b>Ex</b>Express.js</div>
             <div class="tool" data-d="backend"><b>Fa</b>FastAPI</div>
             <div class="tool" data-d="backend"><b>Fl</b>Flask</div>
+            <div class="tool" data-d="backend"><b>Re</b>React</div>
+            <div class="tool" data-d="backend devops"><b>Vt</b>Vite</div>
+            <div class="tool" data-d="backend"><b>Cp</b>Capacitor</div>
             <div class="tool" data-d="backend"><b>JWT</b>JWT Auth</div>
             <div class="tool" data-d="db"><b>Rd</b>Redis</div>
             <div class="tool" data-d="db"><b>Mg</b>MongoDB</div>
@@ -536,6 +589,8 @@
             <div class="tool" data-d="devops"><b>GA</b>GitHub Actions</div>
             <div class="tool" data-d="devops"><b>Je</b>Jest</div>
             <div class="tool" data-d="devops"><b>Su</b>Supertest</div>
+            <div class="tool" data-d="devops"><b>Dk</b>Docker</div>
+            <div class="tool" data-d="devops backend"><b>Ap</b>Apify</div>
             <div class="tool" data-d="devops backend"><b>Pm</b>Postman</div>
             <div class="tool" data-d="devops"><b>Vc</b>Vercel</div>
             <div class="tool" data-d="devops"><b>Rn</b>Render</div>

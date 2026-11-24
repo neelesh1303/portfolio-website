@@ -227,14 +227,14 @@ async function runBootScript(body, keyboard, pct, onEntered) {
     await sleep(18);
   }
 
-  const deps = ["cpp-stl", "python", "javascript", "fastapi", "express", "redis", "mongodb", "gemini-rag"];
+  const deps = ["cpp-stl", "python", "javascript", "react", "fastapi", "flask", "express", "redis", "mongodb", "gemini-rag", "claude-code"];
   for (let i = 0; i < deps.length; i++) {
     line(`<span class="t-plus">+</span> ${deps[i]}`);
     setPct(60 + ((i + 1) / deps.length) * 30);
     await sleep(85);
   }
 
-  line('added <span class="t-ok">4 projects</span> <span class="t-dim">· crackd · llm-optimizer · signbridge · finnie</span>');
+  line('added <span class="t-ok">5 projects</span> <span class="t-dim">· jobpilot · crackd · llm-optimizer · signbridge · athenaeum</span>');
   await sleep(120);
   line('added <span class="t-ok">500+</span> solved problems <span class="t-dim">· cgpa@8.60</span>');
   await sleep(120);
@@ -896,21 +896,24 @@ Looking for Remote · Onsite · Hybrid roles in India.`),
     whoami: () => commands.about(),
 
     projects: () =>
-      print(`[01] Crackd — AI placement &amp; roadmap platform (MERN, Gemini RAG, Redis)
+      print(`[01] JobPilot — AI job-search assistant: Gemini scoring, tailored resumes, Claude Code auto-apply
+     ${link("https://github.com/neelesh1303/JobPilot", "github ↗")}
+[02] Crackd — AI placement &amp; roadmap platform (MERN, Gemini RAG, Redis)
      ${link("https://crackd-placement-assistance-platfor.vercel.app/", "live ↗")}  ${link("https://github.com/neelesh1303/Crackd-Placement-Assistance-Platform/", "github ↗")}
-[02] LLM Cost &amp; Latency Optimizer — FastAPI gateway, semantic cache + provider fallback
+[03] LLM Cost &amp; Latency Optimizer — FastAPI gateway, semantic cache + provider fallback
      ${link("https://github.com/neelesh1303/LLM_COST_AND_LATENCY_OPTIMIZER", "github ↗")}
-[03] SignBridge — Sign ↔ speech AI, 4th at DevJams VIT (100+ teams)
+[04] SignBridge — Sign ↔ speech AI, 4th at DevJams VIT (100+ teams)
      ${link("https://github.com/neelesh1303/MAJOR_PROJECT_SignBridge", "github ↗")}
-[04] FinNIE — Campus lost &amp; found (Flask, MySQL, rate limiting)
-     ${link("https://github.com/neelesh1303/FinNIE-lost-and-found-item-tracker", "github ↗")}`),
+[05] Athenaeum — Library system with JWT/RBAC and a live 40-case QA lab (Express, SQLite)
+     ${link("https://github.com/neelesh1303/STQA_internals_project", "github ↗")}`),
 
     skills: () =>
       print(`Languages  C++ (STL), Python, JavaScript, SQL, C, NumPy, Pydantic
-AI / LLM   Gemini API, Groq, OpenRouter, RAG, Embeddings, Semantic Caching
-Backend    Node.js, Express.js, FastAPI, Flask, REST APIs, JWT Auth
-Data       Redis, MongoDB, MySQL, SQLite
-Tooling    Git, GitHub Actions, Jest, Supertest, Postman, Vercel, Render`),
+AI / LLM   Claude Code agents, Gemini API, Groq, OpenRouter, RAG, Embeddings, Semantic Caching
+ML / CV    MediaPipe, OpenCV, scikit-learn
+Full-stack Node.js, Express.js, FastAPI, Flask, React, Vite, Capacitor, REST APIs, JWT, RBAC
+Data       MongoDB Atlas, Redis, MySQL, SQLite
+Tooling    Git, GitHub Actions, Docker, Jest, Supertest, node:test, Postman, Vercel, Render`),
 
     metrics: () =>
       print(`500+    DSA problems solved (LeetCode, GeeksforGeeks, Codolio)
